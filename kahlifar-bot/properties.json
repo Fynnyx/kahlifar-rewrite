@@ -1,0 +1,23 @@
+{
+    "prefix": "&",
+    "deletetime": 4,
+    "status": {
+        "messages": [
+            "[❗] Shopping-Disctrict öffnet bald.",
+            "[⬆] Vote für uns auf topgg.kahlifar.de",
+            "[📎] Server IP 81.169.200.43:25900"
+        ],
+        "time": 5
+    },
+    "commands": {
+        "discord": {
+            "links": [
+                "http://dc.kahlifar.de",
+                "http://discord.kahlifar.de"
+            ]
+        },
+        "server": {
+            "ip": "81.169.200.43:25900"
+        }
+    }
+}
