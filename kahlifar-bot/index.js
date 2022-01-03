@@ -1,6 +1,6 @@
 import { config } from "dotenv";
 import { Client, Intents, MessageEmbed, MessageActionRow, MessageButton, ReactionCollector, Presence } from "discord.js";
-import { readFile } from 'fs/promises'
+import { readFile, readdir } from 'fs/promises'
 import { resolve } from "path";
 
 config();
@@ -178,7 +178,7 @@ client.on("messageCreate", async (message) => {
                     }
                     channel.send("**Links zum einladen deiner Freunde:**\n" + linkMsg)
                     break
-                };
+                }
 
             case "server-ip":
             case "server":
@@ -187,10 +187,22 @@ client.on("messageCreate", async (message) => {
                     channel.send("**Die Minecraft Server IP:**\n->  " + data.commands.server.ip)
                     break
                 }
+
             case "send":
                 {
                     if (await checkPermission("send", message.member)) {
-                        channel.send("Oh! You wanna send something. Cool :D")
+                        let assetsPath = "./assets/texts/"
+                        let files = await readdir("./assets/texts/")
+                        console.log(contentArray[1] + ".txt");
+                        if (files.includes(contentArray[1] + ".txt")) {
+                            let file = contentArray[1] + ".txt"
+                            let fileContent = await readFile(assetsPath + file, 'utf8')
+                            // fetchedMessages = await channel.fetchMessages({limit: 100})
+                            await channel.bulkDelete(20, false)
+                            await channel.send(fileContent)
+                        } else if (files.includes(contentArray[1] + ".json")) {
+
+                        }
                     } else {
                         await sendWarn(channel, "Permission denied. Ask the Owner.")
                         message.delete()
@@ -208,6 +220,9 @@ client.on("messageCreate", async (message) => {
 })
 
 
+client.on('guildMemberAdd', member => {
+    member.guild.channels.get(data.events.join.channel).send(`Hey, ${member} Willkommen auf dem Kahlifar Discord \ud83c\udf86.\nUm mit diesem Discord zu interagieren musst du dich im <#895385320848236574>-Channel verifizieren.\nIm <#835629559645995009>-Channel bekommst du Inforamtionen \u00fcber diesen Discord und wie er funktioniert. Begib dich doch dorthin und entdecke es selber\ud83d\uddfa\ufe0f.`); 
+});
 
 
 client.login(process.env.TOKEN);
