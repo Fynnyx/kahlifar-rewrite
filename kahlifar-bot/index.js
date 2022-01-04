@@ -197,8 +197,7 @@ client.on("messageCreate", async (message) => {
                         if (files.includes(contentArray[1] + ".txt")) {
                             let file = contentArray[1] + ".txt"
                             let fileContent = await readFile(assetsPath + file, 'utf8')
-                            // fetchedMessages = await channel.fetchMessages({limit: 100})
-                            await channel.bulkDelete(20, false)
+                            await channel.bulkDelete(50, false)
                             await channel.send(fileContent)
                         } else if (files.includes(contentArray[1] + ".json")) {
 

@@ -1,0 +1,22 @@
+{
+    "verify": {
+        "description": "Send the verify Message to the chat",
+        "aliases": [
+            "v"
+        ],
+        "permissions": [
+            "Owner"
+        ]
+    },
+    "clear": {
+        "description": "Clear messages from channel. Use `clear/clear all`, `clear <NUMMBER>",
+        "aliases": [
+            "c"
+        ],
+        "permissions": [
+            "Owner",
+            "Moderator",
+            "Helper"
+        ]
+    }
+}

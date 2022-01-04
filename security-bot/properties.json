@@ -1,0 +1,36 @@
+{
+    "prefix": "+",
+    "deletetime": 4,
+
+    "messages": {
+        "permission": "Permission denied. Ask you Owner"
+    },
+
+    "status": {
+        "messages": [
+            "[🔒] Secure the Discord.",
+            "[⬆] Vote für uns auf topgg.kahlifar.de",
+            "[✅] Verifies you."
+        ],
+        "time": 5
+    },
+
+    "commands": {
+        "discord": {
+            "links": [
+                "http://dc.kahlifar.de",
+                "http://discord.kahlifar.de"
+            ]
+        }
+    },
+    "verify": {
+        "message": "By clicking/tapping the ✅-Button below. You agree with the rules on this Server.",
+        "color": "#59db42",
+        "bcolor": "SUCCESS",
+        "button": "✅-Verify",
+        "verifiedmsg": "You got verified✅",
+        "channel": "895385320848236574",
+        "basicrole": "895288280269094983",
+        "memberrole": "814523816818638868"
+    }
+}
