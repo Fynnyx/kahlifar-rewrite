@@ -1,11 +1,14 @@
 {
     "prefix": "&",
     "deletetime": 4,
+    "assetpath": "./assets/",
     "status": {
+        "default": "Use the help/h command.",
         "messages": [
             "[❗] Shopping-Disctrict öffnet bald.",
             "[⬆] Vote für uns auf topgg.kahlifar.de",
-            "[📎] Server IP 81.169.200.43:25900"
+            "[📎] Server IP 81.169.200.43:25900",
+            "[📩] https://dc.kahlifar.de"
         ],
         "time": 5
     },

@@ -1,7 +1,6 @@
 import { config } from "dotenv";
 import { Client, Intents, MessageEmbed, MessageActionRow, MessageButton, ReactionCollector, Presence } from "discord.js";
 import { readFile, readdir } from 'fs/promises'
-import { resolve } from "path";
 
 config();
 
@@ -17,9 +16,12 @@ const client = new Client({
 
 const PREFIX = data.prefix
 const DELETETIME = data.deletetime
+var statusInterval = {}
 
 // ON READY ----------------------------------
-client.on("ready", () => {
+client.on("ready", async () => {
+    await setStatus("Starting...");
+    await startStatus()
     console.info(`\x1b[33m${client.user.username}\x1b[34m, logged in with PREFIX \x1b[33m${PREFIX}\x1b[0m`)
 })
 
@@ -32,7 +34,7 @@ async function checkPermission(command, user) {
     for (let perm of commands[command].permissions) {
         if (user.roles.cache.some(role => role.name === perm)) {
             return true
-        } 
+        }
     }
     return false
 }
@@ -45,6 +47,41 @@ async function getCommandByAlias(alias) {
         }
     }
     return undefined
+}
+
+async function getEmbedFromJSON(file) {
+    const embedData = JSON.parse(await readFile(new URL(data.assetpath + "texts/" + file, import.meta.url)))
+
+    var embed = new MessageEmbed()
+        .setTitle(embedData.title)
+        .setDescription(embedData.description)
+        .setColor(embedData.color)
+
+    for (let field of embedData.fields) {
+        embed.addFields(field)
+    }
+    return embed;
+}
+
+async function startStatus() {
+    statusInterval = setInterval(() => {
+        const statues = data.status.messages
+        let currentStatus = statues.indexOf(client.user.presence.activities[0].name);
+        let index = Math.floor(Math.random() * (statues.length))
+        while (currentStatus == index) {
+            index = Math.floor(Math.random() * (statues.length))
+        }
+        client.user.setActivity(statues[index])
+    }, data.status.time * 1000)
+}
+
+async function stopStatus() {
+    clearInterval(statusInterval)
+    client.user.setActivity(data.status.default)
+}
+
+async function setStatus(message) {
+    client.user.setActivity(message)
 }
 
 async function sendError(channel, message) {
@@ -114,7 +151,7 @@ client.on("messageCreate", async (message) => {
                             let specificComEmbed = await getSpecHelpEmbed(contentArray[1])
                             await channel.send({ embeds: [specificComEmbed] })
 
-                        // Now Search for Alias
+                            // Now Search for Alias
                         } else {
                             command = await getCommandByAlias(contentArray[1])
                             console.log("TEst ", command);
@@ -122,7 +159,7 @@ client.on("messageCreate", async (message) => {
                                 let specificComEmbed = await getSpecHelpEmbed(command)
                                 await channel.send({ embeds: [specificComEmbed] })
 
-                            // Cant find the command
+                                // Cant find the command
                             } else {
                                 await sendError(channel, "Can't find `" + contentArray[1] + "` as a command\nYou used `" + contentArray[1] + "`")
                                 await message.delete()
@@ -200,7 +237,11 @@ client.on("messageCreate", async (message) => {
                             await channel.bulkDelete(50, false)
                             await channel.send(fileContent)
                         } else if (files.includes(contentArray[1] + ".json")) {
-
+                            let embed = await getEmbedFromJSON(contentArray[1] + ".json")
+                            channel.send({ embeds: [embed] })
+                        } else {
+                            sendError(channel, "Cant't find this embed.")
+                            message.delete()
                         }
                     } else {
                         await sendWarn(channel, "Permission denied. Ask the Owner.")
@@ -208,6 +249,37 @@ client.on("messageCreate", async (message) => {
                     }
                     break
                 }
+            case "status":
+                {
+                    if (await checkPermission("status", message.member)) {
+                        switch (contentArray[1].toLowerCase()) {
+                            case "set":
+                                {
+                                    let a = contentArray
+                                    a.splice(0, 2)
+                                    setStatus(a.join(" "))
+                                    break
+                                }
+                            case "start":
+                                {
+                                    startStatus()
+                                    break
+                                }
+                            case "stop":
+                                {
+                                    stopStatus()
+                                    break
+                                }
+                            default:
+                                {
+                                    sendError(channel, "You parameter, `" + contentArray[1] + "` can not be used.")
+                                    message.delete()
+                                }
+                        }
+                    }
+                    break
+                }
+
 
 
             default: {
@@ -220,7 +292,7 @@ client.on("messageCreate", async (message) => {
 
 
 client.on('guildMemberAdd', member => {
-    member.guild.channels.get(data.events.join.channel).send(`Hey, ${member} Willkommen auf dem Kahlifar Discord \ud83c\udf86.\nUm mit diesem Discord zu interagieren musst du dich im <#895385320848236574>-Channel verifizieren.\nIm <#835629559645995009>-Channel bekommst du Inforamtionen \u00fcber diesen Discord und wie er funktioniert. Begib dich doch dorthin und entdecke es selber\ud83d\uddfa\ufe0f.`); 
+    member.guild.channels.get(data.events.join.channel).send(`Hey, ${member} Willkommen auf dem Kahlifar Discord \ud83c\udf86.\nUm mit diesem Discord zu interagieren musst du dich im <#895385320848236574>-Channel verifizieren.\nIm <#835629559645995009>-Channel bekommst du Inforamtionen \u00fcber diesen Discord und wie er funktioniert. Begib dich doch dorthin und entdecke es selber\ud83d\uddfa\ufe0f.`);
 });
 
 

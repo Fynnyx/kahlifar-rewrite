@@ -1,5 +1,5 @@
 {
-    "prefix": "+",
+    "prefix": ".",
     "deletetime": 4,
 
     "messages": {
@@ -7,21 +7,14 @@
     },
 
     "status": {
+        "default": "Use the help/h command",
         "messages": [
             "[🔒] Secure the Discord.",
             "[⬆] Vote für uns auf topgg.kahlifar.de",
-            "[✅] Verifies you."
+            "[✅] Verifies you.",
+            "[👀] Always watching you!."
         ],
         "time": 5
-    },
-
-    "commands": {
-        "discord": {
-            "links": [
-                "http://dc.kahlifar.de",
-                "http://discord.kahlifar.de"
-            ]
-        }
     },
     "verify": {
         "message": "By clicking/tapping the ✅-Button below. You agree with the rules on this Server.",

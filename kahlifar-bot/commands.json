@@ -36,5 +36,14 @@
             "Owner",
             "Moderator"
         ]
+    },
+    "status": {
+        "description": "Start, stop and set the status from this bot.",
+        "aliases": [
+        ],
+        "permissions": [
+            "Owner",
+            "Moderator"
+        ]
     }
 }

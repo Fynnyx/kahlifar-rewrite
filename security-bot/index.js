@@ -1,7 +1,6 @@
 import { config } from "dotenv";
 import { Client, Intents, MessageEmbed, MessageActionRow, MessageButton } from "discord.js";
 import { readFile } from 'fs/promises'
-import { send } from "process";
 
 config();
 
@@ -18,9 +17,11 @@ const client = new Client({
 // const TOKEN = String(process.env.TOKEN);
 const PREFIX = data.prefix
 const DELETETIME = data.deletetime
+var statusInterval = {}
 
-client.on("ready", () => {
-    // sendVerify()
+client.on("ready", async () => {
+    await setStatus("Starting...")
+    await startStatus()
     console.info(`\x1b[33m${client.user.username}\x1b[34m, logged in with PREFIX \x1b[33m${PREFIX}\x1b[0m`)
 })
 
@@ -46,6 +47,27 @@ async function getCommandByAlias(alias) {
         }
     }
     return undefined
+}
+
+async function startStatus() {
+    statusInterval = setInterval(() => {
+        const statues = data.status.messages
+        let currentStatus = statues.indexOf(client.user.presence.activities[0].name);
+        let index = Math.floor(Math.random() * (statues.length))
+        while (currentStatus == index) {
+            index = Math.floor(Math.random() * (statues.length))
+        }
+        client.user.setActivity(statues[index])
+    }, data.status.time * 1000)
+}
+
+async function stopStatus() {
+    clearInterval(statusInterval)
+    client.user.setActivity(data.status.default)
+}
+
+async function setStatus(message) {
+    client.user.setActivity(message)
 }
 
 async function sendError(channel, message) {
@@ -87,14 +109,13 @@ async function sendVerify() {
 }
 
 async function deleteMessages(channel, amount) {
-    let counter = 0
+    // let counter = 0
     await channel.bulkDelete(amount, true)
 
-    console.log(counter);
     let deletedMsg = await channel.send("🗑 - Deleted `min. " + amount + "` messages.")
     await sleep(2)
     await deletedMsg.delete()
-    }
+}
 
 client.on("messageCreate", async (message) => {
     // console.log(message)
@@ -143,9 +164,42 @@ client.on("messageCreate", async (message) => {
                     }
                     break
                 }
+            case "status":
+                {
+                    if (await checkPermission("status", message.member)) {
+                        switch (contentArray[1].toLowerCase()) {
+                            case "set":
+                                {
+                                    let a = contentArray
+                                    a.splice(0, 2)
+                                    setStatus(a.join(" "))
+                                    break
+                                }
+                            case "start":
+                                {
+                                    startStatus()
+                                    break
+                                }
+                            case "stop":
+                                {
+                                    stopStatus()
+                                    break
+                                }
+                            default:
+                                {
+                                    sendError(channel, "You parameter, `" + contentArray[1] + "` can not be used.")
+                                    message.delete()
+                                }
+
+                        }
+                    } else {
+                        await sendWarn(channel, data.messages.permission)
+                    }
+                    break
+                }
             default: {
                 console.log("command not found");
-                channel.send("Command not found")
+                sendError(channel, "No Command `" + command + "` not found")
             }
         }
     }

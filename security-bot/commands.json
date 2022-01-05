@@ -18,5 +18,13 @@
             "Moderator",
             "Helper"
         ]
+    },
+    "status": {
+        "description": "`start`, `stop` or `set` the status of this bot.",
+        "aliases": [],
+        "permissions": [
+            "Owner",
+            "Moderator"
+        ]
     }
 }
