@@ -1,0 +1,17 @@
+{
+    "title": "❓ - Frequently Asked Questions - ❓",
+    "description": "Damit wir nicht jede Frage 10x beantworten müssen findet ihr hier die häufig gestellten Fragen.",
+    "color": "#4287f5",
+    "fields": [
+        {
+            "name": "`Q:` Warum sehe ich nichts?",
+            "value": "**A:** *Stelle sicher, dass du die Member Rolle hast (reagiere in #verify✅)*",
+            "inline": false
+        },
+        {
+            "name": "`Q:` Warum bin ich auf dem Minecraft Server nicht gewhitelisted?",
+            "value": "**A:** *Nachdem du dich mit deinem Alter beworben hast, siehst du den Kahlifar Bereich. Sobald du den *",
+            "inline": false
+        }
+    ]
+}

@@ -1,5 +1,5 @@
 import { config } from "dotenv";
-import { Client, Intents, MessageEmbed, MessageActionRow, MessageButton, ReactionCollector, Presence } from "discord.js";
+import { Client, Intents, MessageEmbed } from "discord.js";
 import { readFile, readdir } from 'fs/promises'
 
 config();
@@ -21,32 +21,32 @@ var statusInterval = {}
 // ON READY ----------------------------------
 client.on("ready", async () => {
     await setStatus("Starting...");
-    await startStatus()
-    console.info(`\x1b[33m${client.user.username}\x1b[34m, logged in with PREFIX \x1b[33m${PREFIX}\x1b[0m`)
+    await startStatus();
+    console.info(`\x1b[33m${client.user.username}\x1b[34m, logged in with PREFIX \x1b[33m${PREFIX}\x1b[0m`);
 })
 
 async function sleep(s) {
-    return new Promise(resolve => setTimeout(resolve, s * 1000))
+    return new Promise(resolve => setTimeout(resolve, s * 1000));
 }
 
 async function checkPermission(command, user) {
     let commands = JSON.parse(await readFile(new URL("./commands.json", import.meta.url)))
     for (let perm of commands[command].permissions) {
         if (user.roles.cache.some(role => role.name === perm)) {
-            return true
+            return true;
         }
     }
-    return false
+    return false;
 }
 
 async function getCommandByAlias(alias) {
     let commands = JSON.parse(await readFile(new URL("./commands.json", import.meta.url)))
     for (let command in commands) {
         if (commands[command].aliases.includes(String(alias))) {
-            return command
+            return command;
         }
     }
-    return undefined
+    return undefined;
 }
 
 async function getEmbedFromJSON(file) {
@@ -291,8 +291,14 @@ client.on("messageCreate", async (message) => {
 })
 
 
-client.on('guildMemberAdd', member => {
-    member.guild.channels.get(data.events.join.channel).send(`Hey, ${member} Willkommen auf dem Kahlifar Discord \ud83c\udf86.\nUm mit diesem Discord zu interagieren musst du dich im <#895385320848236574>-Channel verifizieren.\nIm <#835629559645995009>-Channel bekommst du Inforamtionen \u00fcber diesen Discord und wie er funktioniert. Begib dich doch dorthin und entdecke es selber\ud83d\uddfa\ufe0f.`);
+client.on('guildMemberAdd', async (member) => {
+    console.log(member);
+    let wchannel = client.channels.cache.get(data.events.join.channel)
+    wchannel.send(`Hey, ${member} Willkommen auf dem Kahlifar Discord \ud83c\udf86.\nUm mit diesem Discord zu interagieren musst du dich im <#895385320848236574>-Channel verifizieren.\nIm <#835629559645995009>-Channel bekommst du Inforamtionen \u00fcber diesen Discord und wie er funktioniert. Begib dich doch dorthin und entdecke es selber\ud83d\uddfa\ufe0f.`);
+    let nrole = member.guild.roles.cache.get(data.events.join.notrole)
+    let brole = member.guild.roles.cache.get(data.events.join.basicrole)
+    member.roles.add(brole)
+    member.roles.add(nrole)
 });
 
 
