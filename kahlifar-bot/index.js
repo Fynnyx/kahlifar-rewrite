@@ -293,8 +293,9 @@ client.on("messageCreate", async (message) => {
 
 client.on('guildMemberAdd', async (member) => {
     console.log(member);
+    console.log(data.events.join.channel);
     let wchannel = client.channels.cache.get(data.events.join.channel)
-    wchannel.send(`Hey, ${member} Willkommen auf dem Kahlifar Discord \ud83c\udf86.\nUm mit diesem Discord zu interagieren musst du dich im <#895385320848236574>-Channel verifizieren.\nIm <#835629559645995009>-Channel bekommst du Inforamtionen \u00fcber diesen Discord und wie er funktioniert. Begib dich doch dorthin und entdecke es selber\ud83d\uddfa\ufe0f.`);
+    await wchannel.send(`Hey, ${member} Willkommen auf dem Kahlifar Discord \ud83c\udf86.\nUm mit diesem Discord zu interagieren musst du dich im <#895385320848236574>-Channel verifizieren.\nIm <#835629559645995009>-Channel bekommst du Inforamtionen \u00fcber diesen Discord und wie er funktioniert. Begib dich doch dorthin und entdecke es selber\ud83d\uddfa\ufe0f.`);
     let nrole = member.guild.roles.cache.get(data.events.join.notrole)
     let brole = member.guild.roles.cache.get(data.events.join.basicrole)
     member.roles.add(brole)
