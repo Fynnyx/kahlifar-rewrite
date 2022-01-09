@@ -1,5 +1,5 @@
 {
-    "prefix": "&",
+    "prefix": "-",
     "deletetime": 4,
     "assetpath": "./assets/",
     "status": {
@@ -22,6 +22,18 @@
         },
         "server": {
             "ip": "81.169.200.43:25900"
+        },
+        "bewerbung": {
+            "bewchannel": "912444486095884338",
+            "modchannel": "929669352519761961",
+            "color": "#e861c2",
+            "helpmsg": "Die Bewerbungsnachricht lesen und dann auf akzeptieren drücken oder auf ablehnen.\nDer Hilfe Button bringt dir diesen Dialog.\nWenn du gepingt werden möchtest bei einer neuen Bewerbung füge dir dir <@&929668513516376114>-Rolle hinzu",
+            "sentmsg": "Your applecation has been sent✅. Be patient, you will get an answer soon.",
+            "pingmsg": "Eine neue Bewerbung <@929668513516376114>",
+            "accmsg": "You have been accepted✅.",
+            "denymsg": "Your application hasn't been accepted❌. Ask a moderator for more information.",
+            "modrole": "929668513516376114",
+            "krole": "896865134306279485"
         }
     },
     "events": {

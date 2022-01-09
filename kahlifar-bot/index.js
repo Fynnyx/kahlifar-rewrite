@@ -1,5 +1,5 @@
 import { config } from "dotenv";
-import { Client, Intents, MessageEmbed } from "discord.js";
+import { Client, Intents, MessageActionRow, MessageButton, MessageEmbed } from "discord.js";
 import { readFile, readdir } from 'fs/promises'
 
 config();
@@ -136,7 +136,7 @@ client.on("messageCreate", async (message) => {
         let contentArray = content.split(" ");
         let command = contentArray[0]
 
-        console.log(command);
+        // console.log(command);
 
         switch (command.toLowerCase()) {
             case "help":
@@ -154,7 +154,6 @@ client.on("messageCreate", async (message) => {
                             // Now Search for Alias
                         } else {
                             command = await getCommandByAlias(contentArray[1])
-                            console.log("TEst ", command);
                             if (command != undefined) {
                                 let specificComEmbed = await getSpecHelpEmbed(command)
                                 await channel.send({ embeds: [specificComEmbed] })
@@ -230,7 +229,6 @@ client.on("messageCreate", async (message) => {
                     if (await checkPermission("send", message.member)) {
                         let assetsPath = "./assets/texts/"
                         let files = await readdir("./assets/texts/")
-                        console.log(contentArray[1] + ".txt");
                         if (files.includes(contentArray[1] + ".txt")) {
                             let file = contentArray[1] + ".txt"
                             let fileContent = await readFile(assetsPath + file, 'utf8')
@@ -279,11 +277,60 @@ client.on("messageCreate", async (message) => {
                     }
                     break
                 }
+            case "bewerbung":
+                {
+                    if (channel.id == data.commands.bewerbung.bewchannel || channel.id == "895547488184975361") {
+                        if (!message.member.roles.cache.some(role => role.id === data.commands.bewerbung.krole)) {
+                            let modchannel = client.channels.cache.get(data.commands.bewerbung.modchannel)
+                            let a = contentArray
+                            a.splice(0, 1)
+
+                            let bewmsg = a.join(" ")
+                            let bewEmbed = new MessageEmbed()
+                                .setTimestamp()
+                                .setFooter({ text: "Eingesendet am/um" })
+                                .setColor(data.commands.bewerbung.color)
+                                .setTitle("📩 Neue Bewerbung von " + message.member.displayName)
+                                .setDescription(`${message.member} sent : ${bewmsg}`)
+
+                            let row = new MessageActionRow()
+                                .addComponents(
+                                    new MessageButton()
+                                        .setCustomId("bew-accept")
+                                        .setLabel("Accept")
+                                        .setStyle("SUCCESS"),
+                                    new MessageButton()
+                                        .setCustomId("bew-deny")
+                                        .setLabel("Deny")
+                                        .setStyle("DANGER"),
+                                    new MessageButton()
+                                        .setCustomId("bew-help")
+                                        .setLabel("Help")
+                                        .setStyle("SECONDARY")
+                                )
+                            let msg = await modchannel.send(`<@&${data.commands.bewerbung.modrole}>`)
+                            modchannel.send({ embeds: [bewEmbed], components: [row] })
+                            message.member.send(data.commands.bewerbung.sentmsg)
+                            await sleep(1)
+                            msg.delete()
+                            await sleep(3)
+                            message.delete()
+
+                        } else {
+                            sendWarn(channel, "You already have sent an application and have been accepted.")
+                            message.delete()
+                        }
+
+                    } else {
+                        sendWarn(channel, "I can't send this application from this channel. \nPlease use the dedicated channel.")
+                        message.delete()
+                    }
+                    break
+                }
 
 
 
             default: {
-                console.log("command not found");
                 channel.send("Command not found")
             }
         }
@@ -292,8 +339,6 @@ client.on("messageCreate", async (message) => {
 
 
 client.on('guildMemberAdd', async (member) => {
-    console.log(member);
-    console.log(data.events.join.channel);
     let wchannel = client.channels.cache.get(data.events.join.channel)
     await wchannel.send(`Hey, ${member} Willkommen auf dem Kahlifar Discord \ud83c\udf86.\nUm mit diesem Discord zu interagieren musst du dich im <#895385320848236574>-Channel verifizieren.\nIm <#835629559645995009>-Channel bekommst du Inforamtionen \u00fcber diesen Discord und wie er funktioniert. Begib dich doch dorthin und entdecke es selber\ud83d\uddfa\ufe0f.`);
     let nrole = member.guild.roles.cache.get(data.events.join.notrole)
@@ -301,6 +346,36 @@ client.on('guildMemberAdd', async (member) => {
     member.roles.add(brole)
     member.roles.add(nrole)
 });
+
+client.on('interactionCreate', async (interaction) => {
+    switch (interaction.customId) {
+        case "bew-accept":
+            {
+                console.log(interaction.message.embeds[0].description);
+                let member = interaction.guild.members.cache.get(interaction.message.embeds[0].description.split(" ")[0].replace("<@", "").replace(">", ""))
+                let krole = interaction.guild.roles.cache.get(data.commands.bewerbung.krole)
+                member.roles.add(krole)
+                member.send(data.commands.bewerbung.accmsg)
+                interaction.reply({ ephemeral: true, content: `<@${member.id}> has been accepted✅` })
+                interaction.message.delete()
+                console.log(member);
+                break
+            }
+        case "bew-deny":
+            {
+                let member = interaction.guild.members.cache.get(interaction.message.embeds[0].description.split(" ")[0].replace("<@", "").replace(">", ""))
+                member.send(data.commands.bewerbung.denymsg)
+                interaction.reply({ ephemeral: true, content: `<@${member.id}> has been denied❌. Be ready to tell him why.` })
+                interaction.message.delete()
+                break
+            }
+        case "bew-help":
+            {
+                interaction.reply({ ephemeral: true, content: data.commands.bewerbung.helpmsg })
+                break
+            }
+    }
+})
 
 
 client.login(process.env.TOKEN);
