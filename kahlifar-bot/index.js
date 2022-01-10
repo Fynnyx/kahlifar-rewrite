@@ -355,7 +355,7 @@ client.on('interactionCreate', async (interaction) => {
                 let krole = interaction.guild.roles.cache.get(data.commands.bewerbung.krole)
                 member.roles.add(krole)
                 member.send(data.commands.bewerbung.accmsg)
-                interaction.reply({ ephemeral: true, content: `<@${member.id}> has been accepted✅` })
+                interaction.reply({ ephemeral: true, content: `<@${member.id}> has been accepted ✅` })
                 interaction.message.delete()
                 break
             }
@@ -363,7 +363,7 @@ client.on('interactionCreate', async (interaction) => {
             {
                 let member = interaction.guild.members.cache.get(interaction.message.embeds[0].description.split(" ")[0].replace("<@", "").replace(">", ""))
                 member.send(data.commands.bewerbung.denymsg)
-                interaction.reply({ ephemeral: true, content: `<@${member.id}> has been denied❌. Be ready to tell him why.` })
+                interaction.reply({ ephemeral: true, content: `<@${member.id}> has been denied ❌. Be ready to tell him why.` })
                 interaction.message.delete()
                 break
             }

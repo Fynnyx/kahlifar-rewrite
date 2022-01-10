@@ -31,7 +31,7 @@ async function sleep(s) {
 }
 
 async function updateJSONTask() {
-    const propertiesInterval = setInterval( async () => {
+    const propertiesInterval = setInterval(async () => {
         data = JSON.parse(await readFile(new URL("./properties.json", import.meta.url)))
     }, 15000)
 }
@@ -54,6 +54,30 @@ async function getCommandByAlias(alias) {
         }
     }
     return undefined
+}
+
+async function getSpecHelpEmbed(command) {
+    let commands = JSON.parse(await readFile(new URL("./commands.json", import.meta.url)))
+
+    let aliasesString = ''
+    let permissionsString = ''
+
+    for (let alias of commands[command].aliases) {
+        aliasesString += "`" + alias + "`, "
+    }
+    for (let perm of commands[command].permissions) {
+        permissionsString += "`" + perm + "`, "
+    }
+
+    let specEmbed = new MessageEmbed()
+        .setColor("#71368a")
+        .setTitle("Hilfe für `" + command + "`.")
+        .setDescription(commands[command].description)
+        .addFields(
+            { name: 'Aliasse', value: "- " + aliasesString },
+            { name: 'Permissions', value: "- " + permissionsString }
+        )
+    return specEmbed
 }
 
 async function startStatus() {
@@ -97,6 +121,17 @@ async function sendWarn(channel, message) {
     msg.delete()
 }
 
+async function sendInfo(channel, message, shouldDelete) {
+    let infoEmbed = new MessageEmbed()
+        .setColor("#0087e8")
+        .setTitle("ℹ Info -")
+        .setDescription(message)
+    let msg = await channel.send({ embeds: [infoEmbed] })
+    if (shouldDelete == true) {
+        await sleep(DELETETIME)
+        msg.delete()
+    }
+}
 
 async function sendVerify() {
     let channel = client.channels.cache.get(data.verify.channel)
@@ -132,6 +167,70 @@ client.on("messageCreate", async (message) => {
         let contentArray = content.split(" ");
         let command = contentArray[0]
         switch (command.toLowerCase()) {
+            case "help":
+            case "h":
+                {
+                    let commands = JSON.parse(await readFile(new URL("./commands.json", import.meta.url)))
+                    // check if general help or specific
+                    if (contentArray[1] != undefined) {
+
+                        // Check if this command exists
+                        if (commands[String(contentArray[1])] != undefined) {
+                            let specificComEmbed = await getSpecHelpEmbed(contentArray[1])
+                            await channel.send({ embeds: [specificComEmbed] })
+
+                            // Now Search for Alias
+                        } else {
+                            command = await getCommandByAlias(contentArray[1])
+                            if (command != undefined) {
+                                let specificComEmbed = await getSpecHelpEmbed(command)
+                                await channel.send({ embeds: [specificComEmbed] })
+
+                                // Cant find the command
+                            } else {
+                                await sendError(channel, "Can't find `" + contentArray[1] + "` as a command\nYou used `" + contentArray[1] + "`")
+                                await message.delete()
+                            }
+                        }
+                    } else {
+                        let everyoneString = ""
+                        let helperString = ""
+                        let moderatorString = ""
+                        let ownerString = ""
+
+                        for (command in commands) {
+
+                            let permissionArray = commands[String(command)].permissions
+                            if (permissionArray.includes('Everyone')) {
+                                everyoneString += "`" + command + "`, "
+                            } else {
+                                if (permissionArray.includes("Helper")) {
+                                    helperString += "`" + command + "`, "
+                                }
+                                if (permissionArray.includes("Moderator")) {
+                                    moderatorString += "`" + command + "`, "
+                                }
+                                if (permissionArray.includes("Owner")) {
+                                    ownerString += "`" + command + "`, "
+                                }
+                            }
+                        }
+
+                        let helpEmbed = new MessageEmbed()
+                            .setColor("#71368a")
+                            .setTitle("Alle Commands für " + client.user.username)
+                            .setDescription("- Hier findest du alle Commands des <@" + client.user + ">.\n- Benutze `" + PREFIX + "help <COMMAND>` für weitere Informationen.\n**Prefix:** " + PREFIX)
+                            .addFields(
+                                { name: "Everyone", value: "- " + everyoneString, inline: false },
+                                { name: "Helper", value: "- " + helperString, inline: false },
+                                { name: "Moderator", value: "- " + moderatorString, inline: false },
+                                { name: "Owner", value: "- " + ownerString, inline: false }
+                            )
+
+                        channel.send({ embeds: [helpEmbed] })
+                    }
+                    break
+                }
             case "verify":
             case "v":
                 {
@@ -205,32 +304,51 @@ client.on("messageCreate", async (message) => {
             case "bl":
                 {
                     if (await checkPermission("blacklist", message.member)) {
-
+                        var blacklist = JSON.parse(await readFile(new URL("./blacklist.json", import.meta.url)))
                         switch (contentArray[1].toLowerCase()) {
                             case "add":
                                 {
                                     let a = contentArray
                                     a.splice(0, 2)
-                                    data.moderation.blacklist.list.push(a.join(" "))
+                                    if (!a.join(" ") == "" || !a.join(" ") == " ") {
+                                        if (!blacklist.includes(a.join(" "))) {
+                                            blacklist.push(a.join(" "))
+                                            blacklist.sort()
 
-                                    let jsonData = JSON.stringify(data, null, 4)
-                                    await writeFile("properties.json", jsonData)
+                                            let jsonData = JSON.stringify(blacklist, null, 4)
+                                            await writeFile("blacklist.json", jsonData)
+                                            sendInfo(channel, "Added `" + a.join(" ") + "` to the blacklist.", false)
+                                        } else {
+                                            sendWarn(channel, "This word/or phrase is already blacklisted.")
+                                            message.delete()
+                                        }
+                                    } else {
+                                        sendError(channel, "You need to define a word/phrase ")
+                                        message.delete()
+                                    }
                                     break
                                 }
                             case "remove":
                                 {
-                                    let index = contentArray[2]
-                                    console.log(index);
-                                    data.moderation.blacklist.list.splice(Number(index) - 1, 1)
-                                    let jsonData = JSON.stringify(data, null, 4)
-                                    await writeFile("properties.json", jsonData)
+                                    var index = contentArray[2]
+                                    if (isNaN(index) == true) {
+                                        index = blacklist.indexOf(index)
+                                    } else {
+                                        index -= 1
+                                    }
+                                    let test = blacklist.splice(Number(index), 1)
+                                    blacklist.sort()
+
+                                    let jsonData = JSON.stringify(blacklist, null, 4)
+                                    await writeFile("blacklist.json", jsonData)
+                                    sendInfo(channel, "Removed `" + test + "` from the blacklist.")
                                     break
                                 }
                             case "list":
                                 {
                                     let desc = ""
 
-                                    for (let item of data.moderation.blacklist.list) {
+                                    for (let item of blacklist) {
                                         desc += "• `" + item + "`\n"
                                     }
                                     let blacklistEmbed = new MessageEmbed()
@@ -265,7 +383,8 @@ client.on("messageCreate", async (message) => {
 
 // Moderation to check messages for bad content
 client.on("messageCreate", async (message) => {
-    for (let item of data.moderation.blacklist.list) {
+    var blacklist = JSON.parse(await readFile(new URL("./blacklist.json", import.meta.url)))
+    for (let item of blacklist) {
         if (message.content.toLowerCase().includes(item.toLowerCase()) && await checkPermission("blacklist", message.member) != true && message.author.bot == false) {
             message.delete()
             message.member.send(data.moderation.blacklist.warnmsg.replace("%WORD%", item))

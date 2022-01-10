@@ -1,4 +1,13 @@
 {
+    "help": {
+        "description": "Shows you all commands and if you have the permission. Also use `help <COMMAND>`",
+        "aliases": [
+            "h"
+        ],
+        "permissions": [
+            "Owner"
+        ]
+    },
     "verify": {
         "description": "Send the verify Message to the chat",
         "aliases": [
