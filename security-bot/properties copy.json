@@ -1,9 +1,11 @@
 {
     "prefix": ".",
     "deletetime": 4,
+
     "messages": {
         "permission": "Permission denied. Ask you Owner"
     },
+
     "status": {
         "default": "Use the help/h command",
         "messages": [
@@ -33,13 +35,10 @@
         "blacklist": {
             "list": [
                 "pornhub",
-                "porno",
-                "hure",
-                "hurensohn",
-                "fick dich",
-                "fuck you"
+                "https://discocrd"
             ],
             "warnmsg": "`                 [❌🛂]                 `\nHey you used an **`blacklisted`** word/phrase.\nIf the offense is repeated, measures will be taken.\n\n*You used: `%WORD%`.*"
+
         }
     }
 }

@@ -26,5 +26,15 @@
             "Owner",
             "Moderator"
         ]
+    },
+    "blacklist": {
+        "description": "`add`, `remove` and `list` the blacklisted words/phrases",
+        "aliases": [
+            "bl"
+        ],
+        "permissions": [
+            "Owner",
+            "Moderator"
+        ]
     }
 }

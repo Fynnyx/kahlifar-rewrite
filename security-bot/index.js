@@ -1,10 +1,10 @@
 import { config } from "dotenv";
 import { Client, Intents, MessageEmbed, MessageActionRow, MessageButton } from "discord.js";
-import { readFile } from 'fs/promises'
+import { readFile, writeFile } from 'fs/promises'
 
 config();
 
-const data = JSON.parse(await readFile(new URL("./properties.json", import.meta.url)))
+var data = JSON.parse(await readFile(new URL("./properties.json", import.meta.url)))
 
 const client = new Client({
     intents: [
@@ -22,11 +22,18 @@ var statusInterval = {}
 client.on("ready", async () => {
     await setStatus("Starting...")
     await startStatus()
+    await updateJSONTask()
     console.info(`\x1b[33m${client.user.username}\x1b[34m, logged in with PREFIX \x1b[33m${PREFIX}\x1b[0m`)
 })
 
 async function sleep(s) {
     return new Promise(resolve => setTimeout(resolve, s * 1000))
+}
+
+async function updateJSONTask() {
+    const propertiesInterval = setInterval( async () => {
+        data = JSON.parse(await readFile(new URL("./properties.json", import.meta.url)))
+    }, 15000)
 }
 
 async function checkPermission(command, user) {
@@ -112,7 +119,7 @@ async function deleteMessages(channel, amount) {
     // let counter = 0
     await channel.bulkDelete(amount, true)
 
-    let deletedMsg = await channel.send("🗑 - Deleted `min. " + amount + "` messages.")
+    let deletedMsg = await channel.send(data.commands.clear.delmsg.replace("%AMOUNT%", amount))
     await sleep(2)
     await deletedMsg.delete()
 }
@@ -124,9 +131,6 @@ client.on("messageCreate", async (message) => {
         let content = message.content.replace(PREFIX, "");
         let contentArray = content.split(" ");
         let command = contentArray[0]
-
-        console.log(command);
-
         switch (command.toLowerCase()) {
             case "verify":
             case "v":
@@ -197,10 +201,75 @@ client.on("messageCreate", async (message) => {
                     }
                     break
                 }
+            case "blacklist":
+            case "bl":
+                {
+                    if (await checkPermission("blacklist", message.member)) {
+
+                        switch (contentArray[1].toLowerCase()) {
+                            case "add":
+                                {
+                                    let a = contentArray
+                                    a.splice(0, 2)
+                                    data.moderation.blacklist.list.push(a.join(" "))
+
+                                    let jsonData = JSON.stringify(data, null, 4)
+                                    await writeFile("properties.json", jsonData)
+                                    break
+                                }
+                            case "remove":
+                                {
+                                    let index = contentArray[2]
+                                    console.log(index);
+                                    data.moderation.blacklist.list.splice(Number(index) - 1, 1)
+                                    let jsonData = JSON.stringify(data, null, 4)
+                                    await writeFile("properties.json", jsonData)
+                                    break
+                                }
+                            case "list":
+                                {
+                                    let desc = ""
+
+                                    for (let item of data.moderation.blacklist.list) {
+                                        desc += "• `" + item + "`\n"
+                                    }
+                                    let blacklistEmbed = new MessageEmbed()
+                                        .setColor("#a10906")
+                                        .setTitle("List of all blacklisted words.")
+                                        .setDescription(desc)
+                                    channel.send({ embeds: [blacklistEmbed] })
+
+                                    break
+                                }
+                            default:
+                                {
+                                    sendError(channel, "You parameter, `" + contentArray[1] + "` can not be used.")
+                                    message.delete()
+                                }
+
+                        }
+                    } else {
+                        await sendWarn(channel, data.messages.permission)
+                        message.delete()
+                    }
+                    break
+                }
             default: {
                 console.log("command not found");
                 sendError(channel, "No Command `" + command + "` not found")
+                message.delete()
             }
+        }
+    }
+})
+
+// Moderation to check messages for bad content
+client.on("messageCreate", async (message) => {
+    for (let item of data.moderation.blacklist.list) {
+        if (message.content.toLowerCase().includes(item.toLowerCase()) && await checkPermission("blacklist", message.member) != true && message.author.bot == false) {
+            message.delete()
+            message.member.send(data.moderation.blacklist.warnmsg.replace("%WORD%", item))
+            break
         }
     }
 })
@@ -213,7 +282,6 @@ client.on('interactionCreate', async (interaction) => {
         interaction.reply({ ephemeral: true, content: data.verify.verifiedmsg })
         await sleep(3)
         interaction.member.roles.remove(brole)
-
     }
 });
 

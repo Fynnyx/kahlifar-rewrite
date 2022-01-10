@@ -351,14 +351,12 @@ client.on('interactionCreate', async (interaction) => {
     switch (interaction.customId) {
         case "bew-accept":
             {
-                console.log(interaction.message.embeds[0].description);
                 let member = interaction.guild.members.cache.get(interaction.message.embeds[0].description.split(" ")[0].replace("<@", "").replace(">", ""))
                 let krole = interaction.guild.roles.cache.get(data.commands.bewerbung.krole)
                 member.roles.add(krole)
                 member.send(data.commands.bewerbung.accmsg)
                 interaction.reply({ ephemeral: true, content: `<@${member.id}> has been accepted✅` })
                 interaction.message.delete()
-                console.log(member);
                 break
             }
         case "bew-deny":
