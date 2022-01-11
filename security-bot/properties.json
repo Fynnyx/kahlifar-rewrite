@@ -1,6 +1,7 @@
 {
     "prefix": ".",
     "deletetime": 4,
+    "modconsole": "930362449738231838",
     "messages": {
         "permission": "Permission denied. Ask you Owner"
     },
@@ -13,6 +14,18 @@
             "[👀] Always watching you!."
         ],
         "time": 5
+    },
+    "send": {
+        "colors": {
+            "error": "#f23a3a",
+            "warn": "#fca503",
+            "info": "#0087e8"
+        },
+        "prefixTitles": {
+            "error": "⛔ Error -",
+            "warn": "⚠ Warning -",
+            "info": "ℹ Info -"
+        }
     },
     "commands": {
         "clear": {
@@ -31,15 +44,6 @@
     },
     "moderation": {
         "blacklist": {
-            "list": [
-                "pornhub",
-                "bitch",
-                "porno",
-                "hure",
-                "hurensohn",
-                "fick dich",
-                "fuck you"
-            ],
             "warnmsg": "`                 [❌🛂]                 `\nHey you used an **`blacklisted`** word/phrase.\nIf the offense is repeated, measures will be taken.\n\n*You used: `%WORD%`.*"
         }
     }

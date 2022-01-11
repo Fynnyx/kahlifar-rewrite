@@ -103,8 +103,8 @@ async function setStatus(message) {
 
 async function sendError(channel, message) {
     let errorEmbed = new MessageEmbed()
-        .setColor("#f23a3a")
-        .setTitle("⛔ Error -")
+        .setColor(data.send.colors.error)
+        .setTitle(data.send.prefixTitles.error)
         .setDescription(message)
     let msg = await channel.send({ embeds: [errorEmbed] })
     await sleep(DELETETIME)
@@ -113,8 +113,8 @@ async function sendError(channel, message) {
 
 async function sendWarn(channel, message) {
     let errorEmbed = new MessageEmbed()
-        .setColor("#fca503")
-        .setTitle("⚠ Warning -")
+        .setColor(data.send.colors.warn)
+        .setTitle(data.send.prefixTitles.warn)
         .setDescription(message)
     let msg = await channel.send({ embeds: [errorEmbed] })
     await sleep(DELETETIME)
@@ -123,8 +123,8 @@ async function sendWarn(channel, message) {
 
 async function sendInfo(channel, message, shouldDelete) {
     let infoEmbed = new MessageEmbed()
-        .setColor("#0087e8")
-        .setTitle("ℹ Info -")
+        .setColor(data.send.colors.info)
+        .setTitle(data.send.prefixTitles.info)
         .setDescription(message)
     let msg = await channel.send({ embeds: [infoEmbed] })
     if (shouldDelete == true) {
@@ -374,12 +374,23 @@ client.on("messageCreate", async (message) => {
                 }
             default: {
                 console.log("command not found");
-                sendError(channel, "No Command `" + command + "` not found")
+                sendError(channel, "Command `" + command + "` not found")
                 message.delete()
             }
         }
     }
 })
+
+
+async function logToMod(title, message, color) {
+    let channel = client.channels.cache.get(data.modconsole)
+    let logEmbed = new MessageEmbed()
+        .setColor(color)
+        .setTitle(title)
+        .setDescription(message)
+
+    channel.send({ embeds: [logEmbed]})
+}
 
 // Moderation to check messages for bad content
 client.on("messageCreate", async (message) => {
@@ -387,6 +398,7 @@ client.on("messageCreate", async (message) => {
     for (let item of blacklist) {
         if (message.content.toLowerCase().includes(item.toLowerCase()) && await checkPermission("blacklist", message.member) != true && message.author.bot == false) {
             message.delete()
+            logToMod("Blacklisted word used", "<@" + message.member.id + "> has used `" + item + "`.\nYou decide for advanced measures.", data.send.colors.error)
             message.member.send(data.moderation.blacklist.warnmsg.replace("%WORD%", item))
             break
         }
