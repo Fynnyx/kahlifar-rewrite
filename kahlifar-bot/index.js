@@ -1,6 +1,6 @@
 import { config } from "dotenv";
 import { Client, Intents, MessageActionRow, MessageButton, MessageEmbed } from "discord.js";
-import { readFile, readdir } from 'fs/promises'
+import { readFile, readdir } from 'fs/promises';
 
 config();
 
@@ -351,7 +351,10 @@ client.on('interactionCreate', async (interaction) => {
     switch (interaction.customId) {
         case "bew-accept":
             {
-                let member = interaction.guild.members.cache.get(interaction.message.embeds[0].description.split(" ")[0].replace("<@", "").replace(">", ""))
+                var memberid = interaction.message.embeds[0].description.split(" ")[0].replace("<@", "").replace(">", "")
+                console.log();
+                console.log(interaction.guild.members.cache.get(memberid));
+                var member = interaction.guild.members.cache.get(memberid)
                 let krole = interaction.guild.roles.cache.get(data.commands.bewerbung.krole)
                 member.roles.add(krole)
                 member.send(data.commands.bewerbung.accmsg)
