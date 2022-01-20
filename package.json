@@ -1,0 +1,25 @@
+{
+  "name": "kahlifar-rewrite",
+  "version": "1.0.0",
+  "description": "My Kahlifar DC-Bot now in JS with better features",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fynnyx/kahlifar-rewrite.git"
+  },
+  "author": "Fynnyx",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Fynnyx/kahlifar-rewrite/issues"
+  },
+  "homepage": "https://github.com/Fynnyx/kahlifar-rewrite#readme",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "discord.js": "^13.5.0",
+    "dotenv": "^10.0.0"
+  }
+}

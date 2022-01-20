@@ -1,0 +1,49 @@
+{
+    "help": {
+        "description": "Shows you all commands and if you have the permission. Also use `help <COMMAND>`",
+        "aliases": [
+            "h"
+        ],
+        "permissions": [
+            "Owner"
+        ]
+    },
+    "verify": {
+        "description": "Send the verify Message to the chat",
+        "aliases": [
+            "v"
+        ],
+        "permissions": [
+            "Owner"
+        ]
+    },
+    "clear": {
+        "description": "Clear messages from channel. Use `clear/clear all`, `clear <NUMMBER>",
+        "aliases": [
+            "c"
+        ],
+        "permissions": [
+            "Owner",
+            "Moderator",
+            "Helper"
+        ]
+    },
+    "status": {
+        "description": "`start`, `stop` or `set` the status of this bot.",
+        "aliases": [],
+        "permissions": [
+            "Owner",
+            "Moderator"
+        ]
+    },
+    "blacklist": {
+        "description": "`add`, `remove` and `list` the blacklisted words/phrases",
+        "aliases": [
+            "bl"
+        ],
+        "permissions": [
+            "Owner",
+            "Moderator"
+        ]
+    }
+}

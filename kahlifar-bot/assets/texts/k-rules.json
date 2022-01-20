@@ -1,0 +1,57 @@
+{
+    "title": "-+- 📜 Regeln für das Kahlifar Netzwerk 📜 -+-",
+    "description": "Im folgenden Text werden die Regeln des Kahlifar Minecraft Servers aufgelistet.\nTrotzdem gelten die anderen Regeln immer noch.\n**Wenn du mit dem Discord oder Minecraft Server interagierst (schreiben, reden, lesen, usw.), stimmst Du den Regeln zu!**",
+    "color": "#e6c49c",
+    "fields": [
+        {
+            "name": "- §01 -",
+            "value": "Spielerköpfe müssen bei Aufforderung zurückgegeben werden.",
+            "inline": false
+        },
+        {
+            "name": "- §02 -",
+            "value": "Programme sowie Bugabusing und andere Methoden jeglicher Art, die dir einen Spielvorteil verschaffen (XRAY, etc) werden nicht geduldet. Einzigste Außnahme ist die Netherdecke.",
+            "inline": false
+        },
+        {
+            "name": "- §03 -",
+            "value": "Jede Shopart darf nur einmal benutzt werden und die Grösse sollte sich beschränken. (Gold ok, Sealantern ok, Alle Blöcke nicht ok)",
+            "inline": false
+        },
+        {
+            "name": "- §04 -",
+            "value": "Sei nicht unfair gegenüber anderen.",
+            "inline": false
+        },
+        {
+            "name": "- §05 -",
+            "value": "Beide Parteien müssen mit Raids, PVP, Griefing, Diebstahl ö.ä. einverstanden sein.",
+            "inline": false
+        },
+        {
+            "name": "- §06 -",
+            "value": "Homes dürfen auf Claims nur von den Angehörigen gesetzt werden. Nicht-Angehörige dürfen dieses nur mit Erlaubnis der/des Angehörigen.",
+            "inline": false
+        },
+        {
+            "name": "- §07 -",
+            "value": "Wenn ein/e Angehörige/r eines Claims einen anderen Spieler sagt das dieser sein Claim verlassen soll, ist diesem folge zu leisten.",
+            "inline": false
+        },
+        {
+            "name": "- §08 -",
+            "value": "Die Discord-Talks sowie Discord-Chats sollten für Minecraft bzw. dem Kahlifar-Projekt bevorzugt genutzt werden.",
+            "inline": false
+        },
+        {
+            "name": "\u200b",
+            "value": "---------------------------",
+            "inline": false
+        },
+        {
+            "name": "⛔ - Bei Verstoss - ⛔",
+            "value": "Bei Verstössen kann es zu einer/einem Verwarnung, Timeout oder Bann kommen. Die Server Owner und die Moderatoren haben das Recht diese Regeln durchzusetzen. Die Helper dürfen und sollen bei einem schwerwiegenden Verstoß dies einem Moderator oder Server Owner melden.",
+            "inline": false
+        }
+    ]
+}

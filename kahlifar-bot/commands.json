@@ -1,0 +1,49 @@
+{
+    "help": {
+        "description": "Shows you all commands and if you have the permission. Also use `help <COMMAND>`",
+        "aliases": [
+            "h"
+        ],
+        "permissions": [
+            "Everyone"
+        ]
+    },
+    "discord-link": {
+        "description": "Send you the link/links to this discord.",
+        "aliases": [
+            "discord",
+            "dc"
+        ],
+        "permissions": [
+            "Everyone"
+        ]
+    },
+    "server-ip": {
+        "description": "Send you the IP adress to the minecraft server. Watch for the whitelist.",
+        "aliases": [
+            "server",
+            "ip"
+        ],
+        "permissions": [
+            "Everyone"
+        ]
+    },
+    "send": {
+        "description": "Send texts like FAQ or Information",
+        "aliases": [
+        ],
+        "permissions": [
+            "Owner",
+            "Moderator"
+        ]
+    },
+    "status": {
+        "description": "Start, stop and set the status from this bot.",
+        "aliases": [
+        ],
+        "permissions": [
+            "Owner",
+            "Moderator"
+        ]
+    }
+}
