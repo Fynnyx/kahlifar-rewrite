@@ -136,7 +136,7 @@ client.on("messageCreate", async (message) => {
         let contentArray = content.split(" ");
         let command = contentArray[0]
 
-        // console.log(command);
+        console.log(command);
 
         switch (command.toLowerCase()) {
             case "help":
@@ -227,20 +227,25 @@ client.on("messageCreate", async (message) => {
             case "send":
                 {
                     if (await checkPermission("send", message.member)) {
-                        let assetsPath = "./assets/texts/"
-                        let files = await readdir("./assets/texts/")
-                        if (files.includes(contentArray[1] + ".txt")) {
-                            let file = contentArray[1] + ".txt"
-                            let fileContent = await readFile(assetsPath + file, 'utf8')
-                            await channel.bulkDelete(50, false)
-                            await channel.send(fileContent)
-                        } else if (files.includes(contentArray[1] + ".json")) {
-                            let embed = await getEmbedFromJSON(contentArray[1] + ".json")
-                            channel.send({ embeds: [embed] })
-                        } else {
-                            sendError(channel, "Cant't find this embed.")
-                            message.delete()
+                        if (message.content.includes("--delete")) {
+                            channel.bulkDelete(100, true)
                         }
+
+
+                            let assetsPath = "./assets/texts/"
+                            let files = await readdir("./assets/texts/")
+                            if (files.includes(contentArray[1] + ".txt")) {
+                                let file = contentArray[1] + ".txt"
+                                let fileContent = await readFile(assetsPath + file, 'utf8')
+                                await channel.bulkDelete(50, false)
+                                await channel.send(fileContent)
+                            } else if (files.includes(contentArray[1] + ".json")) {
+                                let embed = await getEmbedFromJSON(contentArray[1] + ".json")
+                                channel.send({ embeds: [embed] })
+                            } else {
+                                sendError(channel, "Cant't find this embed.")
+                            }
+                            message.delete()
                     } else {
                         await sendWarn(channel, "Permission denied. Ask the Owner.")
                         message.delete()
@@ -273,11 +278,12 @@ client.on("messageCreate", async (message) => {
                                     let a = contentArray
                                     a.splice(0, 2)
                                     let value = a.join(" ")
+                                    console.log(value);
                                     data.status.messages[0] = "[❗] " + value
                                     let jsonData = JSON.stringify(data, null, 4)
                                     await writeFile("properties.json", jsonData)
                                     break
-                                    
+
                                 }
                             default:
                                 {
@@ -285,6 +291,9 @@ client.on("messageCreate", async (message) => {
                                     message.delete()
                                 }
                         }
+                    } else {
+                        sendWarn(channel, "You dont have the permission to use this command.")
+                        message.delete()
                     }
                     break
                 }
