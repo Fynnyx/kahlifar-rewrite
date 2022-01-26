@@ -44,7 +44,7 @@
     },
     "moderation": {
         "blacklist": {
-            "warnmsg": "`                 [❌🛂]                 `\nHey you used an **`blacklisted`** word/phrase.\nIf the offense is repeated, measures will be taken.\n\n*You used: `%WORD%`.*"
+            "warnmsg": "`                 [❌🛂]                 `\nHey, you used a **`blacklisted`** word/phrase.\nIf the offense is repeated, measures will be taken.\n\n*You used: `%WORD%`.*"
         }
     }
 }
