@@ -1,6 +1,6 @@
 import { config } from "dotenv";
 import { Client, Intents, MessageActionRow, MessageButton, MessageEmbed } from "discord.js";
-import { readFile, readdir } from 'fs/promises'
+import { readFile, writeFile, readdir } from 'fs/promises';
 
 config();
 
@@ -268,6 +268,17 @@ client.on("messageCreate", async (message) => {
                                     stopStatus()
                                     break
                                 }
+                            case "news":
+                                {
+                                    let a = contentArray
+                                    a.splice(0, 2)
+                                    let value = a.join(" ")
+                                    data.status.messages[0] = "[❗] " + value
+                                    let jsonData = JSON.stringify(data, null, 4)
+                                    await writeFile("properties.json", jsonData)
+                                    break
+                                    
+                                }
                             default:
                                 {
                                     sendError(channel, "You parameter, `" + contentArray[1] + "` can not be used.")
@@ -351,7 +362,8 @@ client.on('interactionCreate', async (interaction) => {
     switch (interaction.customId) {
         case "bew-accept":
             {
-                let member = interaction.guild.members.cache.get(interaction.message.embeds[0].description.split(" ")[0].replace("<@", "").replace(">", ""))
+                var memberid = interaction.message.embeds[0].description.split(" ")[0].replace("<@", "").replace(">", "")
+                var member = interaction.guild.members.cache.get(memberid)
                 let krole = interaction.guild.roles.cache.get(data.commands.bewerbung.krole)
                 member.roles.add(krole)
                 member.send(data.commands.bewerbung.accmsg)
