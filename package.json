@@ -1,25 +1,27 @@
 {
-  "name": "kahlifar-rewrite",
+  "name": "countingsystem",
   "version": "1.0.0",
-  "description": "My Kahlifar DC-Bot now in JS with better features",
+  "description": "Personalized Countig Bot to stop Spamming or wrong numbers",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Fynnyx/kahlifar-rewrite.git"
+    "url": "git+https://github.com/Fynnyx/CountingSystem.git"
   },
   "author": "Fynnyx",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Fynnyx/kahlifar-rewrite/issues"
+    "url": "https://github.com/Fynnyx/CountingSystem/issues"
   },
-  "homepage": "https://github.com/Fynnyx/kahlifar-rewrite#readme",
+  "homepage": "https://github.com/Fynnyx/CountingSystem#readme",
   "dependencies": {
-    "axios": "^0.24.0",
-    "discord.js": "^13.5.0",
-    "dotenv": "^10.0.0"
+    "@discordjs/builders": "^0.12.0",
+    "@discordjs/rest": "^0.3.0",
+    "discord-api-types": "^0.26.1",
+    "discord.js": "^13.6.0",
+    "dotenv": "^15.0.0",
+    "glob": "^7.2.0"
   }
 }

@@ -1,0 +1,4 @@
+This is an example Text to show that you can easily create texts with a .txt file.
+
+You also can use this Line Breaks and it will display them. I think thats cool. 😀
+Also emojis work. I like that ❤
