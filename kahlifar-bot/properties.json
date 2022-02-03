@@ -9,5 +9,13 @@
         "ips": [
             "81.169.200.43:25900"
         ]
+    },
+    "send": {
+        "infoList": [
+            "info",
+            "infos",
+            "information",
+            "informations"
+        ]
     }
 }

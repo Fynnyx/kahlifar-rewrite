@@ -2,3 +2,33 @@ This is an example Text to show that you can easily create texts with a .txt fil
 
 You also can use this Line Breaks and it will display them. I think thats cool. 😀
 Also emojis work. I like that ❤
+
+*Formatting*
+*Bold*
+**Italic**
+***Bold and Italic***
+--Strikethrough--
+`Code`
+```Code Block```
+||Spoiler||
+
+*Mentioning*
+<@ID> = @User
+<@&ID> = @Role
+<#ID> = #Channel
+
+*Grosse Titel*
+Benutze die Website https://patorjk.com/software/taag/#p=display&f=Big&t=Kahlifar%0A%0A
+und dann den CodeBlock damit es sich nicht Verzieht.
+
+```  
+ _  __     _     _ _  __           
+| |/ /    | |   | (_)/ _|          
+| ' / __ _| |__ | |_| |_ __ _ _ __ 
+|  < / _` | '_ \| | |  _/ _` | '__|
+| . \ (_| | | | | | | || (_| | |   
+|_|\_\__,_|_| |_|_|_|_| \__,_|_|     
+-----------------------------------```
+
+*Weiteres*
+Benutze gerne Ascii Caracter da die immer angezeigt werden können. Auch verschieden Fonts so möglich.

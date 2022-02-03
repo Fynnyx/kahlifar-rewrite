@@ -1,0 +1,29 @@
+```
+ _____       _           
+|  __ \     | |          
+| |__) |___ | | ___  ___ 
+|  _  // _ \| |/ _ \/ __|
+| | \ \ (_) | |  __/\__ \
+|_|  \_\___/|_|\___||___/   
+-------------------------```
+`                     == STAFF ROLES ==                     `
+
+<@&814231323224572006>  🢂  Owner der Discord Server haben alle Rechte und organisieren alles.
+
+<@&814234539773001778>   🢂  Senior Moderatoren sind die schon erfahreren Moderatoren. Sie haben aber genau die gleichen Berechtigungen sowie die gleichen Aufgaben wie die Moderatoren (*nächster Paragraf*)
+
+<@&937716467825254411>  🢂  Moderatoren haben die Aufgabe die Regeln durchzusetzten. Um dies zutun können sie `warnen`, `muten`, `kicken`, `bannen` und `entbannen`. Als Zusätzlich nicht primäre Aufgabe sollen sie die Owner beim führen der Server unterstützen.
+
+`                     == MEMBER ROLES ==                     `
+
+<@&814523816818638868>  🢂  Diese Rolle bekommst du wenn du dich verifizierst
+
+<@&895288280269094983>  🢂  Diese Rolle bekommst du wenn du diesem Server joinst. Damit siehst du nur die nötigen Channel bis du dich verifizierst.
+
+<@&842867716523294741>  🢂  Wenn du den Server boostest bekommst du diese Rolle. Damit hast du die Möglichkeit eine eigene Rolle zu beantragen.
+
+<@&897781560038793226>   🢂  Wenn du mit einem 2. Account joinst kannst du einen Owner oder Moderator fragen ob er dir die Rolle zuweist
+
+`                     == PING ROLES ==                     `
+
+<@&907650557613858867>, <@&937657256315609168>, <@&938709817533542420>    🢂  Das sind Ping-Rollen. Du kannst diese in <#937726218978074754> hinzufügen/entfernen. Diese Rollen werden dann für die entsprechenden Sachen gepingt und du wirst informiert.

@@ -1,4 +1,6 @@
 const { Client, CommandInteraction } = require("discord.js")
+const { readFileSync, isFile } = require("fs")
+
 const data = require(`${process.cwd()}/properties.json`)
 const { getEmbedFromJSON } = require(`${process.cwd()}/helpers/getEmbedFromJSON.js`)
 
@@ -9,6 +11,7 @@ module.exports = {
     description: "Sende einen TEXT, EMBED, SELECT, EXTRA.",
     type: 'CHAT_INPUT',
     userPermissions: ["ADMINISTRATOR"],
+    rolePermissions: ["814234539773001778"],
     options: [
         {
             name: "type",
@@ -41,15 +44,26 @@ module.exports = {
         if (file === "example") interaction.reply({ content: "⛔	- You cant send an example", ephemeral: true });
         switch (args[0]) {
             case "TEXT":
-
+                if (!isFile(`${process.cwd()}/assets/texts/${file}.txt`)) return interaction.reply({ content: "⛔	- File not found", ephemeral: true });
+                if (data.send.infoList.includes(file)) {
+                    let infoWelcome = readFileSync(`${process.cwd()}/assets/texts/infoWelcome.txt`, "utf-8")
+                    let infoChannel = readFileSync(`${process.cwd()}/assets/texts/infoChannels.txt`, "utf-8")
+                    let infoRoles = readFileSync(`${process.cwd()}/assets/texts/infoRoles.txt`, "utf-8")
+                    interaction.channel.send(infoWelcome)
+                    interaction.channel.send(infoChannel)
+                    interaction.channel.send(infoRoles)
+                } else {
+                    let text = readFileSync(`${process.cwd()}/assets/texts/${file}.txt`, "utf-8")
+                    interaction.channel.send({ content: text })
+                }
+                interaction.reply({ content: "Text `" + file + "` has been sent.", ephemeral: true })
                 break
 
             case "EMBED":
                 getEmbedFromJSON(`${process.cwd()}/assets/embeds/${file}.json`).then((embed) => {
-                    console.log(embed);
-                    interaction.channel.send({ embed: [embed] })
+                    interaction.channel.send({ embeds: [embed] })
                 })
-                interaction.reply({ content: "Embed `" + file + "` has been sent." })
+                interaction.reply({ content: "Embed `" + file + "` has been sent.", ephemeral: true })
                 break
 
             case "SELECT":
@@ -70,6 +84,6 @@ module.exports = {
                 console.log(interaction.options.data[0].value);
                 break
         }
-        await interaction.reply({ content: `Comming soon ${interaction.options.data[0].value}` })
+        // await interaction.reply({ content: `Comming soon ${interaction.options.data[0].value}` })
     }
 }

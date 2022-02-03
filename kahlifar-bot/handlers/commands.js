@@ -44,7 +44,7 @@ module.exports = async (client) => {
                 if (!roles) return accumulator;
 
                 const permissions = roles.reduce((a, v) => {
-                    return [
+                     return [
                         ...a,
                         {
                             id: v.id,
@@ -53,7 +53,6 @@ module.exports = async (client) => {
                         }
                     ];
                 }, []);
-
                 return [
                     ...accumulator,
                     {
@@ -64,6 +63,33 @@ module.exports = async (client) => {
             }, [])
             guild.commands.permissions.set({ fullPermissions })
         });
+        // await guild.commands.set(arrayOfSlashCommands).then((cmd) => {
+
+
+        //     const rolesPermissions = cmd.reduce((accumulator, x) => {
+        //         const permissions = arrayOfSlashCommands.find(x => x.name === commandName).userPermissions;
+
+        //         const permissions = roles.reduce((a, v) => {
+        //             return [
+        //                 ...a,
+        //                 {
+        //                     id: v.id,
+        //                     type: 'ROLE',
+        //                     permission: true
+        //                 }
+        //             ];
+        //         }, []);
+        //         return [
+        //             ...accumulator,
+        //             {
+        //                 id: x.id,
+        //                 permissions,
+        //             }
+        //         ]
+        //     }, [])
+        //     guild.commands.permissions.set({ rolesPermissions })
+
+        // });
 
         // -- Register for all the guilds the bot is in (can take up to a hour to let them work.)
         // await client.application.commands.set(arrayOfSlashCommands);
