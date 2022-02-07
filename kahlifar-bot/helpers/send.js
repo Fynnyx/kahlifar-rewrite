@@ -1,5 +1,4 @@
 const { MessageEmbed } = require("discord.js");
-const { client } = require("../index.js")
 const { sleep } = require(`${process.cwd()}/helpers/sleep.js`)
 const data = require(`${process.cwd()}/properties.json`)
 
@@ -9,7 +8,7 @@ exports.sendError = async (message, content, doDelete) => {
         .setColor(data.helpers.send.colors.error)
         .setTitle(data.helpers.send.prefixTitle.error)
         .setDescription(content)
-    if (message.type == "APPLICATION_COMMAND") {
+    if (message.type == "APPLICATION_COMMAND" || message.type == "MESSAGE_COMPONENT") {
         msg = await message.reply({ embeds: [errorEmbed], fetchReply: true })
     } else {
         msg = await message.channel.send({ embeds: [errorEmbed], fetchReply: true })
@@ -17,7 +16,6 @@ exports.sendError = async (message, content, doDelete) => {
     if (doDelete) {
         await sleep(data.deleteTime)
         msg.delete()
-        message.delete()
     }
 }
 
@@ -54,7 +52,6 @@ exports.sendWarn = async (message, content, doDelete) => {
     if (doDelete) {
         await sleep(data.deleteTime)
         msg.delete()
-        message.delete()
     }
 }
 
@@ -73,6 +70,5 @@ exports.sendSuccess = async (message, content, doDelete) => {
     if (doDelete) {
         await sleep(data.deleteTime)
         msg.delete()
-        message.delete()
     }
 }

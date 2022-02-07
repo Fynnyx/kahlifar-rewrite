@@ -1,6 +1,4 @@
-const { SelectMenuComponent } = require("@discordjs/builders");
-const { MessageEmbed, Message, MessageSelectMenu } = require("discord.js");
-const { client } = require("../index.js")
+const { MessageEmbed, MessageSelectMenu } = require("discord.js");
 
 exports.getEmbedFromJSON = async (filePath) => {
     const embedData = require(filePath)

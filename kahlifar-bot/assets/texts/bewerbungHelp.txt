@@ -1,0 +1,10 @@
+**Bewerbungs Mod Help**
+
+Die Bewerbungsnachricht lesen und dann auf akzeptieren oder ablehnen drücken.
+Der Hilfe Button bringt dir diesen Dialog.
+
+[❗]
+- Achte auf das Alter, 25+ kann komisch wirken.
+- Achte ob der Name nicht angebracht ist (beleidigend, sexisitisch etc.) ist
+
+*Wenn du gepingt werden möchtest bei einer neuen Bewerbung füge dir dir <@&929668513516376114>-Rolle hinzu.*

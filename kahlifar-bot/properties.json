@@ -3,7 +3,7 @@
     "commands": {
         "status": {
             "statusList": [
-                "[❗] Ich kriege SlashCommands",
+                "[❗] Huge event coming soon ...",
                 "[⬆] Vote für uns auf topgg.kahlifar.de",
                 "[📎] Server IP 81.169.200.43:25900",
                 "[📩] https://dc.kahlifar.de",
@@ -11,6 +11,20 @@
             ],
             "default": "Use the /help command.",
             "time": 5
+        },
+        "bewerbung": {
+            "bewChannel": "912444486095884338",
+            "modChannel": "929669352519761961",
+            "mcChannel": "920651372892917780",
+            "role": "896865134306279485",
+            "pingRole": "929668513516376114",
+            "messages": {
+                "send": "Deine Bewerbung wurde gesendet.",
+                "accept": "Deine Bewerbung wurde angenommen. Viel Spass auf dem Server",
+                "deny": "Deine Bewerbung wurde nich engenommen.\nWende dich an die ModMail, dort kann dir mehr Auskunft gegeben werden.",
+                "already": "Du hast bereits die Rolle.",
+                "sendInfo": "Deine Bewerbung wurde erfolgreich✅ versendet.\nDu wirst in Kürze eine Nachricht erhalten.\n[❗]*Bitte unterlasse das Pingen oder anschreiben von Moderatoren oder Ownern. Besten Dank*"
+            }
         },
         "discord": {
             "links": [
