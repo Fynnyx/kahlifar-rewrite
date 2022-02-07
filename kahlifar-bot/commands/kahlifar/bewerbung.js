@@ -1,5 +1,6 @@
 const { Client, CommandInteraction, MessageEmbed, MessageActionRow, MessageButton } = require("discord.js")
 const { sendInfo, sendError, sendSuccess } = require("../../helpers/send")
+const { checkUsername } = require("../../helpers/minecraft")
 const data = require(`${process.cwd()}/properties.json`)
 
 
@@ -43,6 +44,10 @@ module.exports = {
      */
 
     run: async (client, interaction, args) => {
+        let mcData = await checkUsername(args[1]);
+        if (mcData == undefined) {
+            return sendError(interaction, "The username is not valid.", true);
+        }
         let bewEmbed = new MessageEmbed()
             .setTitle(`Neue Bewerbung von - ${interaction.member.displayName}`)
             .setColor("#7fa7d4")

@@ -67,7 +67,6 @@ client.on('interactionCreate', async interaction => {
 					let mcChannel = interaction.guild.channels.cache.get(data.commands.bewerbung.mcChannel);
 					let username = interaction.message.embeds[0].footer.text
 					let mcData = await checkUsername(username)
-					console.log(mcData);
 					if (mcData == undefined) {
 						sendError(interaction, "The username is not valid.", true);
 						return;
