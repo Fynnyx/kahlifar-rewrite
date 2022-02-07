@@ -61,7 +61,7 @@ module.exports = {
                         }
                     } catch (e) {
                         // return interaction.reply({ content: "⛔	- File not found", ephemeral: true });
-                        sendError(interaction, "File not found", true).then((embed) => {
+                        sendError(interaction, "File not found", true, true).then((embed) => {
                             return interaction.reply({ embeds: [embed], ephemeral: true });
                         })
                     }
@@ -72,7 +72,7 @@ module.exports = {
                 getEmbedFromJSON(`${process.cwd()}/assets/embeds/${file}.json`).then((embed) => {
                     interaction.channel.send({ embeds: [embed] })
                 })
-                sendInfo(interaction, `Embed ${"`"+file+"`"} sent`, true)
+                sendInfo(interaction, `Embed ${"`"+file+"`"} sent`, true, true)
                 break
 
             case "SELECT":
@@ -81,7 +81,7 @@ module.exports = {
                         .addComponents(selectData.select)
                     interaction.channel.send({ content: selectData.message, components: [row] })
                 })
-                sendInfo(interaction, `Select ${"`"+file+"`"} sent`, true)
+                sendInfo(interaction, `Select ${"`"+file+"`"} sent`, true, true)
 
                 break
 
@@ -89,7 +89,7 @@ module.exports = {
                 break
 
             default:
-                sendError(interaction, "Invalid type", true)
+                sendError(interaction, "Invalid type", true, true)
                 break
         }
         // await interaction.reply({ content: `Comming soon ${interaction.options.data[0].value}` })

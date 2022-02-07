@@ -2,7 +2,7 @@ const { MessageEmbed } = require("discord.js");
 const { sleep } = require(`${process.cwd()}/helpers/sleep.js`)
 const data = require(`${process.cwd()}/properties.json`)
 
-exports.sendError = async (message, content, doDelete) => {
+exports.sendError = async (message, content, doDelete, ephemeral) => {
     var msg =  {}
     let errorEmbed = new MessageEmbed()
         .setColor(data.helpers.send.colors.error)
@@ -11,7 +11,7 @@ exports.sendError = async (message, content, doDelete) => {
     if (message.type == "APPLICATION_COMMAND" || message.type == "MESSAGE_COMPONENT") {
         msg = await message.reply({ embeds: [errorEmbed], fetchReply: true })
     } else {
-        msg = await message.channel.send({ embeds: [errorEmbed], fetchReply: true })
+        msg = await message.channel.send({ embeds: [errorEmbed], fetchReply: true, ephemeral: ephemeral })
     }
     if (doDelete) {
         await sleep(data.deleteTime)
@@ -20,14 +20,14 @@ exports.sendError = async (message, content, doDelete) => {
 }
 
 
-exports.sendInfo = async (message, content, doDelete) => {
+exports.sendInfo = async (message, content, doDelete, ephemeral) => {
     var msg = {}
     let infoEmbed = new MessageEmbed()
         .setColor(data.helpers.send.colors.info)
         .setTitle(data.helpers.send.prefixTitle.info)
         .setDescription(content)
     if (message.type == "APPLICATION_COMMAND") {
-        msg = await message.reply({ embeds: [infoEmbed], fetchReply: true })
+        msg = await message.reply({ embeds: [infoEmbed], fetchReply: true, ephemeral: ephemeral })
     } else {
         msg = await message.channel.send({ embeds: [infoEmbed], fetchReply: true })
     }
@@ -38,14 +38,14 @@ exports.sendInfo = async (message, content, doDelete) => {
 }
 
 
-exports.sendWarn = async (message, content, doDelete) => {
+exports.sendWarn = async (message, content, doDelete, ephemeral) => {
     var msg =  {}
     let errorEmbed = new MessageEmbed()
         .setColor(data.helpers.send.colors.warning)
         .setTitle(data.helpers.send.prefixTitle.warning)
         .setDescription(content)
     if (message.type == "APPLICATION_COMMAND") {
-        msg = await message.reply({ embeds: [errorEmbed], fetchReply: true })
+        msg = await message.reply({ embeds: [errorEmbed], fetchReply: true, ephemeral: ephemeral })
     } else {
         msg = await message.channel.send({ embeds: [errorEmbed], fetchReply: true })
     }
@@ -56,14 +56,14 @@ exports.sendWarn = async (message, content, doDelete) => {
 }
 
 
-exports.sendSuccess = async (message, content, doDelete) => {
+exports.sendSuccess = async (message, content, doDelete, ephemeral = false) => {
     var msg =  {}
     let errorEmbed = new MessageEmbed()
         .setColor(data.helpers.send.colors.success)
         .setTitle(data.helpers.send.prefixTitle.success)
         .setDescription(content)
     if (message.type == "APPLICATION_COMMAND") {
-        msg = await message.reply({ embeds: [errorEmbed], fetchReply: true })
+        msg = await message.reply({ embeds: [errorEmbed], fetchReply: true, ephemeral: ephemeral })
     } else {
         msg = await message.channel.send({ embeds: [errorEmbed], fetchReply: true })
     }

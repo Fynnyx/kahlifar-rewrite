@@ -53,7 +53,7 @@ client.on('interactionCreate', async interaction => {
 				break
 
 			default:
-				sendError(interaction, "I cant find running code for this interaction.", true);
+				sendError(interaction, "I cant find running code for this interaction.", true, true);
 				console.log("I dont know what to do. Something missing?");
 		}
 	}
@@ -68,7 +68,7 @@ client.on('interactionCreate', async interaction => {
 					let username = interaction.message.embeds[0].footer.text
 					let mcData = await checkUsername(username)
 					if (mcData == undefined) {
-						sendError(interaction, "The username is not valid.", true);
+						sendError(interaction, "The username is not valid.", true, true);
 						return;
 					} else {
 						member.roles.add(role);
@@ -98,7 +98,7 @@ client.on('interactionCreate', async interaction => {
 				break
 
 			default:
-				sendError(interaction, "I cant find running code for this interaction.", true);
+				sendError(interaction, "I cant find running code for this interaction.", true, true);
 				console.log("I dont know what to do. Something missing?");
 		}
 	}

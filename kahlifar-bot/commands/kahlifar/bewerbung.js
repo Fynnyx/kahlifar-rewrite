@@ -46,7 +46,7 @@ module.exports = {
     run: async (client, interaction, args) => {
         let mcData = await checkUsername(args[1]);
         if (mcData == undefined) {
-            return sendError(interaction, "The username is not valid.", true);
+            return sendError(interaction, "The username is not valid.", true, true);
         }
         let bewEmbed = new MessageEmbed()
             .setTitle(`Neue Bewerbung von - ${interaction.member.displayName}`)
@@ -84,6 +84,6 @@ module.exports = {
         modChannel.send({ content: `<@&${data.commands.bewerbung.pingRole}>`, embeds: [bewEmbed], components: [row] })
 
         // interaction.member.send(data.commands.bewerbung.messages.sendInfo)
-        sendSuccess(interaction, data.commands.bewerbung.messages.send, true)
+        sendSuccess(interaction, data.commands.bewerbung.messages.send, true, true)
     }
 }

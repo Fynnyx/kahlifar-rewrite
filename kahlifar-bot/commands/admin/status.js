@@ -45,26 +45,26 @@ module.exports = {
         switch (args[0]) {
             case "START":
                 startStatus()
-                sendInfo(interaction, "Status wurde gestartet.", true)
+                sendInfo(interaction, "Status wurde gestartet.", true, true)
                 break
 
             case "STOP":
                 stopStatus()
-                sendInfo(interaction, "Status wurde gestoppt.", true)
+                sendInfo(interaction, "Status wurde gestoppt.", true, true)
                 break
 
             case "SET":
                 if (args[1] === undefined) {
-                    sendError(interaction, "Du musst eine Nachricht angeben.", true)
+                    sendError(interaction, `Du musst eine Nachricht angeben.`, true, true)
                     break
                 }
                 setStatus(args[1])
-                sendInfo(interaction, "Status wurde gesetzt.", true)
+                sendInfo(interaction, `Status wurde auf "${args[1]}" gesetzt.`, true)
                 break
 
             case "NEWS":
                 if (args[1] === undefined) {
-                    sendError(interaction, "Du musst eine Nachricht angeben.", true)
+                    sendError(interaction, "Du musst eine Nachricht angeben.", true, true)
                     break
                 }
                 data.commands.status.statusList[0] = "[❗] " + args[1];
@@ -72,11 +72,11 @@ module.exports = {
                 writeFile("./properties.json", jsonData, function (err, result) {
                     if (err) console.log('error', err);
                 });
-                sendInfo(interaction, "News Status geupdated.", true)        
+                sendInfo(interaction, `News Status auf "${args[1]}" geupdated.`, true)        
                 break
 
             default:
-                sendError(interaction, "Invalid type", true)
+                sendError(interaction, "Invalid type", true, true)
                 break
         }
     }
