@@ -44,46 +44,51 @@ module.exports = {
      */
 
     run: async (client, interaction, args) => {
-        let mcData = await checkUsername(args[1]);
-        if (mcData == undefined) {
-            return sendError(interaction, "The username is not valid.", true, true);
-        }
-        let bewEmbed = new MessageEmbed()
-            .setTitle(`Neue Bewerbung von - ${interaction.member.displayName}`)
-            .setColor("#7fa7d4")
-            .addFields(
-                { name: "Alter:", value: args[0].toString(), inline: true },
-                { name: "Minecraftname", value: args[1], inline: true },
-                { name: "Entdeckung:", value: args[2], inline: false }
-            )
-            .setTimestamp()
-            .setFooter(args[1])
-        if (args[3]) {
-            bewEmbed.setDescription(`${interaction.member}: ${args[3]}`)
+        if (interaction.member.roles.cache.has(data.commands.bewerbung.role)) {
+            sendError(interaction, "Du bist bereits angenommen worden.", true, true)
         } else {
-            bewEmbed.setDescription(`${interaction.member}: *Keine weiteren Informationen*.`)
+            interaction.deferReply({ ephemeral: true })
+            let mcData = await checkUsername(args[1]);
+            if (mcData == undefined) {
+                return sendError(interaction, "The username is not valid.", true, true);
+            }
+            let bewEmbed = new MessageEmbed()
+                .setTitle(`Neue Bewerbung von - ${interaction.member.displayName}`)
+                .setColor("#7fa7d4")
+                .addFields(
+                    { name: "Alter:", value: args[0].toString(), inline: true },
+                    { name: "Minecraftname", value: args[1], inline: true },
+                    { name: "Entdeckung:", value: args[2], inline: false }
+                )
+                .setTimestamp()
+                .setFooter({ text: args[1] })
+            if (args[3]) {
+                bewEmbed.setDescription(`${interaction.member}: ${args[3]}`)
+            } else {
+                bewEmbed.setDescription(`${interaction.member}: *Keine weiteren Informationen*.`)
+            }
+
+            let row = new MessageActionRow()
+                .addComponents(
+                    new MessageButton()
+                        .setCustomId("bew-accept")
+                        .setLabel("Accept")
+                        .setStyle("SUCCESS"),
+                    new MessageButton()
+                        .setCustomId("bew-decline")
+                        .setLabel("Deny")
+                        .setStyle("DANGER"),
+                    new MessageButton()
+                        .setCustomId("bew-help")
+                        .setLabel("Help")
+                        .setStyle("SECONDARY")
+                )
+
+            let modChannel = client.channels.cache.get(data.commands.bewerbung.modChannel)
+            modChannel.send({ content: `<@&${data.commands.bewerbung.pingRole}>`, embeds: [bewEmbed], components: [row] })
+
+            interaction.member.send(data.commands.bewerbung.messages.sendInfo)
+            sendSuccess(interaction, data.commands.bewerbung.messages.send, true, true)
         }
-
-        let row = new MessageActionRow()
-            .addComponents(
-                new MessageButton()
-                    .setCustomId("bew-accept")
-                    .setLabel("Accept")
-                    .setStyle("SUCCESS"),
-                new MessageButton()
-                    .setCustomId("bew-decline")
-                    .setLabel("Deny")
-                    .setStyle("DANGER"),
-                new MessageButton()
-                    .setCustomId("bew-help")
-                    .setLabel("Help")
-                    .setStyle("SECONDARY")
-            )
-
-        let modChannel = client.channels.cache.get(data.commands.bewerbung.modChannel)
-        modChannel.send({ content: `<@&${data.commands.bewerbung.pingRole}>`, embeds: [bewEmbed], components: [row] })
-
-        // interaction.member.send(data.commands.bewerbung.messages.sendInfo)
-        sendSuccess(interaction, data.commands.bewerbung.messages.send, true, true)
     }
 }

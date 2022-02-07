@@ -72,7 +72,7 @@ client.on('interactionCreate', async interaction => {
 						return;
 					} else {
 						member.roles.add(role);
-						// member.send(data.commands.bewerbung.messages.accept);
+						member.send(data.commands.bewerbung.messages.accept);
 
 						mcChannel.send(`whitelist add ${interaction.message.embeds[0].footer.text}`)
 

@@ -1,6 +1,6 @@
 const { Client, CommandInteraction } = require("discord.js")
 const { writeFile } = require("fs")
-const { sendInfo, sendError } = require("../../helpers/send")
+const { sendInfo, sendError, sendSuccess } = require("../../helpers/send")
 const { startStatus, stopStatus, setStatus } = require(`${process.cwd()}/helpers/status.js`)
 const data = require(`${process.cwd()}/properties.json`)
 
@@ -50,21 +50,21 @@ module.exports = {
 
             case "STOP":
                 stopStatus()
-                sendInfo(interaction, "Status wurde gestoppt.", true, true)
+                sendInfo(interaction, "Status wurde gestoppt.", true, false)
                 break
 
             case "SET":
                 if (args[1] === undefined) {
-                    sendError(interaction, `Du musst eine Nachricht angeben.`, true, true)
+                    sendError(interaction, `Du musst eine Nachricht angeben.`, true, false)
                     break
                 }
                 setStatus(args[1])
-                sendInfo(interaction, `Status wurde auf "${args[1]}" gesetzt.`, true)
+                sendSuccess(interaction, `Status wurde auf "${args[1]}" gesetzt.`, true)
                 break
 
             case "NEWS":
                 if (args[1] === undefined) {
-                    sendError(interaction, "Du musst eine Nachricht angeben.", true, true)
+                    sendError(interaction, "Du musst eine Nachricht angeben.", true, false)
                     break
                 }
                 data.commands.status.statusList[0] = "[❗] " + args[1];

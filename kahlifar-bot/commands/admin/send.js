@@ -55,15 +55,15 @@ module.exports = {
                     interaction.channel.send(infoRoles)
                 } else {
                     try {
-                        if (!existsSync(`${process.cwd()}/assets/texts/${file}.txt`)) {
+                        if (existsSync(`${process.cwd()}/assets/texts/${file}.txt`)) {
                             let text = readFileSync(`${process.cwd()}/assets/texts/${file}.txt`, "utf-8")
                             interaction.channel.send({ content: text })
+                            sendInfo(interaction, `Text ${file} wurde gesendet.`, true, true)
+                        } else {
+                            sendError(interaction, `Text ${file} existiert nicht.`, true, true)
                         }
                     } catch (e) {
-                        // return interaction.reply({ content: "⛔	- File not found", ephemeral: true });
-                        sendError(interaction, "File not found", true, true).then((embed) => {
-                            return interaction.reply({ embeds: [embed], ephemeral: true });
-                        })
+                        sendError(interaction, "File not found", true, true)
                     }
                 }
                 break
@@ -92,6 +92,5 @@ module.exports = {
                 sendError(interaction, "Invalid type", true, true)
                 break
         }
-        // await interaction.reply({ content: `Comming soon ${interaction.options.data[0].value}` })
     }
 }
