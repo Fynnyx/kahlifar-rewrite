@@ -1,8 +1,9 @@
+const { ActionRow } = require("@discordjs/builders")
 const { Client, CommandInteraction } = require("discord.js")
-const { readFileSync, isFile } = require("fs")
-
+const { readFileSync, lstatSync, existsSync } = require("fs")
+const { sendInfo, sendError } = require("../../helpers/send")
+const { getEmbedFromJSON, getSelectFromJSON } = require(`${process.cwd()}/helpers/getFromJSON.js`)
 const data = require(`${process.cwd()}/properties.json`)
-const { getEmbedFromJSON } = require(`${process.cwd()}/helpers/getEmbedFromJSON.js`)
 
 
 module.exports = {
@@ -10,7 +11,7 @@ module.exports = {
     name: "send",
     description: "Sende einen TEXT, EMBED, SELECT, EXTRA.",
     type: 'CHAT_INPUT',
-    userPermissions: ["ADMINISTRATOR"],
+    userPermissions: ["MANAGE_MESSAGES"],
     rolePermissions: ["814234539773001778"],
     options: [
         {
@@ -44,8 +45,8 @@ module.exports = {
         if (file === "example") interaction.reply({ content: "⛔	- You cant send an example", ephemeral: true });
         switch (args[0]) {
             case "TEXT":
-                if (!isFile(`${process.cwd()}/assets/texts/${file}.txt`)) return interaction.reply({ content: "⛔	- File not found", ephemeral: true });
-                if (data.send.infoList.includes(file)) {
+                // if file is a file
+                if (data.commands.send.infoList.includes(file)) {
                     let infoWelcome = readFileSync(`${process.cwd()}/assets/texts/infoWelcome.txt`, "utf-8")
                     let infoChannel = readFileSync(`${process.cwd()}/assets/texts/infoChannels.txt`, "utf-8")
                     let infoRoles = readFileSync(`${process.cwd()}/assets/texts/infoRoles.txt`, "utf-8")
@@ -53,35 +54,42 @@ module.exports = {
                     interaction.channel.send(infoChannel)
                     interaction.channel.send(infoRoles)
                 } else {
-                    let text = readFileSync(`${process.cwd()}/assets/texts/${file}.txt`, "utf-8")
-                    interaction.channel.send({ content: text })
+                    try {
+                        if (!existsSync(`${process.cwd()}/assets/texts/${file}.txt`)) {
+                            let text = readFileSync(`${process.cwd()}/assets/texts/${file}.txt`, "utf-8")
+                            interaction.channel.send({ content: text })
+                        }
+                    } catch (e) {
+                        // return interaction.reply({ content: "⛔	- File not found", ephemeral: true });
+                        sendError(interaction, "File not found", true).then((embed) => {
+                            return interaction.reply({ embeds: [embed], ephemeral: true });
+                        })
+                    }
                 }
-                interaction.reply({ content: "Text `" + file + "` has been sent.", ephemeral: true })
                 break
 
             case "EMBED":
                 getEmbedFromJSON(`${process.cwd()}/assets/embeds/${file}.json`).then((embed) => {
                     interaction.channel.send({ embeds: [embed] })
                 })
-                interaction.reply({ content: "Embed `" + file + "` has been sent.", ephemeral: true })
+                sendInfo(interaction, `Embed ${"`"+file+"`"} sent`, true)
                 break
 
             case "SELECT":
-                switch (file) {
+                getSelectFromJSON(`${process.cwd()}/assets/selects/${file}.json`).then((selectData) => {
+                    let row = new ActionRow()
+                        .addComponents(selectData.select)
+                    interaction.channel.send({ content: selectData.message, components: [row] })
+                })
+                sendInfo(interaction, `Select ${"`"+file+"`"} sent`, true)
 
-                }
                 break
 
             case "EXTRA":
-                switch (file) {
-                    case "verify":
-                    // Send the verify button
-                }
-                console.log(interaction.options.data[0].value);
                 break
 
             default:
-                console.log(interaction.options.data[0].value);
+                sendError(interaction, "Invalid type", true)
                 break
         }
         // await interaction.reply({ content: `Comming soon ${interaction.options.data[0].value}` })

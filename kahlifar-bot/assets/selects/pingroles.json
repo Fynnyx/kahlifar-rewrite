@@ -1,0 +1,31 @@
+{
+    "message": "Wähle deine Pings. (genaue Beschreibung im Auswahl Menü).\nDiese werden bei spezifischen Dingen verwendet damit nur die Leute es bekommen die es auch interessiert.",
+    "customId": "pingroles",
+    "placeholder": "Nichts selektiert",
+    "maxValues": 3,
+    "minValues": 0,
+    "disabled": false,
+    "options": [
+        {
+            "value": "907650557613858867",
+            "label": "Community Notification",
+            "description": "Für weniger wichtiges wie @everyone",
+            "emoji": "",
+            "default": false
+        },
+        {
+            "value": "937657256315609168",
+            "label": "Community Events",
+            "description": "Für neue Events und Infos zu Events",
+            "emoji": "",
+            "default": false
+        },
+        {
+            "value": "938709817533542420",
+            "label": "Birthday Ping",
+            "description": "Für Geburtstage wirst du gepingt",
+            "emoji": "",
+            "default": false
+        }
+    ]
+}

@@ -14,7 +14,7 @@ module.exports = {
 
     run: async (client, interaction, args) => {       
         let ips = ""
-        data.ip.ips.map(value => {
+        data.commands.ip.ips.map(value => {
             ips += `- ${value}\n`
         }) 
         await interaction.reply({ content:  `**Server IP-Adressen:**\n${ips}`})    }

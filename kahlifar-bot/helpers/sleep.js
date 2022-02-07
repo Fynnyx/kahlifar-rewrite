@@ -1,5 +1,6 @@
-const { setTimeout } = require("discord.js")
+// const { setTimeout } = require("discord.js")
+const { setTimeout } = require("timers")
 
-export async function sleep(s) {
-    return new Promise(resolve => setTimeout(resolve, s * 1000));
+exports.sleep = async (seconds) => {
+    return new Promise(resolve => setTimeout(resolve, seconds * 1000));
 }

@@ -1,6 +1,4 @@
 const { Client, CommandInteraction, MessageEmbed } = require("discord.js")
-const { writeFile } = require("fs")
-const data = require(`${process.cwd()}/properties.json`)
 
 module.exports = {
     name: "ping",

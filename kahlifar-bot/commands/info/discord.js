@@ -14,7 +14,7 @@ module.exports = {
 
     run: async (client, interaction, args) => {       
         let linkMsg = ""
-        data.discord.links.map(value => {
+        data.commands.discord.links.map(value => {
             linkMsg += `<${value}>\n`
         }) 
         await interaction.reply({ content:  `**Links zum einladen deiner Freunde:**\n${linkMsg}`})    }

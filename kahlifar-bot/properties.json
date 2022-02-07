@@ -1,21 +1,63 @@
 {
-    "discord": {
-        "links": [
-            "http://dc.kahlifar.de",
-            "http://discord.kahlifar.de"
-        ]
+    "deleteTime": 3,
+    "commands": {
+        "status": {
+            "statusList": [
+                "[❗] Ich kriege SlashCommands",
+                "[⬆] Vote für uns auf topgg.kahlifar.de",
+                "[📎] Server IP 81.169.200.43:25900",
+                "[📩] https://dc.kahlifar.de",
+                "[👋] Welcomes You"
+            ],
+            "default": "Use the /help command.",
+            "time": 5
+        },
+        "discord": {
+            "links": [
+                "http://dc.kahlifar.de",
+                "http://discord.kahlifar.de"
+            ]
+        },
+        "ip": {
+            "ips": [
+                "81.169.200.43:25900"
+            ]
+        },
+        "send": {
+            "infoList": [
+                "info",
+                "infos",
+                "information",
+                "informations"
+            ]
+        }
     },
-    "ip": {
-        "ips": [
-            "81.169.200.43:25900"
-        ]
+    "helpers": {
+        "send": {
+            "colors": {
+                "error": "#f23a3a",
+                "warning": "#fca503",
+                "info": "#0087e8",
+                "success": "#00e837"
+            },
+            "prefixTitle": {
+                "error": "⛔ Error -",
+                "warning": "⚠ Warning -",
+                "info": "ℹ Info -",
+                "success": "✅ Success -"
+            }
+        }
     },
-    "send": {
-        "infoList": [
-            "info",
-            "infos",
-            "information",
-            "informations"
-        ]
+    "events": {
+        "join": {
+            "channel": "814232744892301342",
+            "roles": [
+                "895288280269094983",
+                "907650557613858867",
+                "937657256315609168",
+                "938709817533542420",
+                "936154099458658314"
+            ]
+        }
     }
 }
