@@ -7,7 +7,7 @@ const data = require(`${process.cwd()}/properties.json`)
 
 
 client.on('interactionCreate', async interaction => {
-	// console.log(interaction);
+	// console.info(interaction);
 	// DONT CHANGE THIS CODE
 	// It calls the right SlashCommand run function.
 	if (interaction.isCommand()) {
