@@ -32,9 +32,9 @@ exports.sendInfo = async (message, content, doDelete, ephemeral) => {
         .setDescription(content)
     if (message.type == "APPLICATION_COMMAND" || message.type == "MESSAGE_COMPONENT") {
         if (message.deferred) {
-            msg = message.editReply({ embeds: [errorEmbed], fetchReply: true, ephemeral: ephemeral })
+            msg = message.editReply({ embeds: [infoEmbed], fetchReply: true, ephemeral: ephemeral })
         } else {
-            msg = await message.reply({ embeds: [errorEmbed], fetchReply: true, ephemeral: ephemeral })
+            msg = await message.reply({ embeds: [infoEmbed], fetchReply: true, ephemeral: ephemeral })
         }
     } else {
         msg = await message.channel.send({ embeds: [infoEmbed], fetchReply: true })
@@ -48,18 +48,18 @@ exports.sendInfo = async (message, content, doDelete, ephemeral) => {
 
 exports.sendWarn = async (message, content, doDelete, ephemeral) => {
     var msg = {}
-    let errorEmbed = new MessageEmbed()
+    let warnEmbed = new MessageEmbed()
         .setColor(data.helpers.send.colors.warning)
         .setTitle(data.helpers.send.prefixTitle.warning)
         .setDescription(content)
     if (message.type == "APPLICATION_COMMAND" || message.type == "MESSAGE_COMPONENT") {
         if (message.deferred) {
-            msg = message.editReply({ embeds: [errorEmbed], fetchReply: true, ephemeral: ephemeral })
+            msg = message.editReply({ embeds: [warnEmbed], fetchReply: true, ephemeral: ephemeral })
         } else {
-            msg = await message.reply({ embeds: [errorEmbed], fetchReply: true, ephemeral: ephemeral })
+            msg = await message.reply({ embeds: [warnEmbed], fetchReply: true, ephemeral: ephemeral })
         }
     } else {
-        msg = await message.channel.send({ embeds: [errorEmbed], fetchReply: true })
+        msg = await message.channel.send({ embeds: [warnEmbed], fetchReply: true })
     }
     if (doDelete && !ephemeral) {
         await sleep(data.deleteTime)
@@ -70,18 +70,18 @@ exports.sendWarn = async (message, content, doDelete, ephemeral) => {
 
 exports.sendSuccess = async (message, content, doDelete, ephemeral = false) => {
     var msg = {}
-    let errorEmbed = new MessageEmbed()
+    let successEmbed = new MessageEmbed()
         .setColor(data.helpers.send.colors.success)
         .setTitle(data.helpers.send.prefixTitle.success)
         .setDescription(content)
     if (message.type == "APPLICATION_COMMAND" || message.type == "MESSAGE_COMPONENT") {
         if (message.deferred) {
-            msg = message.editReply({ embeds: [errorEmbed], fetchReply: true, ephemeral: ephemeral })
+            msg = message.editReply({ embeds: [successEmbed], fetchReply: true, ephemeral: ephemeral })
         } else {
-            msg = await message.reply({ embeds: [errorEmbed], fetchReply: true, ephemeral: ephemeral })
+            msg = await message.reply({ embeds: [successEmbed], fetchReply: true, ephemeral: ephemeral })
         }
     } else {
-        msg = await message.channel.send({ embeds: [errorEmbed], fetchReply: true })
+        msg = await message.channel.send({ embeds: [successEmbed], fetchReply: true })
     }
     if (doDelete && !ephemeral) {
         if (!msg.deletable) return;
