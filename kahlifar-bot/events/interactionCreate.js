@@ -54,7 +54,7 @@ client.on('interactionCreate', async interaction => {
 
 			default:
 				sendError(interaction, "I cant find running code for this interaction.", true, true);
-				console.log("I dont know what to do. Something missing?");
+				console.info("I dont know what to do. Something missing?");
 		}
 	}
 
@@ -99,7 +99,7 @@ client.on('interactionCreate', async interaction => {
 
 			default:
 				sendError(interaction, "I cant find running code for this interaction.", true, true);
-				console.log("I dont know what to do. Something missing?");
+				console.info("I dont know what to do. Something missing?");
 		}
 	}
 

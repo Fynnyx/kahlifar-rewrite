@@ -49,6 +49,9 @@ module.exports = {
         } else {
             interaction.deferReply({ ephemeral: true })
             let mcData = await checkUsername(args[1]);
+            if (mcData == 500) {
+                return sendInfo(interaction, "Der username konnte aufgrund eines Server Errors nicht gerpüft werden.\nVersuche es später nochmal.")
+            }
             if (mcData == undefined) {
                 return sendError(interaction, "The username is not valid.", true, true);
             }

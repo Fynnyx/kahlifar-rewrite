@@ -14,6 +14,9 @@ exports.checkUsername = async (username) => {
         }
     ).then(response => response.data)
         .catch(error => {
+            if (error.response.status == 500) {
+                return 500
+            }
             return undefined;
         });
 }

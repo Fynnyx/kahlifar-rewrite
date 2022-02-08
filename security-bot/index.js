@@ -160,7 +160,7 @@ async function deleteMessages(channel, amount) {
 }
 
 client.on("messageCreate", async (message) => {
-    // console.log(message)
+    // console.info(message)
     let channel = message.channel
     if (message.content.startsWith(PREFIX)) {
         let content = message.content.replace(PREFIX, "");
@@ -373,7 +373,7 @@ client.on("messageCreate", async (message) => {
                     break
                 }
             default: {
-                console.log("command not found");
+                console.info("command not found");
                 sendError(channel, "Command `" + command + "` not found")
                 message.delete()
             }
@@ -434,7 +434,7 @@ client.on('messageDelete', async (message) => {
 	// Also grab the target of this action to double-check things
 	const { executor, target } = deletionLog;
 
-    console.log(target.id);
+    // console.log(target.id);
 	// Update the output with a bit more information
 	// Also run a check to make sure that the log returned was for the same author's message
 	if (target.id === message.author.id) {
