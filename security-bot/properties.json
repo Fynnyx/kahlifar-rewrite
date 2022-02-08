@@ -1,37 +1,38 @@
 {
-    "prefix": ".",
-    "deletetime": 4,
-    "modconsole": "930362449738231838",
-    "messages": {
-        "permission": "Permission denied. Ask you Owner"
-    },
-    "status": {
-        "default": "Use the help/h command",
-        "messages": [
-            "[🔒] Secure the Discord.",
-            "[⬆] Vote für uns auf topgg.kahlifar.de",
-            "[✅] Verifies you.",
-            "[👀] Always watching you!."
-        ],
-        "time": 5
-    },
-    "send": {
-        "colors": {
-            "error": "#f23a3a",
-            "warn": "#fca503",
-            "info": "#0087e8"
-        },
-        "prefixTitles": {
-            "error": "⛔ Error -",
-            "warn": "⚠ Warning -",
-            "info": "ℹ Info -"
-        }
-    },
+    "deletetime": 3,
     "commands": {
+        "status": {
+            "statusList": [
+                "[🔒] Secure the Discord.",
+                "[⬆] Vote für uns auf topgg.kahlifar.de",
+                "[✅] Verifies you.",
+                "[👀] Always watching you!."
+            ]
+        },
         "clear": {
             "delmsg": "🗑 - Deleted `min. %AMOUNT%` messages."
         }
     },
+    "helpers": {
+        "send": {
+            "colors": {
+                "error": "#f23a3a",
+                "warning": "#fca503",
+                "info": "#0087e8",
+                "success": "#00e837"
+            },
+            "prefixTitle": {
+                "error": "⛔ Error -",
+                "warning": "⚠ Warning -",
+                "info": "ℹ Info -",
+                "success": "✅ Success -"
+            }
+        }
+    },
+
+
+
+    "modconsole": "930362449738231838",
     "verify": {
         "message": "By clicking/tapping the ✅-Button below. You agree with the rules on this Server.",
         "color": "#59db42",

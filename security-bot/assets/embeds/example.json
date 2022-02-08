@@ -1,0 +1,22 @@
+{
+    "title": "Here set the title of the embed",
+    "description": "Here you need to place the description.",
+    "color": "#ffffff",
+    "fields": [
+        {
+            "name": "Field 1",
+            "value": "This is the first Field. is inline",
+            "inline": true
+        },
+        {
+            "name": "Field 2",
+            "value": "This is the second Field. is inline",
+            "inline": true
+        },
+        {
+            "name": "Field 3",
+            "value": "This is the third Field. not inline",
+            "inline": false
+        }
+    ]
+}
