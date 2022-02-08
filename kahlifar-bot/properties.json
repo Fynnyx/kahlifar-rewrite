@@ -19,8 +19,8 @@
             "role": "896865134306279485",
             "pingRole": "929668513516376114",
             "messages": {
-                "send": "Deine Bewerbung wurde gesendet.",
-                "accept": "Deine Bewerbung wurde angenommen. Viel Spass auf dem Server",
+                "send": "Deine Bewerbung wurde gesendet✅.",
+                "accept": "Deine Bewerbung wurde angenommen✅. **Viel Spass auf dem Server**",
                 "deny": "Deine Bewerbung wurde nich engenommen.\nWende dich an die ModMail, dort kann dir mehr Auskunft gegeben werden.",
                 "already": "Du hast bereits die Rolle.",
                 "sendInfo": "Deine Bewerbung wurde erfolgreich✅ versendet.\nDu wirst in Kürze eine Nachricht erhalten.\n[❗]*Bitte unterlasse das Pingen oder anschreiben von Moderatoren oder Ownern. Besten Dank*"
