@@ -11,7 +11,7 @@ module.exports = {
     name: "send",
     description: "Sende einen TEXT, EMBED, SELECT, EXTRA.",
     type: 'CHAT_INPUT',
-    userPermissions: ["MANAGE_MESSAGES"],
+    userPermissions: ["ADMINISTRATOR"],
     rolePermissions: ["814234539773001778"],
     options: [
         {

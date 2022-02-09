@@ -4,13 +4,13 @@ const dotenv = require("dotenv")
 dotenv.config()
 
 const client = new Client({
+	partials: ["MESSAGE", "CHANNEL", "REACTION"],
 	intents: [
 		"GUILDS",
 		"GUILD_MESSAGES",
 		"GUILD_MEMBERS",
 		"GUILD_PRESENCES",
 		"DIRECT_MESSAGES"
-
 	]
 });
 module.exports = client;
