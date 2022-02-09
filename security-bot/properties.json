@@ -29,20 +29,23 @@
             }
         }
     },
+    "events": {
+        "verify": {
+            "message": "By clicking/tapping the ✅-Button below. You agree with the rules on this Server.",
+            "color": "#59db42",
+            "bcolor": "SUCCESS",
+            "button": "✅-Verify",
+            "verifiedmsg": "You got verified✅",
+            "channel": "895385320848236574",
+            "basicrole": "895288280269094983",
+            "memberrole": "814523816818638868"
+        }
+    },
 
 
 
     "modconsole": "930362449738231838",
-    "verify": {
-        "message": "By clicking/tapping the ✅-Button below. You agree with the rules on this Server.",
-        "color": "#59db42",
-        "bcolor": "SUCCESS",
-        "button": "✅-Verify",
-        "verifiedmsg": "You got verified✅",
-        "channel": "895385320848236574",
-        "basicrole": "895288280269094983",
-        "memberrole": "814523816818638868"
-    },
+    
     "moderation": {
         "blacklist": {
             "warnmsg": "`                 [❌🛂]                 `\nHey, you used a **`blacklisted`** word/phrase.\nIf the offense is repeated, measures will be taken.\n\n*You used: `%WORD%`.*"

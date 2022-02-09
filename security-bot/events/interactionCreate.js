@@ -1,5 +1,5 @@
-const { readFileSync } = require('fs');
 const { sendError } = require('../helpers/send.js');
+const { verifyMember } = require('../helpers/verify.js');
 const client = require('../index.js');
 const data = require(`${process.cwd()}/properties.json`)
 
@@ -45,7 +45,8 @@ client.on('interactionCreate', async interaction => {
 
 	if (interaction.isButton()) {
 		switch (interaction.customId) {
-			case "replace":
+			case "verify":
+				verifyMember(interaction);
 				break
 
 			default:

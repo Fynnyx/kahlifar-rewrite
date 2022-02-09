@@ -5,9 +5,12 @@ dotenv.config()
 
 const client = new Client({
 	intents: [
-		Intents.FLAGS.GUILDS,
-        Intents.FLAGS.GUILD_MESSAGES,
-		Intents.FLAGS.GUILD_MEMBERS,
+		"GUILDS",
+		"GUILD_MESSAGES",
+		"GUILD_MEMBERS",
+		"GUILD_PRESENCES",
+		"DIRECT_MESSAGES"
+
 	]
 });
 module.exports = client;
