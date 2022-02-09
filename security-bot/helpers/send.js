@@ -9,7 +9,7 @@ exports.sendError = async (message, content, doDelete, ephemeral) => {
         .setTitle(data.helpers.send.prefixTitle.error)
         .setDescription(content)
     if (message.type == "APPLICATION_COMMAND" || message.type == "MESSAGE_COMPONENT") {
-        if (message.deferred) {
+        if (message.deferred || message.replied) {
             msg = message.editReply({ embeds: [errorEmbed], fetchReply: true, ephemeral: ephemeral })
         } else {
             msg = await message.reply({ embeds: [errorEmbed], fetchReply: true, ephemeral: ephemeral })
@@ -25,16 +25,13 @@ exports.sendError = async (message, content, doDelete, ephemeral) => {
 
 
 exports.sendInfo = async (message, content, doDelete, ephemeral) => {
-    // console.log(message);
     var msg = {}
     let infoEmbed = new MessageEmbed()
         .setColor(data.helpers.send.colors.info)
         .setTitle(data.helpers.send.prefixTitle.info)
         .setDescription(content)
     if (message.type == "APPLICATION_COMMAND" || message.type == "MESSAGE_COMPONENT") {
-        console.log(message);
-        if (message.deferred) {
-            console.log("deferred");
+        if (message.deferred || message.replied) {
             msg = message.editReply({ embeds: [infoEmbed], fetchReply: true, ephemeral: ephemeral })
         } else {
             msg = await message.reply({ embeds: [infoEmbed], fetchReply: true, ephemeral: ephemeral })
@@ -56,7 +53,7 @@ exports.sendWarn = async (message, content, doDelete, ephemeral) => {
         .setTitle(data.helpers.send.prefixTitle.warning)
         .setDescription(content)
     if (message.type == "APPLICATION_COMMAND" || message.type == "MESSAGE_COMPONENT") {
-        if (message.deferred) {
+        if (message.deferred || message.replied) {
             msg = message.editReply({ embeds: [warnEmbed], fetchReply: true, ephemeral: ephemeral })
         } else {
             msg = await message.reply({ embeds: [warnEmbed], fetchReply: true, ephemeral: ephemeral })
@@ -71,14 +68,14 @@ exports.sendWarn = async (message, content, doDelete, ephemeral) => {
 }
 
 
-exports.sendSuccess = async (message, content, doDelete, ephemeral = false) => {
+exports.sendSuccess = async (message, content, doDelete = false, ephemeral = false) => {
     var msg = {}
     let successEmbed = new MessageEmbed()
         .setColor(data.helpers.send.colors.success)
         .setTitle(data.helpers.send.prefixTitle.success)
         .setDescription(content)
     if (message.type == "APPLICATION_COMMAND" || message.type == "MESSAGE_COMPONENT") {
-        if (message.deferred) {
+        if (message.deferred || message.replied) {
             msg = message.editReply({ embeds: [successEmbed], fetchReply: true, ephemeral: ephemeral })
         } else {
             msg = await message.reply({ embeds: [successEmbed], fetchReply: true, ephemeral: ephemeral })
