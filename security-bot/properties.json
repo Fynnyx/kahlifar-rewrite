@@ -1,5 +1,6 @@
 {
     "deleteTime": 3,
+    "modconsole": "930362449738231838",
     "commands": {
         "status": {
             "statusList": [
@@ -45,9 +46,14 @@
                 "936154678675247115",
                 "936154499939180605"
             ]
+        },
+        "modmail": {
+            "channel": "940579731575820288",
+            "pingrole": "940987629736972308",
+            "embedColor": "#7fa7d4",
+            "blacklist": []
         }
     },
-    "modconsole": "930362449738231838",
     "moderation": {
         "blacklist": {
             "warnmsg": "`                 [❌🛂]                 `\nHey, you used a **`blacklisted`** word/phrase.\nIf the offense is repeated, measures will be taken.\n\n*You used: `%WORD%`.*"
