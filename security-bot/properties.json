@@ -1,5 +1,5 @@
 {
-    "deletetime": 3,
+    "deleteTime": 3,
     "commands": {
         "status": {
             "statusList": [
@@ -7,7 +7,9 @@
                 "[⬆] Vote für uns auf topgg.kahlifar.de",
                 "[✅] Verifies you.",
                 "[👀] Always watching you!."
-            ]
+            ],
+            "default": "Use /help",
+            "time": 5
         },
         "clear": {
             "delmsg": "🗑 - Deleted `min. %AMOUNT%` messages."
@@ -38,14 +40,14 @@
             "verifiedmsg": "You got verified✅",
             "channel": "895385320848236574",
             "basicrole": "895288280269094983",
-            "memberrole": "814523816818638868"
+            "addRoles": [
+                "814523816818638868",
+                "936154678675247115",
+                "936154499939180605"
+            ]
         }
     },
-
-
-
     "modconsole": "930362449738231838",
-    
     "moderation": {
         "blacklist": {
             "warnmsg": "`                 [❌🛂]                 `\nHey, you used a **`blacklisted`** word/phrase.\nIf the offense is repeated, measures will be taken.\n\n*You used: `%WORD%`.*"
