@@ -70,7 +70,7 @@ module.exports = {
                 data.commands.status.statusList[0] = "[❗] " + args[1];
                 let jsonData = JSON.stringify(data, null, 4)
                 writeFile("./properties.json", jsonData, function (err, result) {
-                    if (err) console.log('error', err);
+                    if (err) console.error('error', err);
                 });
                 sendInfo(interaction, `News Status auf "${args[1]}" geupdated.`, true)        
                 break
