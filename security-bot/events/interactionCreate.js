@@ -1,3 +1,4 @@
+const { getIdFromString } = require('../helpers/getIdFromString.js');
 const { sendError } = require('../helpers/send.js');
 const { verifyMember } = require('../helpers/verify.js');
 const client = require('../index.js');
@@ -45,8 +46,35 @@ client.on('interactionCreate', async interaction => {
 
 	if (interaction.isButton()) {
 		switch (interaction.customId) {
+			case "modmailconfirmation":
+			case "modmaildeny":
+				return
+
 			case "verify":
 				verifyMember(interaction);
+				break
+
+			case "modmailreply":
+				break
+			
+			case "modmailspam":
+				interaction.reply("For how long should the user be banned? (1s, 1m, 1h, 1d, 1w, 1M, 1y)");
+				interaction.channel.waitForMessage(interaction.user.id, { time: 60000 })
+					.then(async (message) => {
+						interaction.message.delete();
+						let id = await getIdFromString(interaction.message.embeds[0].description)
+						client.users.fetch(id).then(async (user) => {
+							let time = message.content;
+							await user.send(`You have been banned from the modmail for ${time} because you have been spamming.`)
+							interaction.reply("User put on blacklist.");	
+						})
+						.catch((e) => {
+							console.error(e);
+					})
+					.catch((e) => {
+						console.error(e)
+					})
+				})
 				break
 
 			default:
