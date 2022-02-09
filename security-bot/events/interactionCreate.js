@@ -56,25 +56,28 @@ client.on('interactionCreate', async interaction => {
 
 			case "modmailreply":
 				break
-			
+
 			case "modmailspam":
-				interaction.reply("For how long should the user be banned? (1s, 1m, 1h, 1d, 1w, 1M, 1y)");
-				interaction.channel.waitForMessage(interaction.user.id, { time: 60000 })
+				interaction.reply({ content: "For how long should the user be banned? (1s, 1m, 1h, 1d, 1w, 1M, 1y)", ephemeral: true });
+				let filter = (message) => message.author.id == interaction.user.id
+				interaction.channel.awaitMessages(filter, { time: 10000, errors: ['time'] })
 					.then(async (message) => {
+						console.log(message);
+						console.log(m);
 						interaction.message.delete();
 						let id = await getIdFromString(interaction.message.embeds[0].description)
 						client.users.fetch(id).then(async (user) => {
 							let time = message.content;
 							await user.send(`You have been banned from the modmail for ${time} because you have been spamming.`)
-							interaction.reply("User put on blacklist.");	
+							interaction.reply("User put on blacklist.");
 						})
-						.catch((e) => {
-							console.error(e);
+							.catch((e) => {
+								console.error(e);
+							})
 					})
 					.catch((e) => {
 						console.error(e)
 					})
-				})
 				break
 
 			default:
