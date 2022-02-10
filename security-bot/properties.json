@@ -52,9 +52,7 @@
             "pingrole": "940987629736972308",
             "embedColor": "#7fa7d4",
             "blacklist": []
-        }
-    },
-    "moderation": {
+        },
         "blacklist": {
             "warnmsg": "`                 [❌🛂]                 `\nHey, you used a **`blacklisted`** word/phrase.\nIf the offense is repeated, measures will be taken.\n\n*You used: `%WORD%`.*"
         }
