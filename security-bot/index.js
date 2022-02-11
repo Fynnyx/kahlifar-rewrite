@@ -10,7 +10,8 @@ const client = new Client({
 		"GUILD_MESSAGES",
 		"GUILD_MEMBERS",
 		"GUILD_PRESENCES",
-		"DIRECT_MESSAGES"
+		"DIRECT_MESSAGES",
+		"GUILD_INVITES",
 	]
 });
 module.exports = client;
