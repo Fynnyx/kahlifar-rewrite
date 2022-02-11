@@ -60,6 +60,25 @@
                 "info": "ℹ Info -",
                 "success": "✅ Success -"
             }
+        },
+        "statChannel": {
+            "channels": [
+                {
+                    "channelId": "941309708986372206",
+                    "roleId": "814523816818638868",
+                    "content": "Member: %COUNT%"
+                },
+                {
+                    "channelId": "941309913370611762",
+                    "roleId": "896865134306279485",
+                    "content": "Kahlifar Member: %COUNT%"
+                },
+                {
+                    "channelId": "941641204142067742",
+                    "roleId": "941640398122676224",
+                    "content": "Music Bots: %COUNT%"
+                }
+            ]
         }
     },
     "events": {
