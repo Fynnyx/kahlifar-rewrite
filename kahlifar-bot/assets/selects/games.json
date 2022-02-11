@@ -1,0 +1,59 @@
+{
+    "message": "Zeige welche Spiele du spielst.\nKönnen auch für Mitspielersuchen gepingt werden.",
+    "customId": "pingroles",
+    "placeholder": "Nichts selektiert",
+    "maxValues": 7,
+    "minValues": 0,
+    "disabled": false,
+    "options": [
+        {
+            "value": "898306290311381012",
+            "label": "Minecraft",
+            "description": "Wenn du Minecraft spielt.",
+            "emoji": "",
+            "default": false
+        },
+        {
+            "value": "895548444373057599",
+            "label": "Valorant",
+            "description": "Wenn du Valorant spielt.",
+            "emoji": "",
+            "default": false
+        },
+        {
+            "value": "938900746307530822",
+            "label": "Raft",
+            "description": "Wenn du Raft spielt.",
+            "emoji": "",
+            "default": false
+        },
+        {
+            "value": "898304294527316009",
+            "label": "Landwirtschafts Simulator",
+            "description": "Wenn du Landwirtschafts Simulator spielt.",
+            "emoji": "",
+            "default": false
+        },
+        {
+            "value": "897466524581896212",
+            "label": "GTA",
+            "description": "Wenn du GTA spielt.",
+            "emoji": "",
+            "default": false
+        },
+        {
+            "value": "898296235620958238",
+            "label": "Rocket League",
+            "description": "Wenn du Rocket League spielt.",
+            "emoji": "",
+            "default": false
+        },
+        {
+            "value": "898301182034984961",
+            "label": "VR Chat",
+            "description": "Wenn du VR Chat spielt.",
+            "emoji": "",
+            "default": false
+        }
+    ]
+}

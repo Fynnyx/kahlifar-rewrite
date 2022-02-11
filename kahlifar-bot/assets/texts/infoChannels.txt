@@ -1,0 +1,23 @@
+```
+  _____ _                            _     
+ / ____| |                          | |    
+| |    | |__   __ _ _ __  _ __   ___| |___ 
+| |    | '_ \ / _` | '_ \| '_ \ / _ \ / __|
+| |____| | | | (_| | | | | | | |  __/ \__ \
+ \_____|_| |_|\__,_|_| |_|_| |_|\___|_|___/
+-------------------------------------------```
+
+Merke ❗: Jeder Channel sollte eine Beschreibung haben. Dort findest immer Informationen für was der Channel geeignet ist.
+
+`                     == WELCOME CATEGORY ==                     `
+
+- <#835629559645995009>  🢂  Der Channel in dem du wichtige Informationen bekommst.
+- <#838380050952486922>  🢂  Werde auf dem laufenden gehalten wenn wichtige Dinge anstehen.
+- <#835631187094667315>  🢂  Hier stehen die Regeln die auf dem Netzwerk gelten.
+- <#863764198664175646>  🢂  In diesem Channel kannst du dir eigene Rollen hinzufügen.
+- <#896498793711812659>  🢂  Damit wir nicht jede Frage 100x beantworten müssen.
+- <#815849652632027167>  🢂  Dort kannst du uns sagen falls etwas nicht funktioniert.
+
+`                     == OTHER CATEGORY ==                     `
+
+- <#912665539288129556>, <#896501334138826842>, <#836696739980902451>  🢂  In der Kategorie kannst du uns mithelfen den Server zu gestalten.\n\nGenerell sollten alle Channel selbsterklärend sein. Sonst kannst du gerne in <#912665539288129556> fragen. Viel Spass beim Schreiben🖊.

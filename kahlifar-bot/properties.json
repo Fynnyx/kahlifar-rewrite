@@ -1,46 +1,96 @@
 {
-    "prefix": "-",
-    "deletetime": 4,
-    "assetpath": "./assets/",
-    "status": {
-        "default": "Use the help/h command.",
-        "messages": [
-            "[❗] BW-Turnier Freitag",
-            "[⬆] Vote für uns auf topgg.kahlifar.de",
-            "[📎] Server IP 81.169.200.43:25900",
-            "[📩] https://dc.kahlifar.de",
-            "[👋] Welcomes You"
-        ],
-        "time": 5
-    },
+    "deleteTime": 3,
     "commands": {
+        "status": {
+            "statusList": [
+                "[❗] Bald big baba bubu event",
+                "[⬆] Vote für uns auf topgg.kahlifar.de",
+                "[📎] Server IP 81.169.200.43:25900",
+                "[📩] https://dc.kahlifar.de",
+                "[👋] Welcomes You"
+            ],
+            "default": "Use the /help command.",
+            "time": 5
+        },
+        "bewerbung": {
+            "bewChannel": "912444486095884338",
+            "modChannel": "929669352519761961",
+            "mcChannel": "920651372892917780",
+            "role": "896865134306279485",
+            "pingRole": "929668513516376114",
+            "messages": {
+                "send": "Deine Bewerbung wurde gesendet✅.",
+                "accept": "Deine Bewerbung wurde angenommen✅. **Viel Spass auf dem Server**",
+                "deny": "Deine Bewerbung wurde nich engenommen.\nWende dich an die ModMail, dort kann dir mehr Auskunft gegeben werden.",
+                "already": "Du hast bereits die Rolle.",
+                "sendInfo": "Deine Bewerbung wurde erfolgreich✅ versendet.\nDu wirst in Kürze eine Nachricht erhalten.\n[❗]*Bitte unterlasse das Pingen oder anschreiben von Moderatoren oder Ownern. Besten Dank*"
+            }
+        },
         "discord": {
             "links": [
                 "http://dc.kahlifar.de",
                 "http://discord.kahlifar.de"
             ]
         },
-        "server": {
-            "ip": "81.169.200.43:25900"
+        "ip": {
+            "ips": [
+                "81.169.200.43:25900"
+            ]
         },
-        "bewerbung": {
-            "bewchannel": "912444486095884338",
-            "modchannel": "929669352519761961",
-            "color": "#e861c2",
-            "helpmsg": "Die Bewerbungsnachricht lesen und dann auf akzeptieren drücken oder auf ablehnen.\nDer Hilfe Button bringt dir diesen Dialog.\nWenn du gepingt werden möchtest bei einer neuen Bewerbung füge dir dir <@&929668513516376114>-Rolle hinzu",
-            "sentmsg": "Your application has been sent ✅. Be patient, you will get an answer soon.",
-            "pingmsg": "Eine neue Bewerbung <@929668513516376114>",
-            "accmsg": "You have been accepted ✅.",
-            "denymsg": "Your application hasn't been accepted ❌. Ask a moderator for more information.",
-            "modrole": "929668513516376114",
-            "krole": "896865134306279485"
+        "send": {
+            "infoList": [
+                "info",
+                "infos",
+                "information",
+                "informations"
+            ]
+        }
+    },
+    "helpers": {
+        "send": {
+            "colors": {
+                "error": "#f23a3a",
+                "warning": "#fca503",
+                "info": "#0087e8",
+                "success": "#00e837"
+            },
+            "prefixTitle": {
+                "error": "⛔ Error -",
+                "warning": "⚠ Warning -",
+                "info": "ℹ Info -",
+                "success": "✅ Success -"
+            }
+        },
+        "statChannel": {
+            "channels": [
+                {
+                    "channelId": "941309708986372206",
+                    "roleId": "814523816818638868",
+                    "content": "Member: %COUNT%"
+                },
+                {
+                    "channelId": "941309913370611762",
+                    "roleId": "896865134306279485",
+                    "content": "Kahlifar Member: %COUNT%"
+                },
+                {
+                    "channelId": "941641204142067742",
+                    "roleId": "941640398122676224",
+                    "content": "Music Bots: %COUNT%"
+                }
+            ]
         }
     },
     "events": {
         "join": {
             "channel": "814232744892301342",
-            "basicrole": "895288280269094983",
-            "notrole": "907650557613858867"
+            "roles": [
+                "895288280269094983",
+                "907650557613858867",
+                "937657256315609168",
+                "938709817533542420",
+                "936154099458658314"
+            ]
         }
     }
 }

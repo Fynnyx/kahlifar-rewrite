@@ -1,0 +1,94 @@
+{
+    "message": "Wähle dein Alter.\nGibt jedem die Information wie alt du bist.",
+    "customId": "ageroles",
+    "placeholder": "Nichts selektiert",
+    "maxValues": 1,
+    "minValues": 0,
+    "disabled": false,
+    "options": [
+        {
+            "value": "864144183794991165",
+            "label": "12 Jahre",
+            "description": "Wenn du 12 Jahre alt bist",
+            "emoji": "",
+            "default": false
+        },
+        {
+            "value": "864144773463539745",
+            "label": "13 Jahre",
+            "description": "Wenn du 13 Jahre alt bist",
+            "emoji": "",
+            "default": false
+        },
+        {
+            "value": "864144969454583848",
+            "label": "14 Jahre",
+            "description": "Wenn du 14 Jahre alt bist",
+            "emoji": "",
+            "default": false
+        },
+        {
+            "value": "864145256034992178",
+            "label": "15 Jahre",
+            "description": "Wenn du 15 Jahre alt bist",
+            "emoji": "",
+            "default": false
+        },
+        {
+            "value": "864145898253451274",
+            "label": "16 Jahre",
+            "description": "Wenn du 16 Jahre alt bist",
+            "emoji": "",
+            "default": false
+        },
+        {
+            "value": "864145684265435166",
+            "label": "17 Jahre",
+            "description": "Wenn du 17 Jahre alt bist",
+            "emoji": "",
+            "default": false
+        },
+        {
+            "value": "929668513516376114",
+            "label": "18 Jahre",
+            "description": "Wenn du 18 Jahre alt bist",
+            "emoji": "",
+            "default": false
+        },
+        {
+            "value": "864152060709830666",
+            "label": "19 Jahre",
+            "description": "Wenn du 19 Jahre alt bist",
+            "emoji": "",
+            "default": false
+        },
+        {
+            "value": "939838467939127297",
+            "label": "20 Jahre",
+            "description": "Wenn du 20 Jahre alt bist",
+            "emoji": "",
+            "default": false
+        },
+        {
+            "value": "939838803688976385",
+            "label": "21 Jahre",
+            "description": "Wenn du 21 Jahre alt bist",
+            "emoji": "",
+            "default": false
+        },
+        {
+            "value": "939838812727681035",
+            "label": "22 Jahre",
+            "description": "Wenn du 22 Jahre alt bist",
+            "emoji": "",
+            "default": false
+        },
+        {
+            "value": "939838816192196608",
+            "label": "23 Jahre",
+            "description": "Wenn du 23 Jahre alt bist",
+            "emoji": "",
+            "default": false
+        }
+    ]
+}

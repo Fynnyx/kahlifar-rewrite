@@ -1,0 +1,24 @@
+{
+    "message": "Hello, World!",
+    "customId": "eine eindeutige ID",
+    "placeholder": "Steht wenn nichts ausgewählt wurde. Z.B. Nothing selected",
+    "maxValues": null,
+    "minValues": null,
+    "disabled": false,
+    "options": [
+        {
+            "value": "wird gesendet",
+            "label": "wird angezeigt",
+            "description": "wird in der Beschreibung angezeigt",
+            "emoji": "✅",
+            "default": false
+        },
+        {
+            "value": "option1",
+            "label": "Option 1",
+            "description": "Einfach die erste Option",
+            "emoji": "❌",
+            "default": false
+        }
+    ]
+}
