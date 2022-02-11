@@ -3,7 +3,7 @@
     "commands": {
         "status": {
             "statusList": [
-                "[❗] Bald big baba bubu event",
+                "[❗] Bald Streamer notification",
                 "[⬆] Vote für uns auf topgg.kahlifar.de",
                 "[📎] Server IP 81.169.200.43:25900",
                 "[📩] https://dc.kahlifar.de",
@@ -79,6 +79,11 @@
                     "content": "Music Bots: %COUNT%"
                 }
             ]
+        },
+        "streamerNotification": {
+            "intervalMinutes": 5,
+            "notificationChannel": "929668513516376114",
+            "notificationRole": "941712142112002048"
         }
     },
     "events": {
