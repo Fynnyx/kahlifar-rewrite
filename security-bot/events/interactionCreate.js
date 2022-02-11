@@ -62,8 +62,6 @@ client.on('interactionCreate', async interaction => {
 				let filter = (message) => message.author.id == interaction.user.id
 				interaction.channel.awaitMessages(filter, { time: 10000, errors: ['time'] })
 					.then(async (message) => {
-						console.log(message);
-						console.log(m);
 						interaction.message.delete();
 						let id = await getIdFromString(interaction.message.embeds[0].description)
 						client.users.fetch(id).then(async (user) => {
