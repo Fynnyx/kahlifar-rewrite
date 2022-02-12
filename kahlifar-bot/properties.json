@@ -79,6 +79,11 @@
                     "content": "Music Bots: %COUNT%"
                 }
             ]
+        },
+        "streamerNotification": {
+            "intervalMinutes": 0.1,
+            "notificationChannel": "942074209037856860",
+            "notificationRole": "941712142112002048"
         }
     },
     "events": {
