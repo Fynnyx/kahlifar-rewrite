@@ -1,10 +1,105 @@
+const axios = require('axios');
+const { writeFileSync } = require('fs');
+const { MessageEmbed } = require('discord.js');
 const client = require('../index');
 const data = require('../properties.json');
 const streamerData = require('./streamer.json');
 
 exports.startNotifications = async () => {
 
-    const notificationInterval = setInterval(async () => {
+    axios.defaults.headers.common['Client-ID'] = process.env.CLIENTID;
+    axios.defaults.headers.common['Authorization'] = `Bearer ${await getOAuthToken()}`;
 
-    }, data.streamerNotification.intervalMinutes * 60 * 1000);
+    const notificationInterval = setInterval(async () => {
+        var index = 0;
+        streamerData.streamer.forEach(async streamer => {
+            console.log(index);
+
+            if (await checkIsLive(streamer.name)) {
+                const streamData = await getStreamData(streamer.name)
+                const streamFollwer = await getStreamFollower(streamData.user_id)
+                const channelData = await getChannelData(streamData.user_id)
+                
+                if (streamer.lastStreamId !== streamData.id) {
+                    streamerData.streamer[index].lastStreamId = streamData.id
+
+                    let JSONData = JSON.stringify(streamerData, null, 2)
+                    writeFileSync('./streamer.json', JSONData)
+
+                    var notEmbed = new MessageEmbed()
+                        .setTitle(`🔴 - ${streamData.user_name} streamt ${streamData.game_name}`)
+                        .setURL(`https://twitch.tv/${streamData.user_login}`)
+                        .setDescription(`Schaue gerne bei - **${streamData.title}** - rein.`)
+
+                        .setColor("#6441a5")
+                        .setThumbnail(channelData.profile_image_url)
+                        .setImage(streamData.thumbnail_url.replace("{width}", '320').replace("{height}", '180'))
+                        .setFields(
+                            {
+                                name: "Gestartet um:",
+                                value: `${streamData.started_at}`,
+                                inline: true
+                            },
+                            {
+                                name: "Sprache:",
+                                value: `${streamData.language}`,
+                                inline: true
+                            },
+                            {
+                                name: "-------------------------",
+                                value: "\u200b",
+                                inline: false
+                            },
+                            {
+                                name: "Follower:",
+                                value: `${streamFollwer.total}`,
+                                inline: true
+                            },
+                            {
+                                name: "Subscriber",
+                                value: `*not allowed*`,
+                                inline: true
+
+                            }
+                        )
+                    let channel = await client.channels.fetch(data.helpers.streamerNotification.notificationChannel)
+                    channel.send({ content: `<@&${data.helpers.streamerNotification.notificationRole}>`, embeds: [notEmbed] })
+                    index++;
+                
+                } else {
+                    let channel = await client.channels.fetch(data.helpers.streamerNotification.notificationChannel)
+                }
+            }
+        })
+    }, data.helpers.streamerNotification.intervalMinutes * 60 * 1000);
+}
+
+
+async function getOAuthToken() {
+    const response = await axios.post(`https://id.twitch.tv/oauth2/token?client_id=${process.env.CLIENTID}&client_secret=${process.env.CLIENTSECRET}&grant_type=client_credentials`)
+    return response.data.access_token
+}
+
+async function checkIsLive(streamerName) {
+    const response = await axios.get(`https://api.twitch.tv/helix/streams?user_login=${streamerName}`)
+    if (response.data.data.length > 0) {
+        return true
+    } else {
+        return false
+    }
+}
+
+async function getStreamData(streamerName) {
+    const response = await axios.get(`https://api.twitch.tv/helix/streams?user_login=${streamerName}`)
+    return response.data.data[0]
+}
+
+async function getStreamFollower(streamerId) {
+    const response = await axios.get(`https://api.twitch.tv/helix/users/follows?to_id=${streamerId}`)
+    return response.data
+}
+
+async function getChannelData(channelId) {
+    const response = await axios.get(`https://api.twitch.tv/helix/users?id=${channelId}`)
+    return response.data.data[0]
 }

@@ -81,8 +81,8 @@
             ]
         },
         "streamerNotification": {
-            "intervalMinutes": 5,
-            "notificationChannel": "929668513516376114",
+            "intervalMinutes": 0.1,
+            "notificationChannel": "942074209037856860",
             "notificationRole": "941712142112002048"
         }
     },
