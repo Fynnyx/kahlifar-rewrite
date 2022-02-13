@@ -3,7 +3,7 @@ const { writeFileSync } = require('fs');
 const { MessageEmbed } = require('discord.js');
 const client = require('../index');
 const data = require('../properties.json');
-const streamerData = require('./streamer.json');
+const streamerData = require('../streamer.json');
 
 exports.startNotifications = async () => {
 
@@ -11,9 +11,10 @@ exports.startNotifications = async () => {
     axios.defaults.headers.common['Authorization'] = `Bearer ${await getOAuthToken()}`;
 
     const notificationInterval = setInterval(async () => {
-        var index = 0;
         streamerData.streamer.forEach(async streamer => {
+            var index = streamerData.streamer.indexOf(streamer);
             console.log(index);
+            console.log(streamer);
 
             if (await checkIsLive(streamer.name)) {
                 const streamData = await getStreamData(streamer.name)
