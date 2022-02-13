@@ -7,7 +7,6 @@ const streamerData = require('./streamer.json');
 
 exports.startNotifications = async () => {
 
-
     axios.defaults.headers.common['Client-ID'] = process.env.CLIENTID;
     axios.defaults.headers.common['Authorization'] = `Bearer ${await getOAuthToken()}`;
 

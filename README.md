@@ -12,4 +12,4 @@ The **security-bot** is the moderation bot. He has the following features: role 
 
 ## Wiki
 
-I have created a wiki for this project. You can find it here: [click me](#)
+I have created a wiki for this project. You can find it here: [click me](https://github.com/Fynnyx/KahlifarBots/wiki)
