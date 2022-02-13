@@ -1,6 +1,6 @@
 const axios = require('axios');
 const { writeFileSync } = require('fs');
-const { MessageEmbed } = require('discord.js');
+const { MessageEmbed, MessageActionRow, MessageButton } = require('discord.js');
 const client = require('../index');
 const data = require('../properties.json');
 const streamerData = require('../streamer.json');
@@ -13,14 +13,12 @@ exports.startNotifications = async () => {
     const notificationInterval = setInterval(async () => {
         streamerData.streamer.forEach(async streamer => {
             var index = streamerData.streamer.indexOf(streamer);
-            console.log(index);
-            console.log(streamer);
 
             if (await checkIsLive(streamer.name)) {
                 const streamData = await getStreamData(streamer.name)
                 const streamFollwer = await getStreamFollower(streamData.user_id)
                 const channelData = await getChannelData(streamData.user_id)
-                
+
                 if (streamer.lastStreamId !== streamData.id) {
                     streamerData.streamer[index].lastStreamId = streamData.id
 
@@ -58,17 +56,26 @@ exports.startNotifications = async () => {
                             },
                             {
                                 name: "Subscriber",
-                                value: `*not allowed*`,
+                                value: `*cant be resolved*`,
                                 inline: true
 
                             }
                         )
+
+                    let row = new MessageActionRow()
+                        .addComponents(
+                            new MessageButton()
+                                .setURL(`https://twitch.tv/${streamData.user_login}`)
+                                .setLabel(`Visit ${streamData.user_name}`)
+                                .setStyle('LINK')
+                        )
+
+
                     let channel = await client.channels.fetch(data.helpers.streamerNotification.notificationChannel)
-                    channel.send({ content: `<@&${data.helpers.streamerNotification.notificationRole}>`, embeds: [notEmbed] })
-                    index++;
-                
+                    channel.send({ content: `<@&${data.helpers.streamerNotification.notificationRole}>`, embeds: [notEmbed], components: [row] })
+
                 } else {
-                    let channel = await client.channels.fetch(data.helpers.streamerNotification.notificationChannel)
+                    // let channel = await client.channels.fetch(data.helpers.streamerNotification.notificationChannel)
                 }
             }
         })

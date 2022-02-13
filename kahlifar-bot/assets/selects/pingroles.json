@@ -21,6 +21,13 @@
             "default": false
         },
         {
+            "value": "941712142112002048",
+            "label": "Stream Notification",
+            "description": "Erfahre wenn ein Streamer online geht",
+            "emoji": "",
+            "default": false
+        },
+        {
             "value": "938709817533542420",
             "label": "Birthday Ping",
             "description": "Für Geburtstage wirst du gepingt",
