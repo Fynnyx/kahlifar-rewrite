@@ -2,7 +2,7 @@
     "message": "Wähle deine Pings. (genaue Beschreibung im Auswahl Menü).\nDiese werden bei spezifischen Dingen verwendet damit nur die Leute es bekommen die es auch interessiert.",
     "customId": "pingroles",
     "placeholder": "Nichts selektiert",
-    "maxValues": 3,
+    "maxValues": 4,
     "minValues": 0,
     "disabled": false,
     "options": [
