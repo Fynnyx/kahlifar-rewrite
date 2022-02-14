@@ -68,11 +68,12 @@ module.exports = {
      */
 
     run: async (client, interaction, args) => {
-        if (interaction.member.roles.cache.some(role => role.id === data.commands.streamer.streamerRole) === false && interaction.member.roles.cache.some(role => role.id === data.commands.streamer.adminRole) === false){
-            return sendError(interaction, "Du hast keine Berechtigung für diesen Befehl!", false, true)
-        }
+
         switch (args[0]) {
             case "add":
+                if (interaction.member.roles.cache.some(role => role.id === data.commands.streamer.streamerRole) === false && interaction.member.roles.cache.some(role => role.id === data.commands.streamer.adminRole) === false) {
+                    return sendError(interaction, "Du hast keine Berechtigung für diesen Befehl!", false, true)
+                }
                 args[1] = args[1].toLowerCase()
                 const response = await axios.get(`https://api.twitch.tv/helix/users?login=${args[1]}`)
                     .catch(err => {
@@ -101,6 +102,9 @@ module.exports = {
                 break
 
             case "remove":
+                if (interaction.member.roles.cache.some(role => role.id === data.commands.streamer.streamerRole) === false && interaction.member.roles.cache.some(role => role.id === data.commands.streamer.adminRole) === false) {
+                    return sendError(interaction, "Du hast keine Berechtigung für diesen Befehl!", false, true)
+                }
                 if (! await isRegisteredStreamer(args[1])) {
                     return sendError(interaction, `Streamer ${"`" + args[1] + "`"} is not registered.`, true)
                 }
@@ -130,7 +134,7 @@ module.exports = {
                 })
                 interaction.reply({ embeds: [streamerEmbed], ephermal: true })
                 break
-            
+
             default:
                 sendError(interaction, "Invalid type", true, true)
                 break
