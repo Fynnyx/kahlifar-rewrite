@@ -9,7 +9,7 @@ exports.sendError = async (message, content, doDelete, ephemeral) => {
         .setTitle(data.helpers.send.prefixTitle.error)
         .setDescription(content)
     if (message.type == "APPLICATION_COMMAND" || message.type == "MESSAGE_COMPONENT") {
-        if (message.deferred) {
+        if (message.deferred || message.replied) {
             msg = message.editReply({ embeds: [errorEmbed], fetchReply: true, ephemeral: ephemeral })
         } else {
             msg = await message.reply({ embeds: [errorEmbed], fetchReply: true, ephemeral: ephemeral })
@@ -53,7 +53,7 @@ exports.sendWarn = async (message, content, doDelete, ephemeral) => {
         .setTitle(data.helpers.send.prefixTitle.warning)
         .setDescription(content)
     if (message.type == "APPLICATION_COMMAND" || message.type == "MESSAGE_COMPONENT") {
-        if (message.deferred) {
+        if (message.deferred || message.replied) {
             msg = message.editReply({ embeds: [warnEmbed], fetchReply: true, ephemeral: ephemeral })
         } else {
             msg = await message.reply({ embeds: [warnEmbed], fetchReply: true, ephemeral: ephemeral })
