@@ -1,18 +1,23 @@
 {
   "streamer": [
     {
+      "name": "makimfh",
+      "discordId": null,
+      "lastStreamId": ""
+    },
+    {
       "name": "valorant",
       "discordId": null,
       "lastStreamId": ""
     },
     {
       "name": "fabsi_mclive",
-      "discordId": null,
+      "discordId": "687380308072464426",
       "lastStreamId": ""
     },
     {
-      "name": "makimfh",
-      "discordId": null,
+      "name": "hybno1234",
+      "discordId": "544882215352401922",
       "lastStreamId": ""
     }
   ]

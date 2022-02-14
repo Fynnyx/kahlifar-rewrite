@@ -12,6 +12,10 @@
             "default": "Use the /help command.",
             "time": 5
         },
+        "streamer": {
+            "streamerRole": "920772486298222602",
+            "adminRole": "814231323224572006"
+        },
         "bewerbung": {
             "bewChannel": "912444486095884338",
             "modChannel": "929669352519761961",
@@ -81,7 +85,7 @@
             ]
         },
         "streamerNotification": {
-            "intervalMinutes": 0.1,
+            "intervalMinutes": 1,
             "notificationChannel": "942074209037856860",
             "notificationRole": "941712142112002048"
         }
