@@ -1,10 +1,24 @@
 const { ActionRow } = require("@discordjs/builders")
-const { Client, CommandInteraction } = require("discord.js")
+const { Client, CommandInteraction, InteractionCollector } = require("discord.js")
 const { readFileSync, lstatSync, existsSync } = require("fs")
 const { sendInfo, sendError } = require("../../helpers/send")
 const { getEmbedFromJSON, getSelectFromJSON } = require(`${process.cwd()}/helpers/getFromJSON.js`)
 const data = require(`${process.cwd()}/properties.json`)
 
+const options = [
+    {
+        name: "filename",
+        description: "Wähle den Dateinamen ohne Endung.",
+        type: "STRING",
+        required: true
+    },
+    {
+        name: "clear",
+        description: "Cleare den Channel befor gesendet wird.",
+        type: "BOOLEAN",
+        required: true
+    }
+]
 
 module.exports = {
 
@@ -13,25 +27,33 @@ module.exports = {
     type: 'CHAT_INPUT',
     userPermissions: ["MANAGE_MESSAGES"],
     rolePermissions: ["814234539773001778"],
+
     options: [
         {
-            name: "type",
-            description: "Setze ob es ein TEXT, EMBED, SELECT oder ein EXTRA ist.",
-            type: "STRING",
-            required: true,
-            choices: [
-                { name: "TEXT", value: "TEXT" },
-                { name: "EMBED", value: "EMBED" },
-                { name: "SELECT", value: "SELECT" },
-                { name: "EXTRA", value: "EXTRA" },
-            ]
+            name: "text",
+            description: "Sende einen normalen Text.",
+            type: "SUB_COMMAND",
+            options: options
         },
         {
-            name: "filename",
-            description: "Wähle den Dateinamen ohne Endung.",
-            type: "STRING",
-            required: true
-        }
+            name: "embed",
+            description: "Sende ein EMBED.",
+            type: "SUB_COMMAND",
+            options: options
+        },
+        {
+            name: "select",
+            description: "Sende ein SELECT/Dropdown.",
+            type: "SUB_COMMAND",
+            options: options
+        },
+        {
+            name: "extra",
+            description: "Für spezuelle Dinge.",
+            type: "SUB_COMMAND",
+            options: options
+        },
+        
     ],
 
     /**
@@ -43,16 +65,21 @@ module.exports = {
     run: async (client, interaction, args) => {
         const file = args[1]
         if (file === "example") interaction.reply({ content: "⛔	- You cant send an example", ephemeral: true });
-        switch (args[0]) {
-            case "TEXT":
+        if (args[2] === true) {
+            await interaction.channel.bulkDelete(100, true)
+        }
+        switch (args[0].toLowerCase()) {
+            case "text":
                 // if file is a file
                 if (data.commands.send.infoList.includes(file)) {
                     let infoWelcome = readFileSync(`${process.cwd()}/assets/texts/infoWelcome.txt`, "utf-8")
                     let infoChannel = readFileSync(`${process.cwd()}/assets/texts/infoChannels.txt`, "utf-8")
-                    let infoRoles = readFileSync(`${process.cwd()}/assets/texts/infoRoles.txt`, "utf-8")
+                    let infoRoles = readFileSync(`${process.cwd()}/assets/texts/infoRoles1.txt`, "utf-8")
+                    let infoRoles2 = readFileSync(`${process.cwd()}/assets/texts/infoRoles2.txt`, "utf-8")
                     interaction.channel.send(infoWelcome)
                     interaction.channel.send(infoChannel)
                     interaction.channel.send(infoRoles)
+                    interaction.channel.send(infoRoles2)
                 } else {
                     try {
                         if (existsSync(`${process.cwd()}/assets/texts/${file}.txt`)) {
@@ -68,14 +95,14 @@ module.exports = {
                 }
                 break
 
-            case "EMBED":
+            case "embed":
                 getEmbedFromJSON(`${process.cwd()}/assets/embeds/${file}.json`).then((embed) => {
                     interaction.channel.send({ embeds: [embed] })
                 })
                 sendInfo(interaction, `Embed ${"`"+file+"`"} sent`, true, true)
                 break
 
-            case "SELECT":
+            case "select":
                 getSelectFromJSON(`${process.cwd()}/assets/selects/${file}.json`).then((selectData) => {
                     let row = new ActionRow()
                         .addComponents(selectData.select)
@@ -85,7 +112,7 @@ module.exports = {
 
                 break
 
-            case "EXTRA":
+            case "extra":
                 break
 
             default:
