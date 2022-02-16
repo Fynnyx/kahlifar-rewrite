@@ -1,8 +1,9 @@
 const { readFileSync } = require('fs');
-const { sendError } = require('../helpers/send.js');
+const { sendError, sendSuccess } = require('../helpers/send.js');
 const { checkUsername } = require('../helpers/minecraft.js');
 const { getIdFromString } = require('../helpers/bewerbung.js');
 const client = require('../index.js');
+const { default: axios } = require('axios');
 const data = require(`${process.cwd()}/properties.json`)
 
 
@@ -95,6 +96,24 @@ client.on('interactionCreate', async interaction => {
 			case "bew-help":
 				let message = readFileSync(`${process.cwd()}/assets/texts/bewerbungHelp.txt`, "utf-8")
 				interaction.reply({ content: message, ephemeral: true });
+				break
+
+			case "server-start":
+				const startResponse = await axios.get("https://webi.freakside-world.eu//memberrequest.php?op=api&ids=1&hash=5765177554a3faa430a28176051dc471&hkey=f6cb75eb3933ab341637aba223ca6a3f")
+				if (startResponse.data.includes("ok")) {
+					sendSuccess(interaction, "Server wurde gestartet", false, true);
+				} else {
+					sendError(interaction, "Server konnte nicht gestartet werden", false, true);
+				}
+				break
+
+			case "server-stop":
+				const stopResponse = await axios.get("https://webi.freakside-world.eu//memberrequest.php?op=api&ids=2&hash=ed17e24957ba9b47b5d31b4d474387e3&hkey=45cc213813a243f2e4617574eaa63ba0")
+				if (stopResponse.data.includes("ok")) {
+					sendSuccess(interaction, "Server wurde gestoppt", false, true);
+				} else {
+					sendError(interaction, "Server konnte nicht gestoppt werden", false, true);
+				}
 				break
 
 			default:
