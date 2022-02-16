@@ -26,8 +26,13 @@ Benutze doch bitte `/discord` um von unserem <@886585462695792650> einen Einladu
 Kahlifar ist ein Minecraftprojekt mit einer Open World Map und dort kann jeder bauen und mit anderen Spass haben.
 
 *Interessiert?*
-Dann bewerbe dich im <#912444486095884338> Channel. Du wirst dann zeitnah von unseren Moderatoren hinzugefügt.
-Was du schreiben sollst findest du im Channel angepinnt.
+Dann benutze gerne dien `/bewerbung` Command von unserem Bot. Du wirst dann zeitnah von unseren Moderatoren hinzugefügt.
+
+Im Command gibst du dann an, wie ...
+
+... **alt du bist,**
+... **dein Minecraft Ingame Namen lautet,**
+... **Wie du Kahlifar endeckt hast.**
 
 `                        == TOP.GG ==                        `
 
