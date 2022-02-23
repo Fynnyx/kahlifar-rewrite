@@ -2,7 +2,7 @@ const { Client, CommandInteraction, MessageEmbed } = require("discord.js")
 
 module.exports = {
     name: "ping",
-    description: "Replies wit pong and a value",
+    description: "Zeigt dir die Latenz des Bots an",
     type: 'CHAT_INPUT',
 
     /**

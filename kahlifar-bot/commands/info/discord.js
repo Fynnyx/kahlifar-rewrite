@@ -3,7 +3,7 @@ const data = require(`${process.cwd()}/properties.json`)
 
 module.exports = {
     name: "discord",
-    description: "Zeigt dir alle Commands und Informationen über den Bot.",
+    description: "Kriege den Invite-Link zu diesem Discord.",
     type: 'CHAT_INPUT',
 
     /**
