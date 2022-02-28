@@ -16,6 +16,8 @@ do
 		echo "${bold}$BOTFOLDER${normal}"
 		echo "[Info] - Stopping the session ..."
 		screen -X -S ${BOTFOLDER,,} kill
+		echo "[Info] - Installing missing packages ..."
+		npm install
 		echo "[Info] - Starting bot ..."
 		screen -d -m -S ${BOTFOLDER,,} bash -c "node index.js"
 		echo "${bold}[Info] - Started $BOTFOLDER${normal}"
