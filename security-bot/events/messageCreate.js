@@ -32,7 +32,6 @@ client.on("messageCreate", async message => {
             time: 1000,
         })
             .then(interaction => {
-                console.error(interaction.customId + "Was clicked")
                 let revievedEmbed = new MessageEmbed()
                     .setTitle("New Message in ModMail")
                     .setDescription(`<@${message.author.id}> has sent a new Message.`)
@@ -54,9 +53,13 @@ client.on("messageCreate", async message => {
                             .setCustomId("modmailspam")
                             .setLabel("⛔ Spam")
                             .setStyle("DANGER"),
+                        new MessageButton()
+                            .setCustomId("modmaildelete")
+                            .setLabel("🗑 Delete")
+                            .setStyle("DANGER"),
                     )
                 client.channels.cache.get(data.events.modmail.channel).send({ content: `<@&${data.events.modmail.pingrole}>`, embeds: [revievedEmbed], components: [row] })
-                interaction.reply("Your Message has been sent to the ModMail\n*Pleas be patient you will get an answer soon.*")
+                interaction.reply("📨 - Your Mail **has** been sent to the Modmail\n*Please be patient you will get an answer soon.*")
             })
             .catch((e) => {
                 console.error(e)
