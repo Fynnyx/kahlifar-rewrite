@@ -1,16 +1,17 @@
 const client = require("../index.js")
+const { MessageEmbed } = require("discord.js")
 const data = require(`${process.cwd()}/properties.json`)
 
 
 
-exports.logToModConsole = async (value) => {
-    value = value.split("<@")[1].split(">")[0]
-    if (value.startsWith("!")) {
-        value = value.slice(1)
-    }
-    return value
-}
+exports.logToModConsole = async (title, value, color) => {
+    let channel = client.channels.cache.get(data.modconsole)
+    let logEmbed = new MessageEmbed()
+        .setColor(color)
+        .setTitle(title)
+        .setDescription(value)
+        .setTimestamp()
+        .setFooter({ text: "", iconURL: client.user.displayAvatarURL() })
 
-exports.mailToModMail = async (value) => {
-
+    channel.send({ embeds: [logEmbed]})
 }
