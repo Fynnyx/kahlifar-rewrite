@@ -107,7 +107,6 @@ client.on('interactionCreate', async interaction => {
 					.catch((e) => {
 						console.error(e)
 					})
-				console.log("User put on blacklist.");
 				break
 			case "modmaildelete":
 					interaction.message.delete();

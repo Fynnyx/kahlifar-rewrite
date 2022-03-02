@@ -22,7 +22,6 @@ client.on('messageDelete', async (message) => {
 	// Also grab the target of this action to double-check things
 	const { executor, target } = deletionLog;
 
-    console.log(target.id);
 	// Update the output with a bit more information
 	// Also run a check to make sure that the log returned was for the same author's message
 	if (target.id === message.author.id) {
