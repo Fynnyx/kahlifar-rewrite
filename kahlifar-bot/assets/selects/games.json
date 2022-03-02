@@ -21,6 +21,13 @@
             "default": false
         },
         {
+            "value": "948545177822298162",
+            "label": "ARK Survival Evolved",
+            "description": "Wenn du ARK spielt.",
+            "emoji": "",
+            "default": false
+        },
+        {
             "value": "938900746307530822",
             "label": "Raft",
             "description": "Wenn du Raft spielt.",
