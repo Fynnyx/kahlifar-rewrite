@@ -151,6 +151,7 @@ module.exports = {
                     sendSuccess(interaction, data.commands.bewerbung.messages.send, true, true)
 
                 }
+                break;
             case "ark":
                 if (interaction.member.roles.cache.has(data.commands.bewerbung.ark.role)) {
                     sendError(interaction, "Du bist bereits angenommen worden.", true, true)
