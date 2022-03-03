@@ -1,6 +1,6 @@
 #!bin/bash
 
-STARTFOLDERS=("kahlifar-bot" "security-bot")
+STARTFOLDERS=("KahlifarBot" "KahlifarModeration")
 WORKINGFOLDER=$( cd -- "$( dirname --  "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
 
 bold=$(tput bold)
