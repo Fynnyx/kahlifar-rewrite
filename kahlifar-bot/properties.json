@@ -41,6 +41,9 @@
                 "81.169.200.43:25900"
             ]
         },
+        "statistik": {
+            "link": "https://statbot.net/dashboard/814230131681132605/overview"
+        },
         "send": {
             "infoList": [
                 "info",
