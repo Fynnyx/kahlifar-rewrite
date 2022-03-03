@@ -3,12 +3,6 @@
     "modconsole": "930362449738231838",
     "commands": {
         "status": {
-            "statusList": [
-                "[🔒] Secure the Discord.",
-                "[⬆] Vote für uns auf topgg.kahlifar.de",
-                "[✅] Verifies you.",
-                "[👀] Always watching you!."
-            ],
             "default": "Use /help",
             "time": 5
         },

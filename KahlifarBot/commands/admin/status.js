@@ -2,6 +2,7 @@ const { Client, CommandInteraction } = require("discord.js")
 const { writeFile } = require("fs")
 const { sendInfo, sendError, sendSuccess } = require("../../helpers/send")
 const { startStatus, stopStatus, setStatus } = require(`${process.cwd()}/helpers/status.js`)
+const statusList = require(`${process.cwd()}/status.json`)
 const data = require(`${process.cwd()}/properties.json`)
 
 const options = [
@@ -80,9 +81,9 @@ module.exports = {
                     sendError(interaction, "Du musst eine Nachricht angeben.", true, false)
                     break
                 }
-                data.commands.status.statusList[0] = "[❗] " + args[1];
-                let jsonData = JSON.stringify(data, null, 4)
-                writeFile("./properties.json", jsonData, function (err, result) {
+                statusList[0] = "[❗] " + args[1];
+                let jsonData = JSON.stringify(statusList, null, 4)
+                writeFile("./status.json", jsonData, function (err, result) {
                     if (err) console.error('error', err);
                 });
                 sendInfo(interaction, `News Status auf "${args[1]}" geupdated.`, true)        

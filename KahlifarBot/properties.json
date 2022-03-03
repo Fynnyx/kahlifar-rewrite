@@ -2,13 +2,6 @@
     "deleteTime": 3,
     "commands": {
         "status": {
-            "statusList": [
-                "[❗] Bald Streamer notification",
-                "[⬆] Vote für uns auf topgg.kahlifar.de",
-                "[📎] Server IP 81.169.200.43:25900",
-                "[📩] https://dc.kahlifar.de",
-                "[👋] Welcomes You"
-            ],
             "default": "Use the /help command.",
             "time": 5
         },

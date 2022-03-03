@@ -1,14 +1,14 @@
 const client = require("../index.js")
+const statusList = require(`${process.cwd()}/status.json`)
 const data = require(`${process.cwd()}/properties.json`)
 
 
 
 exports.startStatus = async () => {
-    const status = data.commands.status.statusList
-    client.user.setActivity(status[0])
+    client.user.setActivity(statusList[0])
     
     statusInterval = setInterval(() => {
-        const statues = data.commands.status.statusList
+        const statues = statusList
         let currentStatus = statues.indexOf(client.user.presence.activities[0].name);
         let index = Math.floor(Math.random() * (statues.length))
         while (currentStatus == index) {

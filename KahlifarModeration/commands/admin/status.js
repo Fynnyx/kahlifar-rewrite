@@ -1,6 +1,18 @@
 const { Client, CommandInteraction } = require("discord.js")
+const { writeFile } = require("fs")
 const { sendInfo, sendError, sendSuccess } = require("../../helpers/send")
 const { startStatus, stopStatus, setStatus } = require(`${process.cwd()}/helpers/status.js`)
+const statusList = require(`${process.cwd()}/status.json`)
+const data = require(`${process.cwd()}/properties.json`)
+
+const options = [
+    {
+        name: "value",
+            description: "Setzte den Wert für Set oder News.",
+            type: "STRING",
+            required: true
+    }
+]
 
 
 module.exports = {
@@ -12,21 +24,20 @@ module.exports = {
     rolePermissions: ["814234539773001778"],
     options: [
         {
-            name: "type",
-            description: "Wähle START, STOP, SET oder NEWS.",
-            type: "STRING",
-            required: true,
-            choices: [
-                { name: "START", value: "START" },
-                { name: "STOP", value: "STOP" },
-                { name: "SET", value: "SET" }
-            ]
+            name: "start",
+            description: "Starte die Zirkulation durch die Staten.",
+            type: "SUB_COMMAND"
         },
         {
-            name: "value",
-            description: "Für SET brauchst du eine Nachricht die gesetzt wird.",
-            type: "STRING",
-            required: false
+            name: "stop",
+            description: "Stoppe die Zirkulation durch die Staten.",
+            type: "SUB_COMMAND"
+        },
+        {
+            name: "set",
+            description: "Setze den Status des Bots.",
+            type: "SUB_COMMAND",
+            options: options
         }
     ],
 
@@ -39,18 +50,18 @@ module.exports = {
     run: async (client, interaction, args) => {
         const file = args[1]
         if (file === "example") interaction.reply({ content: "⛔	- You cant send an example", ephemeral: true });
-        switch (args[0]) {
-            case "START":
+        switch (args[0].toLowerCase()) {
+            case "start":
                 startStatus()
                 sendInfo(interaction, "Status wurde gestartet.", true, true)
                 break
 
-            case "STOP":
+            case "stop":
                 stopStatus()
                 sendInfo(interaction, "Status wurde gestoppt.", true, false)
                 break
 
-            case "SET":
+            case "set":
                 if (args[1] === undefined) {
                     sendError(interaction, `Du musst eine Nachricht angeben.`, true, false)
                     break
@@ -58,7 +69,7 @@ module.exports = {
                 setStatus(args[1])
                 sendSuccess(interaction, `Status wurde auf "${args[1]}" gesetzt.`, true)
                 break
-
+                
             default:
                 sendError(interaction, "Invalid type", true, true)
                 break
