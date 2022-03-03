@@ -4,6 +4,9 @@ Die Bewerbungsnachricht lesen und dann auf akzeptieren oder ablehnen drücken.
 Der Hilfe Button bringt dir diesen Dialog.
 
 [❗]
+- Nehmnt nur ARK Bewerbungen an wenn du auch Moderator auf dem ARK Server bist. Sonst bringt das nichts.
+
+[❗]
 - Achte auf das Alter, 25+ kann komisch wirken.
 - Achte ob der Name nicht angebracht ist (beleidigend, sexisitisch etc.) ist
 

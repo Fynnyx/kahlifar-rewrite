@@ -61,11 +61,11 @@ client.on('interactionCreate', async interaction => {
 
 	if (interaction.isButton()) {
 		switch (interaction.customId) {
-			case "bew-accept":
-				getIdFromString(interaction.message.embeds[0].description).then( async id => {
+			case "bew-mc-accept":
+				getIdFromString(interaction.message.embeds[0].description).then(async id => {
 					let member = interaction.guild.members.cache.get(id);
-					let role = interaction.guild.roles.cache.get(data.commands.bewerbung.role);
-					let mcChannel = interaction.guild.channels.cache.get(data.commands.bewerbung.mcChannel);
+					let role = interaction.guild.roles.cache.get(data.commands.bewerbung.mc.role);
+					let mcChannel = interaction.guild.channels.cache.get(data.commands.bewerbung.mc.mcChannel);
 					let username = interaction.message.embeds[0].footer.text
 					let mcData = await checkUsername(username)
 					if (mcData == undefined) {
@@ -83,7 +83,7 @@ client.on('interactionCreate', async interaction => {
 				})
 				break
 
-			case "bew-decline":
+			case "bew-mc-decline":
 				getIdFromString(interaction.message.embeds[0].description).then(id => {
 					let member = interaction.guild.members.cache.get(id);
 					member.send(data.commands.bewerbung.messages.deny)
@@ -91,6 +91,27 @@ client.on('interactionCreate', async interaction => {
 				interaction.message.delete();
 				interaction.reply({ content: "❌Bewerbung abgelehnt", ephemeral: true });
 
+				break
+
+			case "bew-ark-accept":
+				getIdFromString(interaction.message.embeds[0].description).then(async id => {
+					let member = interaction.guild.members.cache.get(id);
+					let role = interaction.guild.roles.cache.get(data.commands.bewerbung.ark.role);
+					member.roles.add(role);
+					member.send(data.commands.bewerbung.messages.accept);
+
+					interaction.message.delete();
+					interaction.reply({ content: "✅Bewerbung akzeptiert", ephemeral: true });
+				})
+					break
+
+			case "bew-ark-decline":
+				getIdFromString(interaction.message.embeds[0].description).then(id => {
+					let member = interaction.guild.members.cache.get(id);
+					member.send(data.commands.bewerbung.messages.deny)
+				})
+				interaction.message.delete();
+				interaction.reply({ content: "❌Bewerbung abgelehnt", ephemeral: true });
 				break
 
 			case "bew-help":

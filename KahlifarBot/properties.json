@@ -12,9 +12,14 @@
         "bewerbung": {
             "bewChannel": "912444486095884338",
             "modChannel": "929669352519761961",
-            "mcChannel": "920651372892917780",
-            "role": "896865134306279485",
             "pingRole": "929668513516376114",
+            "mc": {
+                "mcChannel": "920651372892917780",
+                "role": "896865134306279485"
+            },
+            "ark": {
+                "role": "948965930195619900"
+            },
             "messages": {
                 "send": "Deine Bewerbung wurde gesendet✅.",
                 "accept": "Deine Bewerbung wurde angenommen✅. **Viel Spass auf dem Server**",
