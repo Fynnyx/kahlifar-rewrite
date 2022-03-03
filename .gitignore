@@ -93,4 +93,6 @@ Thumbs.db
 permissions
 test.txt
 blacklist.json
+status.json
+streamer.json
 pages/
