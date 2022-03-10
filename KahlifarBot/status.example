@@ -1,6 +1,18 @@
 [
-    "[❗] Bald ARK Server?",
-    "[⬆] Vote für uns auf topgg.kahlifar.de",
-    "[📎] Server IP 81.169.200.43:25900",
-    "[📩] https://dc.kahlifar.de"
+    {
+        "type": "LISTENING",
+        "value": "[❗] Bald ARK Server?"
+    },
+    {
+        "type": "COMPETING",
+        "value": "[⬆] Vote für uns auf topgg.kahlifar.de"
+    },
+    {
+        "type": "PLAYING",
+        "value": "[📎] Server IP 81.169.200.43:25900"
+    },
+    {
+        "type": "WATCHING",
+        "value": "[📩] https://dc.kahlifar.de"
+    }
 ]

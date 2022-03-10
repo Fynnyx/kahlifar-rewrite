@@ -81,12 +81,12 @@ module.exports = {
                     sendError(interaction, "Du musst eine Nachricht angeben.", true, false)
                     break
                 }
-                statusList[0] = "[❗] " + args[1];
+                statusList[0].value = "[❗] " + args[1];
                 let jsonData = JSON.stringify(statusList, null, 4)
                 writeFile("./status.json", jsonData, function (err, result) {
                     if (err) console.error('error', err);
                 });
-                sendInfo(interaction, `News Status auf "${args[1]}" geupdated.`, true)        
+                sendInfo(interaction, "News Status auf `" + args[1] + "` geupdated.", true)        
                 break
 
             default:

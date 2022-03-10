@@ -4,9 +4,7 @@ const data = require(`${process.cwd()}/properties.json`)
 
 
 
-exports.startStatus = async () => {
-    client.user.setActivity(statusList[0])
-    
+exports.startStatus = async () => {    
     statusInterval = setInterval(() => {
         const statues = statusList
         let currentStatus = statues.indexOf(client.user.presence.activities[0].name);
@@ -14,7 +12,8 @@ exports.startStatus = async () => {
         while (currentStatus == index) {
             index = Math.floor(Math.random() * (statues.length))
         }
-        client.user.setActivity(statues[index])
+        let status = statues[index]
+        client.user.setActivity({ name: status.value, type: status.type })
     }, data.commands.status.time * 1000)
 }
 
