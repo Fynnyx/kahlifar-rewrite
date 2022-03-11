@@ -82,6 +82,11 @@
                     "channelId": "941641204142067742",
                     "roleId": "941640398122676224",
                     "content": "Music Bots: %COUNT%"
+                },
+                {
+                    "channelId": "951744319008690226",
+                    "roleId": "948965930195619900",
+                    "content": "Ark Member: %COUNT%"
                 }
             ]
         },
