@@ -78,6 +78,7 @@ module.exports = {
                     let infoRoles = readFileSync(`${process.cwd()}/assets/texts/infoRoles1.txt`, "utf-8")
                     let infoRoles2 = readFileSync(`${process.cwd()}/assets/texts/infoRoles2.txt`, "utf-8")
                     interaction.channel.send(infoWelcome)
+                    interaction.channel.send(infoProjects)
                     interaction.channel.send(infoChannel)
                     interaction.channel.send(infoRoles)
                     interaction.channel.send(infoRoles2)
