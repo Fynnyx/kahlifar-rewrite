@@ -82,6 +82,8 @@ module.exports = {
                     interaction.channel.send(infoChannel)
                     interaction.channel.send(infoRoles)
                     interaction.channel.send(infoRoles2)
+                    sendInfo(interaction, `Text ${file} wurde gesendet.`, false, true)
+
                 } else {
                     try {
                         if (existsSync(`${process.cwd()}/assets/texts/${file}.txt`)) {
