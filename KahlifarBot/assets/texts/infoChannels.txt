@@ -15,9 +15,9 @@ Merke ❗: Jeder Channel sollte eine Beschreibung haben. Dort findest immer Info
 - <#835629559645995009>  🢂  Der Channel in dem du wichtige Informationen bekommst.
 - <#838380050952486922>  🢂  Werde auf dem laufenden gehalten wenn wichtige Dinge anstehen.
 - <#835631187094667315>  🢂  Hier stehen die Regeln die auf dem Netzwerk gelten.
-- <#863764198664175646>  🢂  In diesem Channel kannst du dir eigene Rollen hinzufügen.
+- <#937726218978074754>  🢂  In diesem Channel kannst du dir eigene Rollen hinzufügen.
 - <#896498793711812659>  🢂  Damit wir nicht jede Frage 100x beantworten müssen.
-- <#815849652632027167>  🢂  Dort kannst du uns sagen falls etwas nicht funktioniert.
+- <#895385320848236574>  🢂  Verifiziere dich bitte hier.
 
 `                         == MOD MAIL ==                         `
 
