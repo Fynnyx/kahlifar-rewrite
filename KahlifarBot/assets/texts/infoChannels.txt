@@ -1,3 +1,4 @@
+ㅤ
 ```
   _____ _                            _     
  / ____| |                          | |    
@@ -18,6 +19,14 @@ Merke ❗: Jeder Channel sollte eine Beschreibung haben. Dort findest immer Info
 - <#896498793711812659>  🢂  Damit wir nicht jede Frage 100x beantworten müssen.
 - <#815849652632027167>  🢂  Dort kannst du uns sagen falls etwas nicht funktioniert.
 
-`                     == OTHER CATEGORY ==                     `
+`                         == MOD MAIL ==                         `
 
-- <#912665539288129556>, <#896501334138826842>, <#836696739980902451>  🢂  In der Kategorie kannst du uns mithelfen den Server zu gestalten.\n\nGenerell sollten alle Channel selbsterklärend sein. Sonst kannst du gerne in <#912665539288129556> fragen. Viel Spass beim Schreiben🖊.
+Wenn du eine Frage, eine Staff-Bewerbung, einen Bug oder einen Vorschlag mit dem Kahlifar Team teilen möchtest, dann benutze den <@895267710072655872>-Bot.
+
+Es funktioniert wie folgt:
+
+  - Sende eine Nachricht per DM an den Bot.
+  - Der Bot leitet die Nachricht an die Moderatoren weiter.
+  - Die Moderatoren werden dir dann auf deine Nachricht antworten.
+
+Merke ❗: Das Abusen des Modmails wird erstmal mit einem Ban vom Modmail bestraft. Weiters Abusen mit einem kompletten Ausschluss vom Discord. 
