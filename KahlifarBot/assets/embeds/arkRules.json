@@ -1,0 +1,32 @@
+{
+    "title": "-+- 📜 Regeln für den ARK Server 📜 -+-",
+    "description": "Im folgenden Text werden die Regeln des Kahlifar Minecraft Servers aufgelistet.\nTrotzdem gelten die anderen Regeln immer noch.\n**Wenn du mit dem Discord oder Minecraft Server interagierst (schreiben, reden, lesen, usw.), stimmst Du den Regeln zu!**",
+    "color": "#e6c49c",
+    "fields": [
+        {
+            "name": "- §01 -",
+            "value": "Programme sowie Bugabusing und andere Methoden jeglicher Art, die dir einen Spielvorteil verschaffen (XRAY, Farmbots, Hackclients etc) werden nicht geduldet. Einzigste Außnahme ist die Netherdecke.",
+            "inline": false
+        },
+        {
+            "name": "- §02 -",
+            "value": "Sei nicht unfair gegenüber anderen.",
+            "inline": false
+        },
+        {
+            "name": "- §03 -",
+            "value": "Beide Parteien müssen mit Raids, PVP, Griefing, Diebstahl ö.ä. einverstanden sein.",
+            "inline": false
+        },
+        {
+            "name": "- §04 -",
+            "value": "Wenn ein/e Angehörige/r eines Claims einen anderen Spieler sagt das dieser sein Claim verlassen soll, ist diesem folge zu leisten.",
+            "inline": false
+        },
+        {
+            "name": "- §05 -",
+            "value": "Die Discord-Talks sowie Discord-Chats sollten für Minecraft bzw. dem Kahlifar-Projekt bevorzugt genutzt werden.",
+            "inline": false
+        }
+    ]
+}
