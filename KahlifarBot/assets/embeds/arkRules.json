@@ -27,6 +27,16 @@
             "name": "- §05 -",
             "value": "Die Discord-Talks sowie Discord-Chats sollten für Minecraft bzw. dem Kahlifar-Projekt bevorzugt genutzt werden.",
             "inline": false
+        },
+        {
+            "name": "\u200b",
+            "value": "---------------------------",
+            "inline": false
+        },
+        {
+            "name": "⛔ - Bei Verstoss - ⛔",
+            "value": "Bei Verstössen kann es zu einer/einem Verwarnung, Timeout oder Bann kommen. Die Server Owner und die Moderatoren haben das Recht diese Regeln durchzusetzen. Die Helper dürfen und sollen bei einem schwerwiegenden Verstoß dies einem Moderator oder Server Owner melden.",
+            "inline": false
         }
     ]
 }
