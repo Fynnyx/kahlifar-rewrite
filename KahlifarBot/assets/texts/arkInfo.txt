@@ -10,10 +10,10 @@ Hier hast du Platz für das Kahlifar ARK Projekt. Benutze doch gerne auch die hi
 
 `-------------- Server --------------`
 
-Der Server ist 24/7 online und ist mit einer Whitelist geschützt. Deshalb die "Bewerbung". 
+Das Cluster ist 24/7 online und ist mit einer Whitelist geschützt. Deshalb die "Bewerbung". 
 
 ***__Server-IP:__*** 
-**- 178.63.100.33**
+**- ark.kahlifar.de**
 
 `-------------- Maps --------------`
 
@@ -22,3 +22,4 @@ Der Server ist 24/7 online und ist mit einer Whitelist geschützt. Deshalb die "
 - Valguero
 - Lost Island
 - Genesis 1
+- Genesis 2
