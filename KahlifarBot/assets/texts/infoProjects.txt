@@ -16,7 +16,7 @@
 Kahlifar ist ein Minecraftprojekt mit einer Open World Map in der jeder bauen und mit anderen Spass haben kann.
 
 *Interessiert?*
-Dann benutze gerne dien `/bewerbung minecraft` Command von unserem Bot. Du wirst dann zeitnah von unseren Moderatoren hinzugefügt.
+Dann benutze gerne den `/bewerbung minecraft` Command von unserem Bot. Du wirst dann zeitnah von unseren Moderatoren hinzugefügt.
 
 Im Command gibst du dann an, wie ...
 
@@ -28,10 +28,10 @@ Im Command gibst du dann an, wie ...
 `                      == ARK PROJEKT ==                      `
 
 *Spielst du ARK?*
-Auf unserem ARK Cluster kannst verschiedenste Maps zocken. Baue deine eigene Base und habe Spass.
+Auf unserem ARK Cluster kannst du die verschiedensten Maps zocken. Baue deine eigene Base und habe Spass.
 
 *Interessiert?*
-Dann benutze gerne dien `/bewerbung ark` Command von unserem Bot. Du wirst dann zeitnah von unseren Moderatoren hinzugefügt.
+Dann benutze gerne den `/bewerbung ark` Command vom **Kahlifar Bot**. Dann wirst du auf dem Server hinzugefügt.
 
 Im Command gibst du dann an, wie ...
 
