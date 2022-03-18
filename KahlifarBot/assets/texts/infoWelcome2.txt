@@ -10,3 +10,4 @@ Joinst du diesem Talk erstellt der Bot für dich einen eigenen.
 - `/voice permit/reject` ➔ Banne einen Nutzer vom VoiceChannel oder erlaube es ihm wieder.
 - `/voice claim` ➔ Übernehme den Voice Channel wenn der Owner den Chanel verlassen hat. Du kannst ihn dann bearbeiten.
 
+||@everyone||
