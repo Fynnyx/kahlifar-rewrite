@@ -1,0 +1,12 @@
+`                     == VOICE CAHNNEL ==                     `
+
+Viele Talks machen den Discord unübersichtlich. Deshalb haben wir einen **__Join to Create__** Voice Channel.
+Joinst du diesem Talk erstellt der Bot für dich einen eigenen.
+
+**Modifikationen**
+- `/voice name` ➔ Der Name des Voice Channels wird geändert.
+- `/voice limit` ➔ Die Anzahl maximaler Leute wird geändert. 0 wird zu kein limit.
+- `/voice lock/unlock` ➔ Der Voice Channel wird gesperrt oder entsperrt.
+- `/voice permit/reject` ➔ Banne einen Nutzer vom VoiceChannel oder erlaube es ihm wieder.
+- `/voice claim` ➔ Übernehme den Voice Channel wenn der Owner den Chanel verlassen hat. Du kannst ihn dann bearbeiten.
+

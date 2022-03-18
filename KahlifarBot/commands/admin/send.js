@@ -73,11 +73,13 @@ module.exports = {
                 // if file is a file
                 if (data.commands.send.infoList.includes(file)) {
                     let infoWelcome = readFileSync(`${process.cwd()}/assets/texts/infoWelcome.txt`, "utf-8")
+                    let infoWelcome2 = readFileSync(`${process.cwd()}/assets/texts/infoWelcome2.txt`, "utf-8")
                     let infoProjects = readFileSync(`${process.cwd()}/assets/texts/infoProjects.txt`, "utf-8")
                     let infoChannel = readFileSync(`${process.cwd()}/assets/texts/infoChannels.txt`, "utf-8")
                     let infoRoles = readFileSync(`${process.cwd()}/assets/texts/infoRoles1.txt`, "utf-8")
                     let infoRoles2 = readFileSync(`${process.cwd()}/assets/texts/infoRoles2.txt`, "utf-8")
                     interaction.channel.send(infoWelcome)
+                    interaction.channel.send(infoWelcome2)
                     interaction.channel.send(infoProjects)
                     interaction.channel.send(infoChannel)
                     interaction.channel.send(infoRoles)
