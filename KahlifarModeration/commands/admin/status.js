@@ -4,6 +4,7 @@ const { sendInfo, sendError, sendSuccess } = require("../../helpers/send")
 const { startStatus, stopStatus, setStatus } = require(`${process.cwd()}/helpers/status.js`)
 const statusList = require(`${process.cwd()}/status.json`)
 const data = require(`${process.cwd()}/properties.json`)
+const logger = require("../../handlers/logger")
 
 const options = [
     {
@@ -48,6 +49,7 @@ module.exports = {
      */
 
     run: async (client, interaction, args) => {
+        try {
         const file = args[1]
         if (file === "example") interaction.reply({ content: "⛔	- You cant send an example", ephemeral: true });
         switch (args[0].toLowerCase()) {
@@ -73,6 +75,10 @@ module.exports = {
             default:
                 sendError(interaction, "Invalid type", true, true)
                 break
+        }
+        } catch (e) {
+            sendError(interaction, "Something went wrong", false, true)
+            logger.error(e)
         }
     }
 }

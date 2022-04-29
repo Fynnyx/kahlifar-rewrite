@@ -1,5 +1,7 @@
 const { sendInfo } = require('../../helpers/send');
 const { Client, CommandInteraction, MessageEmbed } = require("discord.js")
+const logger = require("../../handlers/logger")
+const { sendError } = require("../../helpers/send")
 
 module.exports = {
     name: "clear",
@@ -21,18 +23,23 @@ module.exports = {
      */
 
     run: async (client, interaction, args) => {
-        var amount = args[0]
-        if (args[0] === undefined) {
-            amount = 100;
-        }
-        let counter = 0
-        interaction.channel.messages.fetch({ limit: amount }).then(messages => {
-            messages.forEach(message => {
-                counter += 1;
-                message.delete()
+        try {
+            var amount = args[0]
+            if (args[0] === undefined) {
+                amount = 100;
+            }
+            let counter = 0
+            interaction.channel.messages.fetch({ limit: amount }).then(messages => {
+                messages.forEach(message => {
+                    counter += 1;
+                    message.delete()
+                })
+            }).then(() => {
+                sendInfo(interaction, `Deleted ${counter} messages.`, true)
             })
-        }).then(() => {
-            sendInfo(interaction, `Deleted ${counter} messages.`, true)
-        })
+        } catch (error) {
+            sendError(interaction, "Something went wrong!", true, false)
+            logger.error(error)
+        }
     }
 }

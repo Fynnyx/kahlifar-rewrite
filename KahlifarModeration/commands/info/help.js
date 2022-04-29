@@ -1,4 +1,6 @@
 const { Client, CommandInteraction, MessageEmbed } = require("discord.js")
+const logger = require(`../../handlers/logger.js`)
+const { sendError } = require(`../../helpers/send.js`)
 const data = require(`${process.cwd()}/properties.json`)
 
 module.exports = {
@@ -13,16 +15,21 @@ module.exports = {
      */
 
     run: async (client, interaction, args) => {
-        let helpEmbed = new MessageEmbed()
-            .setTitle(`Hilfe für den ${client.user.username}`)
-            .setDescription(`.\n\n--------------------------------`)
-            .setColor("#71368a")
-            .setTimestamp()
-            .setFooter("By Fynnyx | github.com/Fynnyx")
-            
+        try {
+            let helpEmbed = new MessageEmbed()
+                .setTitle(`Hilfe für den ${client.user.username}`)
+                .setDescription(`.\n\n--------------------------------`)
+                .setColor("#71368a")
+                .setTimestamp()
+                .setFooter({ text: "By Fynnyx | github.com/Fynnyx" })
+
             client.slashCommands.map(value => {
                 helpEmbed.addField(value.name, value.description, true)
             })
-        
-        await interaction.reply({ embeds: [helpEmbed] })    }
+
+            await interaction.reply({ embeds: [helpEmbed] })
+        } catch (error) {
+            console.log(error)
+        }
+    }
 }

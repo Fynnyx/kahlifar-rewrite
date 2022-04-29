@@ -17,17 +17,6 @@ module.exports = {
      */
 
     run: async (client, interaction, args) => {
-        var amount = args[0]
-        if (args[0] === undefined) {
-            amount = 100;
-        }
-        let counter = 0
-        interaction.channel.messages.fetch({ limit: amount }).then(messages => {
-            messages.forEach(message => {
-                counter += 1;
-                message.delete()
-            })
-            sendInfo(interaction, `Deleted ${counter} messages.`, true)
-        })
+        interaction.reply({ content: "Comming soon!!!", ephemeral: true })
     }
 }
