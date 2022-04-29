@@ -4,6 +4,7 @@ const { MessageEmbed, MessageActionRow, MessageButton } = require('discord.js');
 const client = require('../index');
 const data = require('../properties.json');
 const streamerData = require('../streamer.json');
+const logger = require('../handlers/logger');
 
 exports.startNotifications = async () => {
 
@@ -11,74 +12,78 @@ exports.startNotifications = async () => {
     axios.defaults.headers.common['Authorization'] = `Bearer ${await getOAuthToken()}`;
 
     const notificationInterval = setInterval(async () => {
-        streamerData.streamer.forEach(async streamer => {
-            var index = streamerData.streamer.indexOf(streamer);
+        try {
+            streamerData.streamer.forEach(async streamer => {
+                var index = streamerData.streamer.indexOf(streamer);
 
-            if (await checkIsLive(streamer.name)) {
-                const streamData = await getStreamData(streamer.name)
-                const streamFollwer = await getStreamFollower(streamData.user_id)
-                const channelData = await getChannelData(streamData.user_id)
+                if (await checkIsLive(streamer.name)) {
+                    const streamData = await getStreamData(streamer.name)
+                    const streamFollwer = await getStreamFollower(streamData.user_id)
+                    const channelData = await getChannelData(streamData.user_id)
 
-                if (streamer.lastStreamId !== streamData.id) {
-                    streamerData.streamer[index].lastStreamId = streamData.id
+                    if (streamer.lastStreamId !== streamData.id) {
+                        streamerData.streamer[index].lastStreamId = streamData.id
 
-                    let JSONData = JSON.stringify(streamerData, null, 2)
-                    writeFileSync('./streamer.json', JSONData)
+                        let JSONData = JSON.stringify(streamerData, null, 2)
+                        writeFileSync('./streamer.json', JSONData)
 
-                    var notEmbed = new MessageEmbed()
-                        .setTitle(`🔴 - ${streamData.user_name} streamt ${streamData.game_name}`)
-                        .setURL(`https://twitch.tv/${streamData.user_login}`)
-                        .setDescription(`Schaue gerne bei - **${streamData.title}** - rein.`)
+                        var notEmbed = new MessageEmbed()
+                            .setTitle(`🔴 - ${streamData.user_name} streamt ${streamData.game_name}`)
+                            .setURL(`https://twitch.tv/${streamData.user_login}`)
+                            .setDescription(`Schaue gerne bei - **${streamData.title}** - rein.`)
 
-                        .setColor("#6441a5")
-                        .setThumbnail(channelData.profile_image_url)
-                        .setImage(streamData.thumbnail_url.replace("{width}", '320').replace("{height}", '180'))
-                        .setFields(
-                            {
-                                name: "Gestartet um:",
-                                value: `${streamData.started_at}`,
-                                inline: true
-                            },
-                            {
-                                name: "Sprache:",
-                                value: `${streamData.language}`,
-                                inline: true
-                            },
-                            {
-                                name: "-------------------------",
-                                value: "\u200b",
-                                inline: false
-                            },
-                            {
-                                name: "Follower:",
-                                value: `${streamFollwer.total}`,
-                                inline: true
-                            },
-                            {
-                                name: "Subscriber",
-                                value: `*cant be resolved*`,
-                                inline: true
+                            .setColor("#6441a5")
+                            .setThumbnail(channelData.profile_image_url)
+                            .setImage(streamData.thumbnail_url.replace("{width}", '320').replace("{height}", '180'))
+                            .setFields(
+                                {
+                                    name: "Gestartet um:",
+                                    value: `${streamData.started_at}`,
+                                    inline: true
+                                },
+                                {
+                                    name: "Sprache:",
+                                    value: `${streamData.language}`,
+                                    inline: true
+                                },
+                                {
+                                    name: "-------------------------",
+                                    value: "\u200b",
+                                    inline: false
+                                },
+                                {
+                                    name: "Follower:",
+                                    value: `${streamFollwer.total}`,
+                                    inline: true
+                                },
+                                {
+                                    name: "Subscriber",
+                                    value: `*cant be resolved*`,
+                                    inline: true
 
-                            }
-                        )
+                                }
+                            )
 
-                    let row = new MessageActionRow()
-                        .addComponents(
-                            new MessageButton()
-                                .setURL(`https://twitch.tv/${streamData.user_login}`)
-                                .setLabel(`Visit ${streamData.user_name}`)
-                                .setStyle('LINK')
-                        )
+                        let row = new MessageActionRow()
+                            .addComponents(
+                                new MessageButton()
+                                    .setURL(`https://twitch.tv/${streamData.user_login}`)
+                                    .setLabel(`Visit ${streamData.user_name}`)
+                                    .setStyle('LINK')
+                            )
 
 
-                    let channel = await client.channels.fetch(data.helpers.streamerNotification.notificationChannel)
-                    channel.send({ content: `<@&${data.helpers.streamerNotification.notificationRole}>`, embeds: [notEmbed], components: [row] })
+                        let channel = await client.channels.fetch(data.helpers.streamerNotification.notificationChannel)
+                        channel.send({ content: `<@&${data.helpers.streamerNotification.notificationRole}>`, embeds: [notEmbed], components: [row] })
 
-                } else {
-                    // let channel = await client.channels.fetch(data.helpers.streamerNotification.notificationChannel)
+                    } else {
+                        // let channel = await client.channels.fetch(data.helpers.streamerNotification.notificationChannel)
+                    }
                 }
-            }
-        })
+            })
+        } catch (e) {
+            logger.error(e)
+        }
     }, data.helpers.streamerNotification.intervalMinutes * 60 * 1000);
 }
 

@@ -1,19 +1,24 @@
 const client = require("../index.js")
 const statusList = require(`${process.cwd()}/status.json`)
 const data = require(`${process.cwd()}/properties.json`)
+const logger = require("../handlers/logger")
 
 
 
-exports.startStatus = async () => {    
+exports.startStatus = async () => {
     statusInterval = setInterval(() => {
-        const statues = statusList
-        let currentStatus = statues.indexOf(client.user.presence.activities[0].name);
-        let index = Math.floor(Math.random() * (statues.length))
-        while (currentStatus == index) {
-            index = Math.floor(Math.random() * (statues.length))
+        try {
+            const statues = statusList
+            let currentStatus = statues.indexOf(client.user.presence.activities[0].name);
+            let index = Math.floor(Math.random() * (statues.length))
+            while (currentStatus == index) {
+                index = Math.floor(Math.random() * (statues.length))
+            }
+            let status = statues[index]
+            client.user.setActivity({ name: status.value, type: status.type })
+        } catch (e) {
+            logger.error(e)
         }
-        let status = statues[index]
-        client.user.setActivity({ name: status.value, type: status.type })
     }, data.commands.status.time * 1000)
 }
 

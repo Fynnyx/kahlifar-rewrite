@@ -1,4 +1,6 @@
 const { Client, CommandInteraction, MessageEmbed } = require("discord.js")
+const { sendError } = require("../../helpers/send")
+const logger = require("../../handlers/logger")
 const data = require(`${process.cwd()}/properties.json`)
 
 module.exports = {
@@ -13,6 +15,11 @@ module.exports = {
      */
 
     run: async (client, interaction, args) => {
-        await interaction.reply({ content: `**Discord Statistiken:**\n<${data.commands.statistik.link}>` })
+        try {
+            await interaction.reply({ content: `**Discord Statistiken:**\n<${data.commands.statistik.link}>` })
+        } catch (e) {
+            sendError(interaction, "Something went wrong", false, true)
+            logger.error(e)
+        }
     }
 }

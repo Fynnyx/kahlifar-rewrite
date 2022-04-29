@@ -36,7 +36,20 @@
         },
         "ip": {
             "ips": [
-                "81.169.200.43:25900"
+                {
+                    "name": "Minecraft Kahlifar",
+                    "ips": [
+                        "mc.kahlifar.de",
+                        "mc.kahlifar.de:25565",
+                        "81.169.200.43:25575"
+                    ]
+                },
+                {
+                    "name": "ARK Server",
+                    "ips": [
+                        "ark.kahlifar.de"
+                    ]
+                }
             ]
         },
         "statistik": {

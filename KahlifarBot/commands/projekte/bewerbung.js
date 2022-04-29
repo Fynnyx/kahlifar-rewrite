@@ -1,6 +1,7 @@
 const { Client, CommandInteraction, MessageEmbed, MessageActionRow, MessageButton } = require("discord.js")
 const { sendInfo, sendError, sendSuccess } = require("../../helpers/send")
 const { checkUsername } = require("../../helpers/minecraft")
+const logger = require("../../handlers/logger")
 const data = require(`${process.cwd()}/properties.json`)
 
 
@@ -99,6 +100,7 @@ module.exports = {
      */
 
     run: async (client, interaction, args) => {
+        try {
         switch (args[0]) {
             case "minecraft":
                 if (interaction.member.roles.cache.has(data.commands.bewerbung.mc.role)) {
@@ -196,6 +198,10 @@ module.exports = {
                 }
             default:
                 break;
+        }
+        } catch (e) {
+            sendError(interaction, "Something went wrong", false, true)
+            logger.error(e)
         }
     }
 }

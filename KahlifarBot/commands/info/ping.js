@@ -1,4 +1,6 @@
 const { Client, CommandInteraction, MessageEmbed } = require("discord.js")
+const { sendError } = require("../../helpers/send")
+const logger = require("../../handlers/logger")
 
 module.exports = {
     name: "ping",
@@ -12,5 +14,11 @@ module.exports = {
      */
 
     run: async (client, interaction, args) => {
-        await interaction.reply({ content: `${client.ws.ping} ms` })    }
+        try {
+            await interaction.reply({ content: `${client.ws.ping} ms` })    
+        } catch (e) {
+            sendError(interaction, "Something went wrong", false, true)
+            logger.error(e)
+        }
+    }   
 }

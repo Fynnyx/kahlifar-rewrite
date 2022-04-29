@@ -1,8 +1,9 @@
 const { readdirSync } = require("fs")
-// const { client } = require('../index.js')
+const logger = require("../handlers/logger")
 
 // Require all events decalred in ../events
 module.exports = (client) => {
+  try {
   readdirSync("./events/").forEach((file) => {
     const events = readdirSync("./events/").filter((file) =>
       file.endsWith(".js")
@@ -18,4 +19,7 @@ module.exports = (client) => {
       }
     }
   });
+  } catch (e) {
+    logger.error(e)
+  }
 }
