@@ -16,7 +16,6 @@ module.exports = {
 
     run: async (client, interaction, args) => {
         try {
-            TextDecoderStream()
             let linkMsg = ""
             data.commands.discord.links.map(value => {
                 linkMsg += `<${value}>\n`
