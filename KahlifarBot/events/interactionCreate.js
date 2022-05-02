@@ -122,6 +122,7 @@ client.on('interactionCreate', async interaction => {
 					break
 
 				case "server-start":
+					await interaction.deferReply();
 					const startResponse = await axios.get("https://webi.freakside-world.eu//memberrequest.php?op=api&ids=1&hash=5765177554a3faa430a28176051dc471&hkey=f6cb75eb3933ab341637aba223ca6a3f")
 					if (startResponse.data.includes("ok")) {
 						sendSuccess(interaction, "Server wurde gestartet", false, true);
@@ -131,6 +132,7 @@ client.on('interactionCreate', async interaction => {
 					break
 
 				case "server-stop":
+					await interaction.deferReply();
 					const stopResponse = await axios.get("https://webi.freakside-world.eu//memberrequest.php?op=api&ids=2&hash=ed17e24957ba9b47b5d31b4d474387e3&hkey=45cc213813a243f2e4617574eaa63ba0")
 					if (stopResponse.data.includes("ok")) {
 						sendSuccess(interaction, "Server wurde gestoppt", false, true);
