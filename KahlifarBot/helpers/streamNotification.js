@@ -18,6 +18,9 @@ exports.startNotifications = async () => {
 
                 if (await checkIsLive(streamer.name)) {
                     const streamData = await getStreamData(streamer.name)
+                    if (streamData === undefined) {
+                        return logger.info("StreamerData is undefined")
+                    }
                     const streamFollwer = await getStreamFollower(streamData.user_id)
                     const channelData = await getChannelData(streamData.user_id)
 
