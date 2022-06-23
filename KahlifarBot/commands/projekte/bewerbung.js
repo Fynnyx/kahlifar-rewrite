@@ -43,54 +43,54 @@ module.exports = {
                 }
             ]
         },
-        {
-            name: "ark",
-            description: "Bewerbung für das ARK Projekt.",
-            type: "SUB_COMMAND",
-            options: [
-                {
-                    name: "alter",
-                    description: "Bitte gebe dein Alter an.",
-                    type: "NUMBER",
-                    required: true,
-                },
-                {
-                    name: "steamid",
-                    description: "Bitte gebe deine SteamID an.",
-                    type: "STRING",
-                    required: true
-                },
-                {
-                    name: "projektart",
-                    description: "Möchtest du PVE oder PVP spielen?",
-                    type: "STRING",
-                    required: true,
-                    choices: [
-                        {
-                            name: "PVE",
-                            value: "PVE"
-                        },
-                        {
-                            name: "PVP",
-                            value: "PVP"
-                        }
-                    ]
-                },
-                {
-                    name: "spielzeit",
-                    description: "Wie lange spielst du schon ARK?",
-                    type: "STRING",
-                    required: true,
+        // {
+        //     name: "ark",
+        //     description: "Bewerbung für das ARK Projekt.",
+        //     type: "SUB_COMMAND",
+        //     options: [
+        //         {
+        //             name: "alter",
+        //             description: "Bitte gebe dein Alter an.",
+        //             type: "NUMBER",
+        //             required: true,
+        //         },
+        //         {
+        //             name: "steamid",
+        //             description: "Bitte gebe deine SteamID an.",
+        //             type: "STRING",
+        //             required: true
+        //         },
+        //         {
+        //             name: "projektart",
+        //             description: "Möchtest du PVE oder PVP spielen?",
+        //             type: "STRING",
+        //             required: true,
+        //             choices: [
+        //                 {
+        //                     name: "PVE",
+        //                     value: "PVE"
+        //                 },
+        //                 {
+        //                     name: "PVP",
+        //                     value: "PVP"
+        //                 }
+        //             ]
+        //         },
+        //         {
+        //             name: "spielzeit",
+        //             description: "Wie lange spielst du schon ARK?",
+        //             type: "STRING",
+        //             required: true,
 
-                },
-                {
-                    name: "weiteres",
-                    description: "Weiters was du uns erzählen möchtest.",
-                    type: "STRING",
-                    required: false
-                }
-            ]
-        }
+        //         },
+        //         {
+        //             name: "weiteres",
+        //             description: "Weiters was du uns erzählen möchtest.",
+        //             type: "STRING",
+        //             required: false
+        //         }
+        //     ]
+        // }
     ],
 
     /**
