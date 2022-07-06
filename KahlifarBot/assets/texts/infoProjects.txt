@@ -22,19 +22,3 @@ Im Command gibst du dann an, wie ...
 ... **alt du bist,**
 ... **dein Minecraft Ingame Namen lautet,**
 ... **Wie du Kahlifar endeckt hast.**
-
-
-`                      == ARK PROJEKT ==                      `
-
-*Spielst du ARK?*
-Auf unserem ARK Cluster kannst du die verschiedensten Maps zocken. Baue deine eigene Base und habe Spass.
-
-*Interessiert?*
-Dann benutze gerne den `/bewerbung ark` Command vom **Kahlifar Bot**. Dann wirst du auf dem Server hinzugefügt.
-
-Im Command gibst du dann an, wie ...
-
-... **alt du bist,**
-... **deine SteamID,** (<https://store.steampowered.com/account/>)
-... **PVE oder PVP,**
-... **ARK-Spieldauer.**

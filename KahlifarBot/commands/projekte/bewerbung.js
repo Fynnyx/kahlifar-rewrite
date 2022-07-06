@@ -154,48 +154,48 @@ module.exports = {
 
                 }
                 break;
-            case "ark":
-                if (interaction.member.roles.cache.has(data.commands.bewerbung.ark.role)) {
-                    sendError(interaction, "Du bist bereits angenommen worden.", true, true)
-                } else {
-                    let bewEmbed = new MessageEmbed()
-                        .setTitle(`Neue Bewerbung von - ${interaction.member.displayName}`)
-                        .setColor("#25a244")
-                        .addFields(
-                            { name: "Alter:", value: args[1].toString(), inline: true },
-                            { name: "SteamID:", value: args[2], inline: true },
-                            { name: "Projektart:", value: args[3], inline: true },
-                            { name: "Spielzeit:", value: args[4], inline: true }
-                        )
-                        .setTimestamp()
-                    if (args[5]) {
-                        bewEmbed.setDescription(`${interaction.member}: ${args[5]}`)
-                    } else {
-                        bewEmbed.setDescription(`${interaction.member}: *Keine weiteren Informationen*.`)
-                    }
-                    let row = new MessageActionRow()
-                        .addComponents(
-                            new MessageButton()
-                                .setCustomId("bew-ark-accept")
-                                .setLabel("Accept")
-                                .setStyle("SUCCESS"),
-                            new MessageButton()
-                                .setCustomId("bew-ark-decline")
-                                .setLabel("Deny")
-                                .setStyle("DANGER"),
-                            new MessageButton()
-                                .setCustomId("bew-help")
-                                .setLabel("Help")
-                                .setStyle("SECONDARY")
-                        )
+            // case "ark":
+            //     if (interaction.member.roles.cache.has(data.commands.bewerbung.ark.role)) {
+            //         sendError(interaction, "Du bist bereits angenommen worden.", true, true)
+            //     } else {
+            //         let bewEmbed = new MessageEmbed()
+            //             .setTitle(`Neue Bewerbung von - ${interaction.member.displayName}`)
+            //             .setColor("#25a244")
+            //             .addFields(
+            //                 { name: "Alter:", value: args[1].toString(), inline: true },
+            //                 { name: "SteamID:", value: args[2], inline: true },
+            //                 { name: "Projektart:", value: args[3], inline: true },
+            //                 { name: "Spielzeit:", value: args[4], inline: true }
+            //             )
+            //             .setTimestamp()
+            //         if (args[5]) {
+            //             bewEmbed.setDescription(`${interaction.member}: ${args[5]}`)
+            //         } else {
+            //             bewEmbed.setDescription(`${interaction.member}: *Keine weiteren Informationen*.`)
+            //         }
+            //         let row = new MessageActionRow()
+            //             .addComponents(
+            //                 new MessageButton()
+            //                     .setCustomId("bew-ark-accept")
+            //                     .setLabel("Accept")
+            //                     .setStyle("SUCCESS"),
+            //                 new MessageButton()
+            //                     .setCustomId("bew-ark-decline")
+            //                     .setLabel("Deny")
+            //                     .setStyle("DANGER"),
+            //                 new MessageButton()
+            //                     .setCustomId("bew-help")
+            //                     .setLabel("Help")
+            //                     .setStyle("SECONDARY")
+            //             )
 
-                    let modChannel = client.channels.cache.get(data.commands.bewerbung.modChannel)
-                    modChannel.send({ content: `<@&${data.commands.bewerbung.pingRole}>`, embeds: [bewEmbed], components: [row] })
+            //         let modChannel = client.channels.cache.get(data.commands.bewerbung.modChannel)
+            //         modChannel.send({ content: `<@&${data.commands.bewerbung.pingRole}>`, embeds: [bewEmbed], components: [row] })
 
-                    interaction.member.send(data.commands.bewerbung.messages.sendInfo)
-                    sendSuccess(interaction, data.commands.bewerbung.messages.send, true, true)
+            //         interaction.member.send(data.commands.bewerbung.messages.sendInfo)
+            //         sendSuccess(interaction, data.commands.bewerbung.messages.send, true, true)
 
-                }
+            //     }
             default:
                 break;
         }

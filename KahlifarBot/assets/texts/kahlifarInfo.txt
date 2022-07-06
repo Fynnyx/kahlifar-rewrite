@@ -12,16 +12,10 @@ Hier hast du Platz für das Kahlifar Minecraft Projekt. Benutze doch gerne auch 
 
 Der Server ist 24/7 online und ist mit einer Whitelist geschützt. Deshalb die "Bewerbung". 
 
-***__Server-IP:__*** 
-**- 81.169.200.43:25900**
+***__Server-IP:__***
+**- kahlifar.de**
 
 `-------------- Plugins --------------`
 
 Ihr könnt die Pluginliste unter diesem Link anschuen.
 ***Pluginliste:*** <http://plugins.kahlifar.de>
-
-Eines der Plugins ist ein Map Plugin mit dem du die Map online anschauen kannst. Ähnlich wie Google Maps.
-***Online Link:*** <http://map.kahlifar.de>
-
-Das Brau-/ Alkoholplugin ist mit seinen Rezepten ziemlich kompliziert. Wir haben euch das Wiki per URL verlinkt.
-***Wiki:*** <http://brewery.kahlifar.de>
