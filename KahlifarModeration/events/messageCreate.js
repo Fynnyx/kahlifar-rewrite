@@ -3,7 +3,6 @@ const data = require(`${process.cwd()}/properties.json`)
 const client = require("../index")
 
 client.on("messageCreate", async message => {
-    // console.log(message.channel);
     if (message.channel.type == "DM" && !message.author.bot) {
         let filter = (interaction) => interaction.customId === 'modmailconfirmation' && interaction.user.id !== client.user.id
         let modMailConfirmationEmbed = new MessageEmbed()

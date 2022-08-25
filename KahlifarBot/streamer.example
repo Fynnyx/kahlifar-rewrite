@@ -1,0 +1,44 @@
+{
+    "streamer": [
+      {
+        "name": "makimfh",
+        "discordId": null,
+        "lastStreamId": "45766967436"
+      },
+      {
+        "name": "valorant",
+        "discordId": null,
+        "lastStreamId": "41120219531"
+      },
+      {
+        "name": "fabsi_mclive",
+        "discordId": "687380308072464426",
+        "lastStreamId": "45598878013"
+      },
+      {
+        "name": "minecraft",
+        "discordId": null,
+        "lastStreamId": "40618152907"
+      },
+      {
+        "name": "onlymercyfl",
+        "discordId": "457952868272570381",
+        "lastStreamId": "46352958717"
+      },
+      {
+        "name": "phantomkittyyy",
+        "discordId": "538733864198340629",
+        "lastStreamId": "45970340732"
+      },
+      {
+        "name": "kahlifar",
+        "discordId": null,
+        "lastStreamId": ""
+      },
+      {
+        "name": "o0kittycat0o",
+        "discordId": "540857251242573835",
+        "lastStreamId": "45969497564"
+      }
+    ]
+  }
