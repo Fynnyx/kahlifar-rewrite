@@ -74,7 +74,7 @@ module.exports = {
                         inline: true
                     },
                     {
-                        name: "\u200b",
+                        name: "- Rechte des Bots auf den User -",
                         value: "\u200b",
                         inline: false
                     },
