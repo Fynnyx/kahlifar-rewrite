@@ -30,6 +30,10 @@ module.exports = {
             const guild = interaction.guild
             const role = guild.roles.cache.get(args[0])
 
+            let memberString = "<@" + role.members.map(m => m.id).join(">,\n<@") + ">"
+            let permissionString = role.permissions.toArray().sort().join(",\n")
+
+
             const roleinfoEmbed = new MessageEmbed()
                 .setTitle(`${role.name}`)
                 .setDescription(`Infos über <@&${role.id}>`)
@@ -78,6 +82,21 @@ module.exports = {
                     {
                         name: "Separiert",
                         value: role.hoist ? "Ja" : "Nein",
+                        inline: true
+                    },
+                    {
+                        name: "- User & Rechte -",
+                        value: "\u200b",
+                        inline: false
+                    },
+                    {
+                        name: `User (${role.members.size})`,
+                        value: role.members.size >= 20 ? "*Too many users to display*" : memberString,
+                        inline: true
+                    },
+                    {
+                        name: "Rechte",
+                        value: permissionString,
                         inline: true
                     }
                 )
