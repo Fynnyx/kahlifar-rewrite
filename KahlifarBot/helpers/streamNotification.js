@@ -31,6 +31,9 @@ exports.startNotifications = async () => {
                             let JSONData = JSON.stringify(streamerData, null, 2)
                             writeFileSync('./streamer.json', JSONData)
 
+                            const startDate = new Date(streamData.started_at)
+                            const startedString = `${startDate.getHours()}:${startDate.getMinutes()}:${startDate.getSeconds()}\n${startDate.getDate()}.${startDate.getMonth()+1}.${startDate.getFullYear()}`
+
                             var notEmbed = new MessageEmbed()
                                 .setTitle(`🔴 - ${streamData.user_name} streamt ${streamData.game_name}`)
                                 .setURL(`https://twitch.tv/${streamData.user_login}`)
@@ -42,7 +45,7 @@ exports.startNotifications = async () => {
                                 .setFields(
                                     {
                                         name: "Gestartet um:",
-                                        value: `${streamData.started_at}`,
+                                        value: `${startedString}`,
                                         inline: true
                                     },
                                     {
