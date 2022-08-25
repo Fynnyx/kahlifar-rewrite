@@ -91,7 +91,7 @@ module.exports = {
                     },
                     {
                         name: `User (${role.members.size})`,
-                        value: role.members.size >= 20 ? "*Too many users to display*" : memberString,
+                        value: role.members.size >= 20 ? "*Too many users to display*" : role.members.size === 0 ? memberString : "*No user got this role*",
                         inline: true
                     },
                     {
