@@ -5,37 +5,41 @@ const { sleep } = require("../../helpers/sleep")
 const data = require(`${process.cwd()}/properties.json`)
 const logger = require("../../handlers/logger")
 
+const options = [
+    {
+        name: "role",
+        description: "Select the role which should me added/removed.",
+        type: "ROLE",
+        required: true
+    },
+    {
+        name: "memberrole",
+        description: "Select the role which members get the role.",
+        type: "ROLE",
+        required: true
+    }
+]
+
 
 module.exports = {
 
     name: "role",
     description: "ADD or REMOVE a role to a user/role members.",
     type: 'CHAT_INPUT',
-    userPermissions: ["MANAGE_ROLES"],
-    rolePermissions: ["814234539773001778"],
     options: [
         {
-            name: "type",
-            description: "ADD or REMOVE.",
-            type: "STRING",
-            required: true,
-            choices: [
-                { name: "ADD", value: "ADD" },
-                { name: "REMOVE", value: "REMOVE" }
-            ]
+            name: "add",
+            description: "add a role to members with a specified role.",
+            type: "SUB_COMMAND",
+            options: options
         },
         {
-            name: "role",
-            description: "Select the role which should me added.",
-            type: "ROLE",
-            required: true
-        },
-        {
-            name: "memberrole",
-            description: "Select the role which members get the role.",
-            type: "ROLE",
-            required: true
+            name: "remove",
+            description: "add a role to members with a specified role.",
+            type: "SUB_COMMAND",
+            options: options
         }
+
     ],
 
     /**
@@ -47,7 +51,7 @@ module.exports = {
     run: async (client, interaction, args) => {
         try {
             switch (args[0]) {
-                case "ADD":
+                case "add":
                     await interaction.reply(`Startet adding <@&${args[1]}> to all members of <@&${args[2]}>`);
                     var counter = 0;
 
@@ -80,7 +84,7 @@ module.exports = {
                         });
                     break
 
-                case "REMOVE":
+                case "remove":
                     await interaction.reply(`Startet removing <@&${args[1]}> from all members of <@&${args[2]}>`);
                     var counter = 0;
 
@@ -95,10 +99,11 @@ module.exports = {
 
                             }
                         })
-                    });
-                    interaction.editReply(`Removed <@&${args[1]}>`);
+                    }).then(
+                        async () => {
+                            interaction.editReply(`Removed <@&${args[1]}> from ${counter} members.`);
+                        });
                     break
-
 
                 default:
                     sendError(interaction, "Invalid type", true, true)
