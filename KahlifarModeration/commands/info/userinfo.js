@@ -34,7 +34,8 @@ module.exports = {
             // sort roles by position
             const roles = member.roles.cache.sort((a, b) => b.position - a.position)
 
-            let roleString = "<@&" + roles.map(r => r.id).join(">,\n <@&") + ">"
+            let roleString = "<@&" + roles.map(r => r.id).join(">,\n<@&") + ">"
+            let permissionString = member.permissions.toArray().sort().join(",\n")
             // let permissions = member.permissions.cache.map(p => p.toString()).join(",\n ")
 
             const roleinfoEmbed = new MessageEmbed()
@@ -114,7 +115,7 @@ module.exports = {
                     },
                     {
                         name: "Rechte",
-                        value: "*Will be implemented*",
+                        value: permissionString,
                         inline: true
                     }
                     
