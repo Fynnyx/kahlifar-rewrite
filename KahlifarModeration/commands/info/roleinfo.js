@@ -26,7 +26,7 @@ module.exports = {
      */
 
     run: async (client, interaction, args) => {
-        try {
+        // try {
             const guild = interaction.guild
             const role = guild.roles.cache.get(args[0])
 
@@ -96,15 +96,15 @@ module.exports = {
                     },
                     {
                         name: "Rechte",
-                        value: permissionString === "" ? permissionString : "*No permissions set*",
+                        value: permissionString !== "" ? permissionString : "*No permissions set*",
                         inline: true
                     }
                 )
             interaction.reply({embeds: [roleinfoEmbed], ephemeral: true})
 
-        } catch (error) {
-            sendError(interaction, "Something went wrong!", false, true)
-            logger.error(error)
-        }
+        // } catch (error) {
+        //     sendError(interaction, "Something went wrong!", false, true)
+        //     logger.error(error)
+        // }
     }
 }
