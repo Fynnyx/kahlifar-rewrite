@@ -96,7 +96,7 @@ module.exports = {
                     },
                     {
                         name: "Rechte",
-                        value: permissionString,
+                        value: permissionString === "" ? permissionString : "*No permissions set*",
                         inline: true
                     }
                 )
