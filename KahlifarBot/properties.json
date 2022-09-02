@@ -30,8 +30,8 @@
         },
         "discord": {
             "links": [
-                "http://dc.kahlifar.de",
-                "http://discord.kahlifar.de"
+                "https://kahlifar.de/discord",
+                "http://dc.kahlifar.de"
             ]
         },
         "ip": {
@@ -39,15 +39,7 @@
                 {
                     "name": "Minecraft Kahlifar",
                     "ips": [
-                        "mc.kahlifar.de",
-                        "mc.kahlifar.de:25565",
-                        "81.169.200.43:25575"
-                    ]
-                },
-                {
-                    "name": "ARK Server",
-                    "ips": [
-                        "ark.kahlifar.de"
+                        "kahlfiar.de"
                     ]
                 }
             ]
@@ -90,11 +82,6 @@
                     "channelId": "941309913370611762",
                     "roleId": "896865134306279485",
                     "content": "Kahlifar Member: %COUNT%"
-                },
-                {
-                    "channelId": "941641204142067742",
-                    "roleId": "941640398122676224",
-                    "content": "Music Bots: %COUNT%"
                 }
             ]
         },

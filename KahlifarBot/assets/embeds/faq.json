@@ -5,12 +5,12 @@
     "fields": [
         {
             "name": "`Q:` Warum sehe ich nichts?",
-            "value": "**A:** *Stelle sicher, dass du die Member Rolle hast (reagiere in #verify✅)*",
+            "value": "**A:** *Um gegen Bot Accounts vorzugehen bitten wir dich, dich in <#895385320848236574> zu verifizieren.*",
             "inline": false
         },
         {
             "name": "`Q:` Warum bin ich auf dem Minecraft Server nicht gewhitelisted?",
-            "value": "**A:** *Nachdem du dich mit deinem Alter beworben hast, siehst du den Kahlifar Bereich. Ab dann kannst du in #ingame-names deinen Namen reinschreiben und wirst dann*",
+            "value": "**A:** *Benutze `/bewerbung minecraft` um dich für den Minecraft Server zu bewerben. Du wirst dann automatisch gewhitelisted.*",
             "inline": false
         }
     ]

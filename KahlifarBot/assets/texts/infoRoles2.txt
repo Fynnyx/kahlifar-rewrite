@@ -19,4 +19,4 @@ Wir haben einige Self Roles. Diese Rolle kannst du dir selbst zuweisen.
 - Ping-Roles
 - Game-Roles
 - Age-Roles
-Im <#937726218978074754> kannst du dir dien Rollen hinzufügen und auch wieder entfernen.
+Im <#937726218978074754> kannst du dir die Rollen hinzufügen und auch wieder entfernen.

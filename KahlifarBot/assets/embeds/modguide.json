@@ -1,0 +1,22 @@
+{
+    "title": "Moderator Guidelines",
+    "description": "Hier stehen die wichtigsten Informationen für die Moderatoren.\nVon den Aufgaben zu eineigen Verhaltensregeln. Es soll die Moderatoren dabei unterstützen den Discord zu moderieren.",
+    "color": "#ffffff",
+    "fields": [
+        {
+            "name": "Aufgaben:",
+            "value": "\u200b",
+            "inline": false
+        },
+        {
+            "name": "Field 2",
+            "value": "This is the second Field. is inline",
+            "inline": true
+        },
+        {
+            "name": "Field 3",
+            "value": "This is the third Field. not inline",
+            "inline": false
+        }
+    ]
+}
