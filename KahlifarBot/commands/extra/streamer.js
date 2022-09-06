@@ -124,7 +124,7 @@ module.exports = {
                     const streamerEmbed = new MessageEmbed()
                         .setTitle(`Streamer List:`)
                         .setDescription("Streams dieser Streamer werden in dem Channel benachrichtigt.")
-                        .setColor("#6441a5")
+                        .setColor("#422780")
 
                     streamData.streamer.forEach((streamer) => {
                         var id = `<@${streamer.discordId}>`
