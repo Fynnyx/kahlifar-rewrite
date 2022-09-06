@@ -1,9 +1,15 @@
+const { writeFile } = require("fs");
 const { disableButtons } = require('../helpers/components.js');
 const { getIdFromString } = require('../helpers/getIdFromString.js');
 const { sendError, sendInfo } = require('../helpers/send.js');
 const { verifyMember } = require('../helpers/verify.js');
+const { isBanned, banUser } = require('../helpers/modmail.js');
+const { logToModConsole } = require('../helpers/logToModConsole.js');
 const client = require('../index.js');
+const { MessageEmbed } = require("discord.js");
+const logger = require("../handlers/logger.js");
 const data = require(`${process.cwd()}/properties.json`)
+const modmailData = require(`${process.cwd()}/modmail.json`)
 
 
 client.on('interactionCreate', async interaction => {
@@ -67,50 +73,25 @@ client.on('interactionCreate', async interaction => {
 					.then(async (collected) => {
 						message = collected.first();
 						let id = await getIdFromString(interaction.message.embeds[0].description)
-						client.users.fetch(id)
-							.then(async (user) => {
-								user.send(`Reply received ` + message.content)
-								sendInfo(message, `Send Reply to <@${user.id}> with the content\n\n${message.content}`, true, false);
-								message.delete();
-								mailmsg.edit({ components: [await disableButtons(mailmsg.components)] });
-
-							})
-							.catch((e) => {
-								console.error(e);
-							})
-					})
-					.catch((e) => {
-						console.error(e)
+						const user = await client.users.fetch(id)
+						user.send(`Reply received ` + message.content)
+						sendInfo(message, `Send Reply to <@${user.id}> with the content\n\n${message.content}`, true, false);
+						message.delete();
+						mailmsg.edit({ components: [await disableButtons(mailmsg.components)] });
+					}).catch((e) => {
+						logger.error(e)
 					})
 				break
-
-				break
-
 			case "modmailspam":
-				interaction.reply({ content: "For how long should the user be banned? (1s, 1m, 1h, 1d, 1w, 1M, 1y)", ephemeral: true });
-				let filter = (message) => message.author.id === interaction.user.id;
-				// console.log(interaction.channel);
-				interaction.channel.awaitMessages({ filter: filter, max: 1, time: 5000, errors: ['time'] })
-					.then(async (collected) => {
-						message = collected.first();
-						let id = await getIdFromString(interaction.message.embeds[0].description)
-						client.users.fetch(id)
-							.then(async (user) => {
-								let time = message.content;
-								user.send(`You have been banned from the modmail for **${time}** because you have been spamming.`)
-								sendInfo(message, `**${user.tag}** has been banned from the modmail for **${time}** because he has been spamming.`);
-							})
-							.catch((e) => {
-								console.error(e);
-							})
-					})
-					.catch((e) => {
-						console.error(e)
-					})
+				let id = await getIdFromString(interaction.message.embeds[0].description)
+				await banUser(id)
+				sendInfo(interaction, `User <@${id}> has been banned from using modmail.`, true, false);
+				interaction.message.edit({ components: [await disableButtons(interaction.message.components)] });
+				await logToModConsole("Modmail Ban", `User <@${id}> has been banned from using modmail.`, data.helpers.send.colors.info)
 				break
 			case "modmaildelete":
-					interaction.message.delete();
-					break;
+				interaction.message.delete();
+				break;
 
 			default:
 				sendError(interaction, "I cant find running code for this interaction.", true, true);

@@ -1,9 +1,12 @@
 const { Message, MessageEmbed, MessageActionRow, MessageButton, Interaction } = require("discord.js")
+const { isBanned } = require("../helpers/modmail")
+const { sendError } = require("../helpers/send")
 const data = require(`${process.cwd()}/properties.json`)
 const client = require("../index")
 
 client.on("messageCreate", async message => {
     if (message.channel.type == "DM" && !message.author.bot) {
+        if (!await isBanned(message.author.id)) {
         let filter = (interaction) => interaction.customId === 'modmailconfirmation' && interaction.user.id !== client.user.id
         let modMailConfirmationEmbed = new MessageEmbed()
             .setTitle("Mod Mail Confirmation")
@@ -63,6 +66,9 @@ client.on("messageCreate", async message => {
             .catch((e) => {
                 console.error(e)
             })
+        } else {
+            sendError(message, "You are banned from using the Modmail", true, false)
+        }
 
     }
     // console.info(message.author.displayName + "Has send a message with the value\n" + message.content);
