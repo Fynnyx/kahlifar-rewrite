@@ -1,0 +1,20 @@
+**Willkommen auf dem Kahlifar Community Discord**
+Wir sind <@751097780004585483>, <@270932032945651714> und <@451776092785737728> und sind die Owner von diesem Server.
+
+`                     == SERVER INFO ==                     `
+
+Auf diesem Server können sich Leute zusammenfinden und einer gemeinsamen Interesse nachgehen. **Und zwar dem Gaming.**
+Gestartet bei nur einem Minecraft Survivalprojekt ist der Server über sich hinausgewachsen und ist schon lange kein *'Minecraft only'* Server mehr. Hier kannst du neue Leute kennenlernen, neue Spiele kennenlernen und vor allem Spass haben.
+
+
+`                     == VOICE CAHNNEL ==                     `
+
+Viele Talks machen den Discord unübersichtlich. Deshalb haben wir einen **__Join to Create__** Voice Channel.
+Joinst du diesem Talk erstellt der Bot für dich einen eigenen.
+
+**Modifikationen**
+- `/voice name` ➔ Der Name des Voice Channels wird geändert.
+- `/voice limit` ➔ Die Anzahl maximaler Leute wird geändert. 0 wird zu kein limit.
+- `/voice lock/unlock` ➔ Der Voice Channel wird gesperrt oder entsperrt.
+- `/voice permit/reject` ➔ Banne einen Nutzer vom VoiceChannel oder erlaube es ihm wieder.
+- `/voice claim` ➔ Übernehme den Voice Channel wenn der Owner den Chanel verlassen hat. Du kannst ihn dann bearbeiten.ㅤ

@@ -18,4 +18,4 @@ Der Server ist 24/7 online und ist mit einer Whitelist geschützt. Deshalb die "
 `-------------- Plugins --------------`
 
 Ihr könnt die Pluginliste unter diesem Link anschuen.
-***Pluginliste:*** <https://kahlifar.de#plugins>
+***Pluginliste:*** <https://kahlifar.de/server#plugins>
