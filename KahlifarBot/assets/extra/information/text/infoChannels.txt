@@ -20,3 +20,13 @@ Es funktioniert wie folgt:
   - Die Moderatoren werden dir dann auf deine Nachricht antworten.
 
 Merke ❗: Das Abusen des Modmails wird erstmal mit einem Ban vom Modmail bestraft. Weiters Abusen mit einem kompletten Ausschluss vom Discord. 
+
+`                     == SELF ROLES ==                     `
+
+Wir haben einige Self Roles. Diese Rolle kannst du dir selbst in <#937726218978074754> zuweisen.
+*Der Bot braucht manchmal einige Zeit um die Rollen zu updaten*
+
+*__Kategorien:__*
+- Ping-Roles
+- Age-Roles
+- Game-Roles

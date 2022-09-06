@@ -39,7 +39,7 @@ exports.startNotifications = async () => {
                                 .setURL(`https://twitch.tv/${streamData.user_login}`)
                                 .setDescription(`Schaue gerne bei - **${streamData.title}** - rein.`)
 
-                                .setColor("#6441a5")
+                                .setColor("#422780")
                                 .setThumbnail(channelData.profile_image_url)
                                 .setImage(streamData.thumbnail_url.replace("{width}", '320').replace("{height}", '180'))
                                 .setFields(

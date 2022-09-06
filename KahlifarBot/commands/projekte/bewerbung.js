@@ -116,7 +116,7 @@ module.exports = {
                     }
                     let bewEmbed = new MessageEmbed()
                         .setTitle(`Neue Bewerbung von - ${interaction.member.displayName}`)
-                        .setColor("#85659b")
+                        .setColor("#187CA1")
                         .addFields(
                             { name: "Alter:", value: args[1].toString(), inline: true },
                             { name: "Minecraftname", value: args[2], inline: true },

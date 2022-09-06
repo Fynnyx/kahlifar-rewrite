@@ -19,7 +19,7 @@ module.exports = {
             let helpEmbed = new MessageEmbed()
                 .setTitle(`Hilfe für den ${client.user.username}`)
                 .setDescription(`Erleichtert das Moderieren und bietet einfach Tools für die Owner und die Moderatoren.\n\n--------------------------------`)
-                .setColor("#71368a")
+                .setColor("#01253D")
                 .setTimestamp()
                 .setFooter({ text: "By Fynnyx | github.com/Fynnyx" })
 

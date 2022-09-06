@@ -117,11 +117,11 @@ module.exports = {
                     break
 
                 case "extra":
+                    interaction.deferReply()
                     // if file is a file
                     switch (args[1].toLowerCase()) {
                         case "information":
                             for (let file of data.commands.send.information.infoAssets) {
-                                console.log(file);
                                 switch (file.type) {
                                     case "TEXT":
                                         const text = readFileSync(`${process.cwd()}/assets/extra/information/text/${file.file}`, "utf-8")

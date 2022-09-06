@@ -72,11 +72,7 @@
                     },
                     {
                         "type": "TEXT",
-                        "file": "infoRoles1.txt"
-                    },
-                    {
-                        "type": "TEXT",
-                        "file": "infoRoles2.txt"
+                        "file": "infoRoles.txt"
                     }
                 ]
             }
