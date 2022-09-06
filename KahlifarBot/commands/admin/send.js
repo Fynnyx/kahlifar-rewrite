@@ -52,7 +52,20 @@ module.exports = {
             name: "extra",
             description: "Für spezuelle Dinge.",
             type: "SUB_COMMAND",
-            options: options
+            options: [
+                {
+                    name: "type",
+                    description: "Wähle den Typ.",
+                    type: "STRING",
+                    reqired: true,
+                    choices: [
+                        {
+                            name: "information",
+                            value: "information",
+                        }
+                    ]
+                }
+            ]
         },
 
     ],
@@ -73,34 +86,16 @@ module.exports = {
             }
             switch (args[0].toLowerCase()) {
                 case "text":
-                    // if file is a file
-                    if (data.commands.send.infoList.includes(file)) {
-                        let infoWelcome = readFileSync(`${process.cwd()}/assets/texts/infoWelcome1.txt`, "utf-8")
-                        let infoWelcome2 = readFileSync(`${process.cwd()}/assets/texts/infoWelcome2.txt`, "utf-8")
-                        let infoProjects = readFileSync(`${process.cwd()}/assets/texts/infoProjects.txt`, "utf-8")
-                        let infoChannel = readFileSync(`${process.cwd()}/assets/texts/infoChannels.txt`, "utf-8")
-                        let infoRoles = readFileSync(`${process.cwd()}/assets/texts/infoRoles1.txt`, "utf-8")
-                        let infoRoles2 = readFileSync(`${process.cwd()}/assets/texts/infoRoles2.txt`, "utf-8")
-                        interaction.channel.send(infoWelcome)
-                        interaction.channel.send(infoWelcome2)
-                        interaction.channel.send(infoProjects)
-                        interaction.channel.send(infoChannel)
-                        interaction.channel.send(infoRoles)
-                        interaction.channel.send(infoRoles2)
-                        sendInfo(interaction, `Text ${file} wurde gesendet.`, false, true)
-
-                    } else {
-                        try {
-                            if (existsSync(`${process.cwd()}/assets/texts/${file}.txt`)) {
-                                let text = readFileSync(`${process.cwd()}/assets/texts/${file}.txt`, "utf-8")
-                                interaction.channel.send({ content: text })
-                                sendInfo(interaction, `Text ${file} wurde gesendet.`, true, true)
-                            } else {
-                                sendError(interaction, `Text ${file} existiert nicht.`, true, true)
-                            }
-                        } catch (e) {
-                            sendError(interaction, "File not found", true, true)
+                    try {
+                        if (existsSync(`${process.cwd()}/assets/texts/${file}.txt`)) {
+                            let text = readFileSync(`${process.cwd()}/assets/texts/${file}.txt`, "utf-8")
+                            interaction.channel.send({ content: text })
+                            sendInfo(interaction, `Text ${file} wurde gesendet.`, true, true)
+                        } else {
+                            sendError(interaction, `Text ${file} existiert nicht.`, true, true)
                         }
+                    } catch (e) {
+                        sendError(interaction, "File not found", true, true)
                     }
                     break
 
@@ -122,6 +117,32 @@ module.exports = {
                     break
 
                 case "extra":
+                    // if file is a file
+                    switch (args[1].toLowerCase()) {
+                        case "information":
+                            for (let file of data.commands.send.information.infoAssets) {
+                                console.log(file);
+                                switch (file.type) {
+                                    case "TEXT":
+                                        const text = readFileSync(`${process.cwd()}/assets/extra/information/text/${file.file}`, "utf-8")
+                                        await interaction.channel.send(text)
+                                        break
+                                    case "IMAGE":
+                                        await interaction.channel.send({ files: [`${process.cwd()}/assets/extra/information/images/${file.file}`] })
+                                        break
+                                    case "EMBED":
+                                        break
+
+                                    default:
+                                        break
+                                }
+                            }
+
+                        default:
+                            sendError(interaction, "Invalid type", true, true)
+                            break
+                    }
+                    sendInfo(interaction, `Text **Information** wurde gesendet.`, false, true)
                     break
 
                 default:

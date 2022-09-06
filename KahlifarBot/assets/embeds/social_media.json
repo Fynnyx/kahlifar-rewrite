@@ -1,29 +1,35 @@
 {
-    "embed": {
-        "title": "Social Media Links für Kahlifar",
-        "description": "Hier findest du die Social Media Links für Kahlifar\nBesuche https://kahlifar.de/socials/ für genauere Informationen",
-        "color": 9442302,
-        "fields": [
-            {
-                "name": "Discord",
-                "value": "[Kahlifar - Community Discord](https://kahlifar.de/discord)",
-                "inline": false
-            },
-            {
-                "name": "Twitter",
-                "value": "[@OffKahlifar](https://twitter.com/twitter)",
-                "inline": false
-            },
-            {
-                "name": "YouTube",
-                "value": "[Kahlifar](https://kahlifar.de/youtube)",
-                "inline": false
-            },
-            {
-                "name": "Instagram",
-                "value": "[@kahlifar_](https://kahlifar.de/instagram)",
-                "inline": false
-            }
-        ]
-    }
+    "title": "Social Media Links für Kahlifar",
+    "description": "Hier findest du die Social Media Links für Kahlifar\nBesuche https://kahlifar.de/socials/ für genauere Informationen",
+    "color": 9442302,
+    "fields": [
+        {
+            "name": "Webseite",
+            "value": "[Kahlifar - Community Page](https://kahlifar.de)"
+        },
+        {
+            "name": "Discord",
+            "value": "[Kahlifar - Community Discord](https://kahlifar.de/discord)",
+            "inline": false
+        },
+        {
+            "name": "YouTube",
+            "value": "[Kahlifar](https://kahlifar.de/youtube)",
+            "inline": false
+        },
+        {
+            "name": "Twitter",
+            "value": "[@OffKahlifar](https://kahlifar.de/twitter)",
+            "inline": false
+        },
+        {
+            "name": "Twitch",
+            "value": "[ttv/kahlifar](https://kahlifar/twitch)"
+        },
+        {
+            "name": "Instagram",
+            "value": "[@kahlifar_](https://kahlifar.de/instagram)",
+            "inline": false
+        }
+    ]
 }

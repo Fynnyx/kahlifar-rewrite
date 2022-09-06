@@ -48,12 +48,38 @@
             "link": "https://statbot.net/dashboard/814230131681132605/overview"
         },
         "send": {
-            "infoList": [
-                "info",
-                "infos",
-                "information",
-                "informations"
-            ]
+            "information": {
+                "infoAssets": [
+                    {
+                        "type": "IMAGE",
+                        "file": "welcome.png"
+                    },
+                    {
+                        "type": "TEXT",
+                        "file": "infoWelcome1.txt"
+                    },
+                    {
+                        "type": "IMAGE",
+                        "file": "channels.png"
+                    },
+                    {
+                        "type": "TEXT",
+                        "file": "infoChannels.txt"
+                    },
+                    {
+                        "type": "IMAGE",
+                        "file": "rollen.png"
+                    },
+                    {
+                        "type": "TEXT",
+                        "file": "infoRoles1.txt"
+                    },
+                    {
+                        "type": "TEXT",
+                        "file": "infoRoles2.txt"
+                    }
+                ]
+            }
         }
     },
     "helpers": {
