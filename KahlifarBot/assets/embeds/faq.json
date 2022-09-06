@@ -10,12 +10,12 @@
         },
         {
             "name": "`Q:` Warum bin ich auf dem Minecraft Server nicht gewhitelisted?",
-            "value": "**A:** *Benutze `/bewerbung minecraft` um dich für den Minecraft Server zu bewerben. Du wirst dann automatisch gewhitelisted.*",
+            "value": "**A:** *Benutze </bwerbung minecraft:940145441373315152> um dich für den Minecraft Server zu bewerben. Du wirst dann automatisch gewhitelisted.*",
             "inline": false
         },
         {
             "name": "`Q:` Wie kann ich meinen Freund einladen?",
-            "value": "**A:** *Um den Invitelink des Discords zu bekommen, benutze `/discord`. Der Link ist https://kahlifar.de/discord*",
+            "value": "**A:** *Um den Invitelink des Discords zu bekommen, benutze </discord:938370061289275403>. Der Link ist https://kahlifar.de/discord*",
             "inline": false
         }
     ]

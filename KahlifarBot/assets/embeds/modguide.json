@@ -4,19 +4,85 @@
     "color": "#fb8500",
     "fields": [
         {
-            "name": "Aufgaben:",
+            "name": "-------\nAufgaben:",
             "value": "\u200b",
             "inline": false
         },
         {
-            "name": "Field 2",
-            "value": "This is the second Field. is inline",
-            "inline": true
+            "name": "Auf Regelverstösse achten",
+            "value": "Kenne die Regeln und achte darauf das diese eingehalten werden.\nHandle bei einem Regelverstoss sofort und fair.",
+            "inline": false
         },
         {
-            "name": "Field 3",
-            "value": "This is the third Field. not inline",
+            "name": "Community vertreten",
+            "value": "Bringe Wünsche der Community als Vorschläge zu den Ownern.\n*Vertrete auch deine eigene Meinung*",
             "inline": false
-        }
+        },
+        {
+            "name": "Hilfe anbieten und Fragen stellen",
+            "value": "Helfe bei Schwierigkeiten rund um den Server.\nBeantworte Fragen oder leite sie weiter.",
+            "inline": false
+        },
+        {
+            "name": "Owner unterstützen",
+            "value": "Unterstütze die Owner bei kleinen Aufgaben.\n*Zum Beispiel Events usw.*",
+            "inline": false
+        },
+        {
+            "name": "Bewebrungen bearbeiten",
+            "value": "Bearbeite Bewerbungen in <#929669352519761961>",
+            "inline": false
+        },
+
+        {
+            "name": "-------\nVerhaltensregeln:",
+            "value": "\u200b",
+            "inline": false
+        },
+        {
+            "name": "Respektvoll und fair",
+            "value": "Sei respektvoll und fair gegenüber allen Usern.",
+            "inline": false
+        },
+        {
+            "name": "Vertrete deine Meinung",
+            "value": "Vertrete deine Meinung in einem respektvollen Ton.",
+            "inline": false
+        },
+        {
+            "name": "Vertrete die Community",
+            "value": "Vertrete die Community in einem guten Bild nach aussen. Verhalte dich professionell.",
+            "inline": false
+        },
+        {
+            "name": "Halte dich an die Regeln",
+            "value": "So wie sich andere an die Regeln halten, halte dich auch an die Regeln.",
+            "inline": false
+        },
+        {
+            "name": "Rechte",
+            "value": "Verwende deine Rechte nur in nötigen Situationen.",
+            "inline": false
+        },
+        {
+            "name": "Rechte in eingewickelten Situationen",
+            "value": "Benutze deine Rechte nicht in Situationen in welchen du eingewickelt bist.\n*Eskaliert die Situation stark muss dagegen vorgegangen werden*",
+            "inline": false
+        },
+        {
+            "name": "Grund bei Verwarnungen etc.",
+            "value": "Gib immer einen Grund für Timeouts, Kicks und Banns an.",
+            "inline": false
+        },
+        {
+            "name": "Gegen kleine Personengruppen",
+            "value": "Reden nicht mit mehreren Personen auf eine kleinere Personengruppe oder Einzelperson ein.",
+            "inline": false
+        },
+        {
+            "name": "Selstkritisch",
+            "value": "Bleibe selbstkritisch.",
+            "inline": false
+        }        
     ]
 }
