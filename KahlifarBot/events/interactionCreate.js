@@ -44,15 +44,16 @@ client.on('interactionCreate', async interaction => {
 				case "ageroles":
 					interaction.component.options.map(role => {
 						let removerole = interaction.guild.roles.cache.get(role.value);
-						// remove role from member
-						interaction.member.roles.remove(removerole)
+						if (interaction.member.roles.cache.has(removerole.id)) {
+							interaction.member.roles.remove(removerole)
+						}
 					})
 					interaction.values.map(option => {
 						let addrole = interaction.guild.roles.cache.get(option);
 						// add role to member
 						interaction.member.roles.add(addrole);
 					})
-					interaction.reply({ content: "Roles updated", ephemeral: true });
+					sendSuccess(interaction, "Rollen geändert!", false, true);
 					break
 
 				default:
