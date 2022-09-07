@@ -51,3 +51,31 @@ exports.unbanUser = async (id) => {
         return `The user ${user.tag} is not banned from the Modmail System.`
     }
 }
+
+exports.isReplying = async (id) => {
+    const replylist = JSON.parse(readFileSync("./modmail.json", "utf8"))
+    if (replylist.replylist.includes(`${id}`)) {
+        return true
+    }
+    return false
+}
+
+exports.addReplyUser = async (id) => {
+    const replylist = JSON.parse(readFileSync("./modmail.json", "utf8"))
+    if (!await this.isReplying(id)) {
+        replylist.replylist.push(`${id}`)
+        writeFile("./modmail.json", JSON.stringify(replylist, null, 4), (err) => {
+            if (err) console.log(err)
+        })
+    }
+}
+
+exports.removeReplyUser = async (id) => {
+    const replylist = JSON.parse(readFileSync("./modmail.json", "utf8"))
+    if (await this.isReplying(id)) {
+        replylist.replylist.splice(replylist.replylist.indexOf(`${id}`), 1)
+        writeFile("./modmail.json", JSON.stringify(replylist, null, 4), (err) => {
+            if (err) console.log(err)
+        })
+    }
+}
