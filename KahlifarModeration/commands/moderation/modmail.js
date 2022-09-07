@@ -1,6 +1,7 @@
 const { sendInfo } = require('../../helpers/send');
 const { banUser, unbanUser } = require('../../helpers/modmail');
-const { Client, CommandInteraction } = require("discord.js")
+const { Client, CommandInteraction, MessageEmbed } = require("discord.js")
+const { readFileSync } = require("fs")
 const logger = require("../../handlers/logger");
 const data = require(`${process.cwd()}/properties.json`)
 
@@ -35,6 +36,11 @@ module.exports = {
                     required: true
                 }
             ]
+        },
+        {
+            name: "banlist",
+            description: "Get the banlist from the modmail system",
+            type: "SUB_COMMAND",
         }
     ],
 
@@ -54,6 +60,20 @@ module.exports = {
                 case "unban":
                     const uUser = await client.users.fetch(args[1])
                     sendInfo(interaction, await unbanUser(uUser.id), false, true)
+                    break;
+                case "banlist":
+                    const banlist = JSON.parse(readFileSync("./modmail.json", "utf8"))
+                    var bannedUserString = ""
+                    for (let bannedUser of banlist.banlist) {
+                        bannedUserString += `- <@${bannedUser}>,\n`
+                    }
+                    const banlistEmbed = new MessageEmbed()
+                        .setTitle("Modmail Banlist")
+                        .setDescription("Listed below are the users which arent alowed to use the modmail.\nUse the `/modmail` commands to ban and unban users.")
+                        .setColor(data.helpers.send.colors.info)
+                        .addField("Banned Users:", (bannedUserString === "" ? "*No users are banned at the moment*" : bannedUserString))
+
+                    interaction.reply({embeds: [banlistEmbed]})
                     break;
                 default:
                     sendInfo(interaction, "I cant find running code for this interaction.", true, true);

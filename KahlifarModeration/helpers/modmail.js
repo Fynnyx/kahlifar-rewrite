@@ -1,6 +1,7 @@
 const { readFileSync, writeFile } = require("fs")
 const { MessageEmbed } = require("discord.js")
 const client = require("../index.js")
+const { logToModConsole } = require("./logToModConsole.js")
 const data = require(`${process.cwd()}/properties.json`)
 
 exports.isBanned = async (id) => {
@@ -16,7 +17,7 @@ exports.banUser = async (id) => {
     const banlist = JSON.parse(readFileSync("./modmail.json", "utf8"))
     if (!await this.isBanned(id)) {
         banlist.banlist.push(`${id}`)
-        writeFile("./modmail.json", JSON.stringify(banlist), (err) => {
+        writeFile("./modmail.json", JSON.stringify(banlist, null, 4), (err) => {
             if (err) console.log(err)
         })
         const bannInfoEmbed = new MessageEmbed()
@@ -24,6 +25,7 @@ exports.banUser = async (id) => {
             .setColor(data.helpers.send.colors.info)
 
         await user.send({ embeds: [bannInfoEmbed] })
+        await logToModConsole("Modmail Ban", `<@${user.id}> has been **banned** from using modmail.`, data.helpers.send.colors.info)
         return `Successfully banned ${user.tag} from the Modmail System.`
     } else {
         return `The user ${user.tag} is already banned from the Modmail System.`
@@ -35,7 +37,7 @@ exports.unbanUser = async (id) => {
     const banlist = JSON.parse(readFileSync("./modmail.json", "utf8"))
     if (await this.isBanned(id)) {
         banlist.banlist.splice(banlist.banlist.indexOf(`${id}`), 1)
-        writeFile("./modmail.json", JSON.stringify(banlist), (err) => {
+        writeFile("./modmail.json", JSON.stringify(banlist, null, 4), (err) => {
             if (err) console.log(err)
         })
         const bannInfoEmbed = new MessageEmbed()
@@ -43,6 +45,7 @@ exports.unbanUser = async (id) => {
             .setColor(data.helpers.send.colors.info)
 
         await user.send({ embeds: [bannInfoEmbed] })
+        await logToModConsole("Modmail Unban", `<@${user.id}> has been **unbanned** from using modmail.`, data.helpers.send.colors.info)
         return `Successfully unbanned ${user.tag} from the Modmail System.`
     } else {
         return `The user ${user.tag} is not banned from the Modmail System.`

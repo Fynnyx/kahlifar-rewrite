@@ -3,11 +3,12 @@ const { disableButtons } = require('../helpers/components.js');
 const { getIdFromString } = require('../helpers/getIdFromString.js');
 const { sendError, sendInfo } = require('../helpers/send.js');
 const { verifyMember } = require('../helpers/verify.js');
-const { isBanned, banUser } = require('../helpers/modmail.js');
+const { banUser } = require('../helpers/modmail.js');
 const { logToModConsole } = require('../helpers/logToModConsole.js');
 const client = require('../index.js');
-const { MessageEmbed } = require("discord.js");
+const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
 const logger = require("../handlers/logger.js");
+const { sleep } = require("../helpers/sleep.js");
 const data = require(`${process.cwd()}/properties.json`)
 const modmailData = require(`${process.cwd()}/modmail.json`)
 
@@ -53,18 +54,17 @@ client.on('interactionCreate', async interaction => {
 
 	if (interaction.isButton()) {
 		switch (interaction.customId) {
-			case "modmailconfirmation":
-				interaction.message.edit({ components: [await disableButtons(interaction.message.components)] });
-				break;
-			case "modmaildeny":
-				interaction.message.edit({ components: [await disableButtons(interaction.message.components)] });
-				interaction.reply({ content: "📨 - Mail **hasn't** been sent.", ephemeral: true });
-				break;
-
 			case "verify":
 				verifyMember(interaction);
 				break
 
+			case "modmailconfirmation":
+				interaction.message.delete();
+				break;
+			case "modmaildeny":
+				interaction.message.delete();
+				interaction.reply({ content: "📨 - Mail **hasn't** been sent.", ephemeral: true });
+				break;
 			case "modmailreply":
 				interaction.reply({ content: "Write your reply to the chat to reply.", ephemeral: true });
 				var mailmsg = interaction.message
@@ -72,12 +72,29 @@ client.on('interactionCreate', async interaction => {
 				interaction.channel.awaitMessages({ filter: replyFilter, max: 1, time: 60000, errors: ['time'] })
 					.then(async (collected) => {
 						message = collected.first();
-						let id = await getIdFromString(interaction.message.embeds[0].description)
+						const modmailMessageEmbed = interaction.message.embeds[0]
+						let id = await getIdFromString(modmailMessageEmbed.description)
 						const user = await client.users.fetch(id)
-						user.send(`Reply received ` + message.content)
+						const modmailReplyEmbed = new MessageEmbed(modmailMessageEmbed)
+						modmailReplyEmbed
+							.addField(`Reply from ${interaction.user.tag} (Staff Team)`, message.content)
+							.setTimestamp()
+						await user.send({embeds: [modmailReplyEmbed]})
 						sendInfo(message, `Send Reply to <@${user.id}> with the content\n\n${message.content}`, true, false);
 						message.delete();
-						mailmsg.edit({ components: [await disableButtons(mailmsg.components)] });
+						const row = new MessageActionRow()
+							.addComponents(
+								new MessageButton()
+									.setCustomId("replysend")
+									.setLabel("Your Reply has been sent.")
+									.setStyle("SECONDARY")
+									.setDisabled(true)
+							)
+						mailmsg.edit({ embeds: [modmailReplyEmbed], components: [row] })
+						await sleep(150)
+						if (mailmsg.deletable) {
+							mailmsg.delete()
+						}
 					}).catch((e) => {
 						logger.error(e)
 					})

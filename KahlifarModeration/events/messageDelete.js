@@ -14,6 +14,7 @@ client.on('messageDelete', async (message) => {
 	const deletionLog = fetchedLogs.entries.first();
     if (message.author === null) return;
 	if (message.author.bot) return;
+	if (data.events.messagedelete.ignoredChannels.includes(message.channel.id)) return;
 
 	// Perform a coherence check to make sure that there's *something*
 	if (!deletionLog) return logToModConsole("🗑 - Message deleted", `A message by ${message.author.tag} was deleted, but no relevant audit logs were found.\n\n**Message Content**\n${message.content}\n\n**Message Channel**\n${message.channel}`, data.helpers.send.colors.warning);

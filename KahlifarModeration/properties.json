@@ -49,6 +49,14 @@
         },
         "blacklist": {
             "warnmsg": "`                 [❌🛂]                 `\nHey, you used a **`blacklisted`** word/phrase.\nIf the offense is repeated, measures will be taken.\n\n*You used: `%WORD%`.*"
+        },
+        "messagedelete": {
+            "ignoredChannels": [
+                "895547488184975361",
+                "940579731575820288",
+                "814230132147224647",
+                "930362449738231838"
+            ]
         }
     }
 }
