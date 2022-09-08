@@ -1,4 +1,4 @@
-Merke ❗: Jeder Channel sollte eine Beschreibung haben. Dort findest immer Informationen für was der Channel geeignet ist.
+Merke ❗: Jeder Channel sollte eine Beschreibung haben. Dort findest du immer Informationen für was der Channel geeignet ist.
 
 `                     == WELCOME CATEGORY ==                     `
 
@@ -19,7 +19,7 @@ Es funktioniert wie folgt:
   - Der Bot leitet die Nachricht an die Moderatoren weiter.
   - Die Moderatoren werden dir dann auf deine Nachricht antworten.
 
-Merke ❗: Das Abusen des Modmails wird erstmal mit einem Ban vom Modmail bestraft. Weiters Abusen mit einem kompletten Ausschluss vom Discord. 
+Merke ❗: Das Abusen des Modmails wird erstmal mit einem Ban vom Modmail bestraft. Weiters Abusen mit einem kompletten Ausschluss vom Discord Server. 
 
 `                     == SELF ROLES ==                     `
 
