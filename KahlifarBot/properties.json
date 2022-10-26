@@ -113,8 +113,8 @@
             "notificationRole": "941712142112002048"
         },
         "videoNotification": {
-            "intervalMinutes": 0.1,
-            "notificationChannel": "912659656038567967",
+            "intervalMinutes": 3,
+            "notificationChannel": "942074209037856860",
             "notificationRole": "941712142112002048"
         }
     },
