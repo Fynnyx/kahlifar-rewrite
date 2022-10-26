@@ -6,13 +6,19 @@ const data = require('../properties.json');
 const streamerData = require('../streamer.json');
 const logger = require('../handlers/logger');
 
+
+
+const requestData = {
+    headers: {
+        'Client-ID': process.env.CLIENTID
+    }
+}
+
 exports.startNotifications = async () => {
-
-    axios.defaults.headers.common['Client-ID'] = process.env.CLIENTID;
-    axios.defaults.headers.common['Authorization'] = `Bearer ${await getOAuthToken()}`;
-
     const notificationInterval = setInterval(async () => {
         try {
+            const jwt = await getOAuthToken()
+            requestData.headers.Authorization = `Bearer ${jwt}`
             streamerData.streamer.forEach(async streamer => {
                 try {
                     var index = streamerData.streamer.indexOf(streamer);
@@ -28,7 +34,7 @@ exports.startNotifications = async () => {
                         if (streamer.lastStreamId !== streamData.id) {
                             streamerData.streamer[index].lastStreamId = streamData.id
 
-                            let JSONData = JSON.stringify(streamerData, null, 2)
+                            const JSONData = JSON.stringify(streamerData, null, 2)
                             writeFileSync('./streamer.json', JSONData)
 
                             const startDate = new Date(streamData.started_at)
@@ -99,12 +105,12 @@ exports.startNotifications = async () => {
 
 
 async function getOAuthToken() {
-    const response = await axios.post(`https://id.twitch.tv/oauth2/token?client_id=${process.env.CLIENTID}&client_secret=${process.env.CLIENTSECRET}&grant_type=client_credentials`)
+    const response = await axios.post(`https://id.twitch.tv/oauth2/token?client_id=${process.env.CLIENTID}&client_secret=${process.env.CLIENTSECRET}&grant_type=client_credentials`, requestData)
     return response.data.access_token
 }
 
 async function checkIsLive(streamerName) {
-    const response = await axios.get(`https://api.twitch.tv/helix/streams?user_login=${streamerName}`)
+    const response = await axios.get(`https://api.twitch.tv/helix/streams?user_login=${streamerName}`, requestData)
     if (response.data.data.length > 0) {
         return true
     } else {
@@ -113,16 +119,16 @@ async function checkIsLive(streamerName) {
 }
 
 async function getStreamData(streamerName) {
-    const response = await axios.get(`https://api.twitch.tv/helix/streams?user_login=${streamerName}`)
+    const response = await axios.get(`https://api.twitch.tv/helix/streams?user_login=${streamerName}`, requestData)
     return response.data.data[0]
 }
 
 async function getStreamFollower(streamerId) {
-    const response = await axios.get(`https://api.twitch.tv/helix/users/follows?to_id=${streamerId}`)
+    const response = await axios.get(`https://api.twitch.tv/helix/users/follows?to_id=${streamerId}`, requestData)
     return response.data
 }
 
 async function getChannelData(channelId) {
-    const response = await axios.get(`https://api.twitch.tv/helix/users?id=${channelId}`)
+    const response = await axios.get(`https://api.twitch.tv/helix/users?id=${channelId}`, requestData)
     return response.data.data[0]
 }
