@@ -72,7 +72,7 @@ exports.startVideoNotifications = async () => {
 }
 
 async function checkHasNewVideo(channel) {
-    const response = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=UCNis5z5HX_cVCiqOLVsZRZw&maxResults=10&order=date&type=video&key=AIzaSyAAD_ZTm_0FREQ31zTr2rBPIUUDNlQYOZw`);
+    const response = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=UCNis5z5HX_cVCiqOLVsZRZw&maxResults=10&order=date&type=video&key=${process.env.YT_API_KEY}`);
     if (response.data.items.length === 0) {
         return false;
     } else if (response.data.items[0].id.videoId === channel.lastVideoId) {
