@@ -39,7 +39,7 @@
     },
     {
       "name": "- §08 -",
-      "value": "Jeder hat die Möglichkeit sich einen Nickname zu geben, dieser darf jedoch nicht gleich oder so ähnlich wie der Name eines anderen Mitgliedes sein sowie kein sexistischer, rassistischer, beleidigend oder ähnlichem sein für jemand anderen. Das selbe gilt für die Profilbilder. Die einzigen Ausnahmen sind die eigenen 2. Accounts und mit Erlaubnis der Owner!",
+      "value": "Jeder hat die Möglichkeit sich einen Nickname zu geben, ist der Nickname gleich wie ein anderes Mitglied so muss ein Indikator am Ende gesetzt werden (z.B. 'Chamber | eertt' u. 'Chamber | Fynnyx'. Nicknamen dürfen nicht sexistisch, rassistisch, beleidigend oder ähnlichem sein für jemand anderen. Die einzigen Ausnahmen sind die eigenen 2. Accounts und mit Erlaubnis der Owner!",
       "inline": false
     },
     {
@@ -55,6 +55,11 @@
     {
       "name": "- §11 -",
       "value": "Unwissenheit schützt vor Strafe nicht! Wer diesem Server joined hat automatisch die Regeln zu befolgen.",
+      "inline": false
+    },
+    {
+      "name": "- §12 -",
+      "value": "Benutze die richtigen Channel für die richtigen Konversationen. (z.B. <#814253309661282366> für Bilder)",
       "inline": false
     },
     {
