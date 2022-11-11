@@ -13,8 +13,8 @@ client.on("ready", async () => {
         startStatus()
         console.info(`Starting stream notification task`)
         startNotifications()
-        console.info("Starting video notification task");
-        startVideoNotifications()
+        // console.info("Starting video notification task");
+        // startVideoNotifications()
         console.info(`\x1b[33m${client.user.username}\x1b[34m, logged in\x1b[0m`)
     } catch (e) {
         logger.error(e)
