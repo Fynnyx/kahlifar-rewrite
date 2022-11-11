@@ -5,6 +5,7 @@ const { getIdFromString } = require('../helpers/bewerbung.js');
 const client = require('../index.js');
 const { default: axios } = require('axios');
 const logger = require('../handlers/logger');
+const { logToModConsole } = require('../helpers/logToModConsole.js');
 const data = require(`${process.cwd()}/properties.json`)
 
 
@@ -84,17 +85,20 @@ client.on('interactionCreate', async interaction => {
 								interaction.message.delete();
 								interaction.reply({ content: "✅Bewerbung akzeptiert", ephemeral: true });
 							}
+							await logToModConsole("Bewerbung", `${member}'s Bewerbung wurde von <@${interaction.member.id}>  **akzeptiert**.`, data.helpers.send.colors.info)
 						})
 						break
 
 					case "bew-mc-decline":
-						getIdFromString(interaction.message.embeds[0].description).then(id => {
+						getIdFromString(interaction.message.embeds[0].description)
+						.then(id => {
 							let member = interaction.guild.members.cache.get(id);
 							member.send(data.commands.bewerbung.messages.deny)
+							logToModConsole("Bewerbung", `${member}'s Bewerbung wurde von ${interaction.member} **abgelehnt**.`, data.helpers.send.colors.info)
+
 						})
 						interaction.message.delete();
 						interaction.reply({ content: "❌Bewerbung abgelehnt", ephemeral: true });
-
 						break
 
 					case "bew-ark-accept":

@@ -1,5 +1,6 @@
 {
     "deleteTime": 3,
+    "modconsole": "930362449738231838",
     "commands": {
         "status": {
             "default": "Use the /help command.",
