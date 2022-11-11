@@ -4,7 +4,9 @@
     "commands": {
         "status": {
             "default": "Use the /help command.",
-            "time": 5
+            "time": 5,
+            "streamCheckTime": 1,
+            "kahlifarTwitch": "kahlifar"
         },
         "streamer": {
             "streamerRole": "920772486298222602",

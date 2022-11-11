@@ -1,7 +1,7 @@
 const axios = require('axios');
 const { writeFileSync } = require('fs');
 const { MessageEmbed, MessageActionRow, MessageButton } = require('discord.js');
-const { getOAuthToken } = require('./twitch')
+const { getOAuthToken, checkIsLive } = require('./twitch')
 const client = require('../index');
 const data = require('../properties.json');
 const streamerData = require('../streamer.json');
@@ -103,28 +103,6 @@ exports.startNotifications = async () => {
             logger.error(e)
         }
     }, data.helpers.streamerNotification.intervalMinutes * 60 * 1000);
-}
-
-async function checkIsLive(streamerName) {
-    try {
-        const response = await axios.get(`https://api.twitch.tv/helix/streams?user_login=${streamerName}`, requestData)
-        if (response.data.data.length > 0) {
-            return true
-        } else {
-            return false
-        }
-    } catch (e) {
-        logger.error("Error in checkIsLive\n" + e)
-    }
-}
-
-async function getStreamData(streamerName) {
-    try {
-        const response = await axios.get(`https://api.twitch.tv/helix/streams?user_login=${streamerName}`, requestData)
-        return response.data.data[0]
-    } catch (e) {
-        logger.error("Error in getStreamData\n" + e)
-    }
 }
 
 async function getStreamFollower(streamerId) {
