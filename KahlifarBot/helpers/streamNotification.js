@@ -1,6 +1,7 @@
 const axios = require('axios');
 const { writeFileSync } = require('fs');
 const { MessageEmbed, MessageActionRow, MessageButton } = require('discord.js');
+const { getOAuthToken } = require('./twitch')
 const client = require('../index');
 const data = require('../properties.json');
 const streamerData = require('../streamer.json');
@@ -29,7 +30,7 @@ exports.startNotifications = async () => {
                         if (streamData === undefined) {
                             return logger.info("StreamerData is undefined")
                         }
-                        const streamFollwer = await getStreamFollower(streamData.user_id)
+                        const streamFollower = await getStreamFollower(streamData.user_id)
                         const channelData = await getChannelData(streamData.user_id)
 
                         if (streamer.lastStreamId !== streamData.id) {
@@ -67,7 +68,7 @@ exports.startNotifications = async () => {
                                     },
                                     {
                                         name: "Follower:",
-                                        value: `${streamFollwer.total}`,
+                                        value: `${streamFollower.total}`,
                                         inline: true
                                     },
                                     {
@@ -102,20 +103,6 @@ exports.startNotifications = async () => {
             logger.error(e)
         }
     }, data.helpers.streamerNotification.intervalMinutes * 60 * 1000);
-}
-
-
-async function getOAuthToken() {
-    try {
-        const response = await axios.post('https://id.twitch.tv/oauth2/token', {
-            client_id: process.env.CLIENTID,
-            client_secret: process.env.CLIENTSECRET,
-            grant_type: 'client_credentials'
-        })
-        return response.data.access_token
-    } catch (e) {
-        logger.error("Error in getOAuthToken\n" + e)
-    }
 }
 
 async function checkIsLive(streamerName) {
