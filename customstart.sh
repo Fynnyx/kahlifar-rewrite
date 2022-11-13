@@ -19,7 +19,7 @@ do
 		echo "[Info] - Installing missing packages ..."
 		npm install
 		echo "[Info] - Starting bot ..."
-		pm2 start index.js ${BOTFOLDER,,}
+		pm2 start index.js --name ${BOTFOLDER,,}
 		echo "${bold}[Info] - Started $BOTFOLDER${normal}"
     fi
 done
