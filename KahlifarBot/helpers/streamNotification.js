@@ -1,16 +1,18 @@
 const axios = require('axios');
 const { writeFileSync } = require('fs');
 const { MessageEmbed, MessageActionRow, MessageButton } = require('discord.js');
+const { getOAuthToken, checkIsLive } = require('./twitch')
 const client = require('../index');
 const data = require('../properties.json');
 const streamerData = require('../streamer.json');
 const logger = require('../handlers/logger');
 
-
+let jwt = null
 
 const requestData = {
     headers: {
-        'Client-ID': process.env.CLIENTID
+        'Client-ID': process.env.CLIENTID,
+        'Authorization': `Bearer ${jwt}`
     }
 }
 
@@ -28,7 +30,7 @@ exports.startNotifications = async () => {
                         if (streamData === undefined) {
                             return logger.info("StreamerData is undefined")
                         }
-                        const streamFollwer = await getStreamFollower(streamData.user_id)
+                        const streamFollower = await getStreamFollower(streamData.user_id)
                         const channelData = await getChannelData(streamData.user_id)
 
                         if (streamer.lastStreamId !== streamData.id) {
@@ -38,7 +40,7 @@ exports.startNotifications = async () => {
                             writeFileSync('./streamer.json', JSONData)
 
                             const startDate = new Date(streamData.started_at)
-                            const startedString = `${startDate.getHours()}:${startDate.getMinutes()}:${startDate.getSeconds()}\n${startDate.getDate()}.${startDate.getMonth()+1}.${startDate.getFullYear()}`
+                            const startedString = `${startDate.getHours()}:${startDate.getMinutes()}:${startDate.getSeconds()}\n${startDate.getDate()}.${startDate.getMonth() + 1}.${startDate.getFullYear()}`
 
                             var notEmbed = new MessageEmbed()
                                 .setTitle(`🔴 - ${streamData.user_name} streamt ${streamData.game_name}`)
@@ -66,7 +68,7 @@ exports.startNotifications = async () => {
                                     },
                                     {
                                         name: "Follower:",
-                                        value: `${streamFollwer.total}`,
+                                        value: `${streamFollower.total}`,
                                         inline: true
                                     },
                                     {
@@ -103,32 +105,20 @@ exports.startNotifications = async () => {
     }, data.helpers.streamerNotification.intervalMinutes * 60 * 1000);
 }
 
-
-async function getOAuthToken() {
-    const response = await axios.post(`https://id.twitch.tv/oauth2/token?client_id=${process.env.CLIENTID}&client_secret=${process.env.CLIENTSECRET}&grant_type=client_credentials`, requestData)
-    return response.data.access_token
-}
-
-async function checkIsLive(streamerName) {
-    const response = await axios.get(`https://api.twitch.tv/helix/streams?user_login=${streamerName}`, requestData)
-    if (response.data.data.length > 0) {
-        return true
-    } else {
-        return false
+async function getStreamFollower(streamerId) {
+    try {
+        const response = await axios.get(`https://api.twitch.tv/helix/users/follows?to_id=${streamerId}`, requestData)
+        return response.data
+    } catch (e) {
+        logger.error("Error in getStreamFollower\n" + e)
     }
 }
 
-async function getStreamData(streamerName) {
-    const response = await axios.get(`https://api.twitch.tv/helix/streams?user_login=${streamerName}`, requestData)
-    return response.data.data[0]
-}
-
-async function getStreamFollower(streamerId) {
-    const response = await axios.get(`https://api.twitch.tv/helix/users/follows?to_id=${streamerId}`, requestData)
-    return response.data
-}
-
 async function getChannelData(channelId) {
-    const response = await axios.get(`https://api.twitch.tv/helix/users?id=${channelId}`, requestData)
-    return response.data.data[0]
+    try {
+        const response = await axios.get(`https://api.twitch.tv/helix/users?id=${channelId}`, requestData)
+        return response.data.data[0]
+    } catch (e) {
+        logger.error("Error in getChannelData\n" + e)
+    }
 }

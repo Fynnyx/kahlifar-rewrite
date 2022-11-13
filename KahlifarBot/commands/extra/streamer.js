@@ -3,6 +3,7 @@ const { Client, CommandInteraction, MessageEmbed } = require("discord.js")
 const { writeFileSync } = require("fs")
 const logger = require("../../handlers/logger")
 const { sendError, sendInfo, sendWarn } = require("../../helpers/send")
+const { getOAuthToken } = require("../../helpers/twitch")
 const data = require(`${process.cwd()}/properties.json`)
 const streamData = require(`${process.cwd()}/streamer.json`)
 
@@ -76,10 +77,21 @@ module.exports = {
                         return sendError(interaction, "Du hast keine Berechtigung für diesen Befehl!", false, true)
                     }
                     args[1] = args[1].toLowerCase()
-                    const response = await axios.get(`https://api.twitch.tv/helix/users?login=${args[1]}`)
-                        .catch(err => {
-                            return sendError(interaction, response.data.error, true)
+                    let response;
+                    try {
+                        const jwt = await getOAuthToken()
+                        response = await axios.get(`https://api.twitch.tv/helix/users?login=${args[1]}`, {
+                            headers: {
+                                "Authorization": `Bearer ${jwt}`,
+                                "Client-Id": process.env.CLIENTID
+                            }
                         })
+                    } catch (error) {
+                        logger.error(error)
+                        return sendError(interaction, "An Error occured!", false, true)
+                    }
+
+
                     if (await isRegisteredStreamer(args[1])) {
                         return sendError(interaction, `Streamer ${"`" + args[1] + "`"} is already registered.`, true)
                     }

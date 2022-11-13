@@ -29,12 +29,12 @@ module.exports = {
                     type: "STRING",
                     required: true
                 },
-                {
-                    name: "entdeckung",
-                    description: "WIe bist du auf Kahlifar gestossen?",
-                    type: "STRING",
-                    required: true
-                },
+                // {
+                //     name: "entdeckung",
+                //     description: "WIe bist du auf Kahlifar gestossen?",
+                //     type: "STRING",
+                //     required: true
+                // },
                 {
                     name: "weiteres",
                     description: "Weiters was du uns erzählen möchtest.",
@@ -120,12 +120,12 @@ module.exports = {
                         .addFields(
                             { name: "Alter:", value: args[1].toString(), inline: true },
                             { name: "Minecraftname", value: args[2], inline: true },
-                            { name: "Entdeckung:", value: args[3], inline: false }
+                            // { name: "Entdeckung:", value: args[3], inline: false }
                         )
                         .setTimestamp()
                         .setFooter({ text: args[2] })
-                    if (args[4]) {
-                        bewEmbed.setDescription(`${interaction.member}: ${args[4]}`)
+                    if (args[3]) {
+                        bewEmbed.setDescription(`${interaction.member}: ${args[3]}`)
                     } else {
                         bewEmbed.setDescription(`${interaction.member}: *Keine weiteren Informationen*.`)
                     }

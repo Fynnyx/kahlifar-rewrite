@@ -4,7 +4,8 @@
   "description": "Personalized Countig Bot to stop Spamming or wrong numbers",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "bot": "cd KahlifarBot && node index.js",
+    "botdev": "cd KahlifarBot && nodemon index.js"
   },
   "repository": {
     "type": "git",
