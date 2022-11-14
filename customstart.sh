@@ -15,11 +15,11 @@ do
 		cd "$WORKINGFOLDER/$BOTFOLDER"
 		echo "${bold}$BOTFOLDER${normal}"
 		echo "[Info] - Stopping the session ..."
-		screen -X -S ${BOTFOLDER,,} kill
+		pm2 delete ${BOTFOLDER,,}
 		echo "[Info] - Installing missing packages ..."
 		npm install
 		echo "[Info] - Starting bot ..."
-		screen -d -m -S ${BOTFOLDER,,} bash -c "node index.js"
+		pm2 start index.js --name ${BOTFOLDER,,}
 		echo "${bold}[Info] - Started $BOTFOLDER${normal}"
     fi
 done
