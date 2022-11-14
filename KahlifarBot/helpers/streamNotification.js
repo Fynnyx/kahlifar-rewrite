@@ -1,7 +1,7 @@
 const axios = require('axios');
 const { writeFileSync } = require('fs');
 const { MessageEmbed, MessageActionRow, MessageButton } = require('discord.js');
-const { getOAuthToken, checkIsLive } = require('./twitch')
+const { getOAuthToken, checkIsLive, getStreamData } = require('./twitch')
 const client = require('../index');
 const data = require('../properties.json');
 const streamerData = require('../streamer.json');
