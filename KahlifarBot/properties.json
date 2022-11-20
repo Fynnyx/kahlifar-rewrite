@@ -12,6 +12,18 @@
             "streamerRole": "920772486298222602",
             "adminRole": "814231323224572006"
         },
+        "event": {
+            "eventCatetegoryId": "936694203428257852",
+            "roles": [
+                "814523816818638868"
+            ],
+            "disabledSyncChannels": [
+                "936695666393096252",
+                "936696553685516339"
+            ],
+            "defaultVCAmount": 3,
+            "degaultVCName": "E-Talk${number}"
+        },
         "bewerbung": {
             "bewChannel": "912444486095884338",
             "modChannel": "929669352519761961",
