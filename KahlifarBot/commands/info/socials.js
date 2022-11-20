@@ -18,7 +18,7 @@ module.exports = {
     run: async (client, interaction, args) => {
         try {
             const socialsEmbed = await getEmbedFromJSON(`${process.cwd()}/assets/embeds/social_media.json`)
-            await interaction.channel.send({ embeds: [socialsEmbed] })
+            await interaction.reply({ embeds: [socialsEmbed] })
         } catch (e) {
             sendError(interaction, "Something went wrong", false, true)
             logger.error(e)
