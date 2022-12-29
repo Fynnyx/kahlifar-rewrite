@@ -3,19 +3,29 @@ __Willkommen__ <@&896865134306279485>  im **Kahlifar Minecraft** Bereich.
 
 Hier hast du Platz für das Kahlifar Minecraft Projekt. Benutze doch gerne auch die hier angelegten Channel wenn es um das Kahlifarprojekt geht.
 
-`-------------- Channels --------------`
 
-<#896862626091511868> - In diesem Channel werden neue Sachen kommuniziert.
-<#896877068187484181> - Regeln auf dem Kahlifar-Server
+`                     == CHANNELS ==                     `
 
-`-------------- Server --------------`
+- <#896862626091511868>  🢂  In diesem Channel werden Informationen und Updates kommuniziert.
+- <#896877068187484181>  🢂  Alle Regeln auf dem Minecraft-Server
+- <#920651056332021780>  🢂  Kommuniziere mit Spielern über Discord wenn du nicht online kommen kannst.
 
-Der Server ist 24/7 online und ist mit einer Whitelist geschützt. Deshalb die "Bewerbung". 
+- <#1052264889781076009> 🢂  Damit jeder weiss wer du in unserem RP spielst.
+- <#1053397667016880188> 🢂  Clans sind hier gelistet und du kannst auch deinen eigenen gründen.
 
-***__Server-IP:__***
-**- kahlifar.de**
+`                      == SERVER ==                      `
 
-`-------------- Plugins --------------`
+Der Server ist 24/7 online und ist mit einer Whitelist geschützt. Deshalb die "Bewerbung".
 
-Ihr könnt die Pluginliste unter diesem Link anschuen.
+***__Server-IP:__*** **kahlifar.de**
+
+
+`                == PLUGINS & DATAPACKS ==               `
+
+Einige Plugins und Datapacks sind auf dem Server installiert. Diese sind öffentlich ersichtlich und können auch auf der Website eingesehen werden.
+Erklärungen zu den Plugins und Datapacks findest du auch auf der Website.
+
 ***Pluginliste:*** <https://kahlifar.de/server#plugins>
+***Datapackliste:*** <https://kahlifar.de/server#datapacks>
+
+***Plugin Erklärung:*** <https://kahlifar.de/plugin-explain>
