@@ -20,26 +20,31 @@
         },
         {
             "name": "- §04 -",
-            "value": "Spielerköpfe müssen bei Aufforderung zurückgegeben werden.",
+            "value": "Das eigene Claim muss ohne Absprache min. 150 Blöcke entfernt von anderen Claims beginnen. Das gilt nicht auf die Höhe. Nach oben und unten ist alles geclaimt.",
             "inline": false
         },
         {
             "name": "- §05 -",
-            "value": "Homes dürfen auf Claims nur von den Angehörigen gesetzt werden. Nicht-Angehörige dürfen dieses nur mit Erlaubnis der angehörigen Person.",
+            "value": "Spielerköpfe müssen bei Aufforderung zurückgegeben werden.",
             "inline": false
         },
         {
             "name": "- §06 -",
-            "value": "Wenn eine angehörige Person eines Claims einem anderen Spieler sagt, dass dieser sein Claim verlassen soll, ist diesem folge zu leisten.",
+            "value": "Homes dürfen auf Claims nur von den Angehörigen gesetzt werden. Nicht-Angehörige dürfen dieses nur mit Erlaubnis der angehörigen Person.",
             "inline": false
         },
         {
             "name": "- §07 -",
+            "value": "Wenn eine angehörige Person eines Claims einem anderen Spieler sagt, dass dieser sein Claim verlassen soll, ist diesem folge zu leisten.",
+            "inline": false
+        },
+        {
+            "name": "- §08 -",
             "value": "Jede Shopart darf nur einmal benutzt werden und die Grösse sollte sich beschränken. (Gold ok, Sealantern ok, Alle Blöcke nicht ok)",
             "inline": false
         },
         {
-            "name": "- §08 - Role Play -",
+            "name": "- §09 - Role Play -",
             "value": "Bestimmte Regeln werden im Role Play aufgehoben... (§03, §04, §05)\n   ...Sofern es zu einem guten Role Play beiträgt (Die Entscheidung liegt beim Serverteam, wenn es zu einem Konflikt kommt).\n*Beide Personen müssen den Status 'RP' gesetzt haben das diese Regel gilt.*",
             "inline": false
         },
