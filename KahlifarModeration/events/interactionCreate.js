@@ -159,10 +159,6 @@ client.on('interactionCreate', async interaction => {
 										.setStyle("DANGER"),
 								)
 							mailmsg.edit({ embeds: [modmailReplyEmbed], components: [row] })
-							await sleep(150)
-							if (mailmsg.deletable) {
-								mailmsg.delete()
-							}
 						}).catch((e) => {
 							logger.error(e)
 						})
